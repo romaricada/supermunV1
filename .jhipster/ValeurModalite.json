@@ -1,0 +1,46 @@
+{
+    "name": "ValeurModalite",
+    "fields": [
+        {
+            "fieldName": "valeur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "exercice",
+            "otherEntityRelationshipName": "valeurModalite",
+            "relationshipName": "exercice",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "commune",
+            "otherEntityRelationshipName": "valeurModalite",
+            "relationshipName": "commune",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "modalite",
+            "otherEntityRelationshipName": "valeurModalite",
+            "relationshipName": "modalite",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117200529",
+    "entityTableName": "valeur_modalite",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

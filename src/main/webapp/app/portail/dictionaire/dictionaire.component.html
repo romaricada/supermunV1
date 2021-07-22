@@ -1,0 +1,425 @@
+<div class="container-fluid justify-content-center">
+    <div class="col-sm-12 text-center mt-1">
+        <h4>
+            <strong style="color: green;font-family: sans-serif;">Dictionnaire</strong>
+            <span><hr></span>
+        </h4>
+    </div>
+<div class="row">
+    <div class="col-sm-12 justify-center">
+        <div class="row mt-1">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <i class="fa fa-search ml-1"></i>
+                <input type="text" class="border-0" pInputText [style]="{'width':'100%'}"
+                       placeholder="Saisir pour rechercher"
+                       aria-describedby="basic-addon1" (search)="doSearch($event)"
+                       jhiTableGlobalSearch [values]="dictionairesTemp" >
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div *ngIf="isLoading" class="mt-3">
+            <img style="margin-left: 5px; width: 45px; height: 45px" class="img" src="../../../content/images/ajax-loader.gif"/>&nbsp;
+        </div>
+        <div *ngIf="!isLoading">
+            <div class="row mt-2" *ngFor="let dictionaire of dictionaires ">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                <span class="title">
+                    {{dictionaire.entite}}</span><br>
+                    <span class="description">
+                    {{dictionaire?.definition}}
+                </span><br>
+                    <span class="regle">
+                    <span class="mr-1" *ngIf="dictionaire.regleCalcule"><b><u>Méthode de calcul:</u></b></span>
+                        {{dictionaire?.regleCalcule}}
+                </span>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--<div class="col-sm-12 text-center mt-1">
+    <h4>
+        <strong style="color: green;font-family: sans-serif;">Dictionaires</strong>
+        <span><hr></span>
+    </h4>
+
+</div>
+<div class="text-center">
+        <span>
+            Le tableau ci-dessous décrit la grille de notation pour noter les municipalités.</span>
+</div>
+<div class="table-responsive pt-2">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>Indicateur</th>
+            <th>Grille de notations</th>
+            <th>Note Maximale</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="3" style="font-size: 16px;">
+                <span><b><i class="fa fa-arrow-right mr-1"></i>Indicateurs de capacité institutionnelle</b></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Personnel de la municipalité remplissant l’organigramme type</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>Chaque mairie devrait avoir en son sein un personnel composé d’au moins 8<br>
+                    agents municipaux, composant l’organigramme type, selon <br>
+                    le Code Général des Collectivités Territoriales (CGCT).
+                </p>
+            </td>
+            <td>
+                Secrétaire de la mairie : <b>1 point</b><br>
+                Agent d’état civil : <b>2 points</b><br>
+                Comptable : <b>2 points</b><br>
+                Régisseur Recettes : <b>1 point</b><br>
+                Agent Service statistique : <b>1 point</b><br>
+                Agent Matière transférée : <b>1 point</b><br>
+                Agent Service Technique : <b>1 point</b><br>
+                Agent Affaires domaniales et foncières : <b>1 point</b><br>
+            </td>
+            <td>
+                10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Nombre de sessions du Conseil Municipal tenues</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Selon le CGCT, une commune doit tenir chaque année quatre sessions ordinaires du conseil municipal.<br>
+                    Ces sessions permettent au conseil municipal de discuter des questions importantes <br>
+                    liées non seulement au fonctionnement de la Marie, mais aussi à la vie de la commune de façon générale.<br>
+                </p>
+            </td>
+            <td>
+                0 session ordinaire du conseil municipal : <b>0 points</b><br>
+                1 session ordinaire du conseil municipal : <b>1 point</b><br>
+                2 sessions ordinaires du conseil municipal : <b>2 points</b><br>
+                3 sessions ordinaires du conseil municipal : <b>3 points</b><br>
+                4 sessions ordinaires du conseil municipal : <b>5 points</b>
+            </td>
+            <td>
+                5
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Nombre de cadres de concertations organisées par la Mairie</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Il est recommandé aux municipalités d’organiser des réunions dites cadres de concertation,<br>
+                    regroupant non seulement les membres du conseil municipal, mais aussi des acteurs externes comme<br>
+                    des spécialistes des questions liées à la gouvernance, à la finance, à l’environnement, à l’eau et<br>
+                    l’assainissement, à l’éducation ; d’autres acteurs de la société civile ou des leaders communautaires,<br>
+                    comme les Conseillers Villageois de Développement (CVD), ainsi que les leaders religieux et coutumiers,<br>
+                    peuvent également être invités à ces cadres de concertation organisées par la mairie.
+                </p>
+            </td>
+            <td>
+                0 session du cadre de concertation : <b>0 point</b><br>
+                1 session du cadre de concertation : <b>1 point</b><br>
+                2 sessions du cadre de concertation : <b>2 points</b><br>
+                3 sessions du cadre de concertation : <b>3 points</b><br>
+                4 ou plus sessions de cadre de concertation : <b>5 points</b>
+            </td>
+            <td>
+                8
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux de participation aux sessions ordinaires du conseil municipal</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Cet indicateur permet de mesurer le niveau de participation des conseillers municipaux aux sessions du conseil <br>
+                    municipal.
+                </p>
+            </td>
+            <td>
+                Il s’agit du taux moyen de la commune :<br>
+                Moins de 20% : <b>0 points</b><br>
+                Entre 20% et 40% : <b>1 - ((40 - taux) / 20) points</b><br>
+                Entre 40% et 80% : <b>5 - ((80 - taux) / 10) points</b><br>
+                Entre 80% et 90% : <b>7 - ((90 - taux) / 5) points</b><br>
+                Entre 90% et 100% : <b>10 - ((100 - taux) * 3 / 10) points Plus de 100% : 10 points</b>
+            </td>
+            <td>
+                10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Recettes fiscales collectées par habitant</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    C’est le montant des recettes fiscales par habitant. Cet indicateur permet de mesurer la contribution moyenne de<br>
+                    chaque citoyen aux recettes fiscales de la commune.
+                </p>
+            </td>
+            <td>
+                Moins de 100 FCFA : <b>0 point</b>&nbsp;&nbsp;&nbsp;&nbsp;Entre 2 400 et 2 800 FCFA : <b>11 points</b><br>
+                Entre 100 et 200 FCFA : <b>1 point</b>&nbsp;&nbsp;Entre 2 800 et 3 000 FCFA : <b>12 points</b><br>
+                Entre 200 et 400 FCFA : <b>2 points</b>&nbsp;&nbsp;Entre 3 000 et 3 500 FCFA : <b>13 points</b><br>
+                Entre 400 et 600 FCFA : <b>3 points</b>&nbsp;Entre 3 500 et 4 000 FCFA : <b>14 points</b><br>
+                Entre 600 et 1000 FCFA : <b>4 points</b>&nbsp;Entre 4 000 et 4 500 FCFA : <b>15 points</b><br>
+                Entre 1000 et 1200 FCFA : <b>5 points</b>&nbsp;Entre 4 500 et 5 000 FCFA : <b>16 points</b><br>
+                Entre 1200 et 1400 FCFA : <b>6 points</b>&nbsp;Entre 5 000 et 5 500 FCFA : <b>17 points</b><br>
+                Entre 1400 et 1800 FCFA : <b>7 points</b>&nbsp;Entre 5 500 et 6 000 FCFA : <b>18 points</b><br>
+                Entre 1800 et 2000 FCFA : <b>8 points</b>&nbsp;Entre 6 000 et 6 500 FCFA : <b>19 points</b><br>
+                Entre 2000 et 2200 FCFA : <b>9 points</b>&nbsp;Entre 6 500 et 7 000 FCFA : <b>20 points</b><br>
+                Entre 2200 et 2400 FCFA : <b>10 points</b>&nbsp;Entre 7000 et 7500 FCFA : <b>22 points</b><br>
+                Plus de 7 500 FCFA : <b>25 points</b>
+            </td>
+            <td>
+                25
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux de recouvrement de taxes en fonction des prévisions</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Chaque année les communes réalisent des prévisions sur les montants des taxes qu’elles devraient collecter<br> dans la commune.
+                    Cet indicateur a pour but de mesurer la capacité de la commune à réaliser les prévisions en matière de recettes fiscales.
+                </p>
+            </td>
+            <td>
+                Moins de 55% : <b>0 point</b><br>
+                Entre 55 et 60% : <b>1 point</b><br>
+                Entre 60 et 65% : <b>2 points</b><br>
+                Entre 65 et 70% : <b>3 points</b><br>
+                Entre 70 et 75% : <b>4 points</b><br>
+                Entre 75 et 80% : <b>5 points</b><br>
+                Entre 80 et 85% : <b>6 points</b><br>
+                Entre 85 et 90% : <b>7 points</b><br>
+                Entre 90 et 95% : <b>8 points</b><br>
+                Entre 95 et 100% : <b>9 points</b><br>
+                Plus de 100% : <b>10 points</b>
+            </td>
+            <td>
+                10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux d’exécution du plan de passation des marchés</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Cet indicateur de capacité institutionnelle vise à appréhender la capacité de la Mairie à réaliser son plan<br>
+                    de passation des marchés (PPM).
+                </p>
+            </td>
+            <td>
+                Moins de 20% : <b>0 point</b> Entre 65 et 70% : <b>8 points</b><br>
+                Entre 20 et 30% : <b>1 point</b> Entre 70 et 75% : <b>9 points</b><br>
+                Entre 30 et 35% : <b>2 points</b> Entre 75 et 80% : <b>10 points</b><br>
+                Entre 35 et 40% : <b>3 points</b> Entre 80 et 85% : <b>11 points</b><br>
+                Entre 40 et 50% : <b>4 points</b> Entre 85 et 90% : <b>12 points</b><br>
+                Entre 50 et 55% : <b>5 points</b> Entre 90 et 95% : <b>14 points</b><br>
+                Entre 55 et 60% : <b>6 points</b> Entre 95 et 100% : <b>16 points</b><br>
+                Entre 60 et 65% : <b>7 points</b> Égal à 100% : <b>18 points</b>
+            </td>
+            <td>
+                18
+            </td>
+        </tr>
+        <tr>
+            <td  colspan="3" style="font-size: 16px;">
+                <span><b><i class="fa fa-arrow-right mr-1"></i>Indicateurs de services publics</b></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Écart entre le taux d’admission au CEP dans la commune et au niveau national</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Cet indicateur mesure la performance de la commune en termes de résultats scolaires. L’éducation de base est un<br> bien essentiel
+                    pour toute personne, et constitue la base de formation pour les enfants.
+                </p>
+            </td>
+            <td>
+                Moins de -40 : <b>1 point</b> Entre -5 et 5 : <b>8 points Entre</b><br>
+                Entre -40 et -30 : <b>2 points</b> 5 et 10 : <b>9points</b><br>
+                Entre -30 et -25 : <b>3 points</b> Entre 10 et 15 : <b>10 points</b><br>
+                Entre -25 et -20 : <b>4 points</b> Entre 15 et 20 : <b>12 points</b><br>
+                Entre -20 et -15 : <b>5 points</b> Entre 20 et 25 : <b>14 points</b><br>
+                Entre -15 et -10 : <b>6 points</b> Entre 25 et 35 : <b>18 points</b><br>
+                Entre -10 et -5 : <b>7 points</b> Plus de 35 : <b>20 points</b>
+            </td>
+            <td>
+                20
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Retard moyen d’approvisionnement en fournitures scolaires</b></span><br>
+                <u><b>Description :</b></u><br>
+                <p>
+                    La municipalité est responsable de l’approvisionnement des écoles primaires en fournitures scolaires, et cet indicateur<br>
+                    mesure la célérité avec laquelle la Mairie répond à cette exigence.
+                </p>
+            </td>
+            <td>
+                <b>0 point</b> si le retard moyen est &gt;= 200 jours<br>
+                <b>X points</b> si le retard moyen est &gt;1 jour mais &lt;= 200 jours ; avec X = 10 rapporté à <br>la racine carrée du retard moyen
+                <b>10 points</b> si le retard moyen est &lt;= 1 jour
+            </td>
+            <td>
+                10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux d’écoles avec un forage fonctionnel</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Le forage dans une école est une source d’eau potable pour les élèves et pour les enseignants, car leur permet non seulement<br>
+                    de satisfaire à leur besoin de base en matière d’eau pour la consommation, mais aussi pour assurer l’hygiène<br> et la propreté dans l’établissement scolaire.
+                </p>
+            </td>
+            <td>
+                Moins de 20 : <b>1 point</b> Entre 60 et 65 : <b>10 points</b><br>
+                Entre 20 et 25 : <b>2 points</b> Entre 65 et 70 : <b>11 points</b><br>
+                Entre 25 et 30 : <b>3 points</b> Entre 70 et 75 : <b>12 points</b><br>
+                Entre 30 et 35 : <b>4 points</b> Entre 75 et 80 : <b>13 points</b><br>
+                Entre 35 et 40 : <b>5 points</b> Entre 80 et 85 : <b>14 point</b><br>
+                Entre 40 et 45 : <b>6 points</b> Entre 85 et 90 : <b>15 points</b><br>
+                Entre 45 et 50 : <b>7 points</b> Entre 90 et 95 : <b>16 points</b><br>
+                Entre 50 et 55 : <b>8 points</b> Entre 95 et 100 : <b>20 points</b><br>
+                Entre 55 et 60 : <b>9 points</b> Plus de 100 : <b>25 points</b>
+            </td>
+            <td>
+                25
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux d’écoles avec un nombre suffisant de latrines fonctionnelles</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Cet indicateur mesure la capacité de la municipalité à offrir des conditions minimales d’hygiène aux élèves, notamment <br>
+                    en ce qui concerne les latrines.
+                </p>
+            </td>
+            <td>
+                Moins de 30% : <b>0 point</b> Entre 70 et 75% : <b>8 points</b><br>
+                Entre 30 et 35% : <b>1 point</b> Entre 75 et 80% : <b>9 points</b><br>
+                Entre 35 et 40% : <b>2 points</b> Entre 80 et 85% : <b>10 points</b><br>
+                Entre 40 et 50% : <b>3 points</b> Entre 85 et 90% : <b>11 points</b><br>
+                Entre 50 et 55% : <b>4 points</b> Entre 90 et 95% : <b>12 points</b><br>
+                Entre 55 et 60% : <b>5 points</b> Entre 95 et 100% : <b>14 points</b><br>
+                Entre 60 et 65% : <b>6 points</b> Plus de 100% : <b>15 points</b><br>
+                Entre 65 et 70% : <b>7 points</b>
+            </td>
+            <td>
+                15
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux d’accouchements assistés</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Ce indicateur de santé permet de mesurer le niveau d’accès des populations aux soins de santé primaire, notamment<br>
+                    les accouchements.
+                </p>
+            </td>
+            <td>
+                Moins de 40% : <b>0 point</b> Entre 80 et 85% : <b>9 points</b><br>
+                Entre 40 et 55% : <b>1 point</b> Entre 85 et 90% : <b>10 points</b><br>
+                Entre 55 et 60% : <b>2 points</b> Entre 90 et 95% : <b>11 points</b><br>
+                Entre 60 et 65% : <b>4 points</b> Entre 95 et 100% : <b>12 points</b><br>
+                Entre 65 et 70% : <b>5 points</b> Entre 100 et 110% : <b>13 points</b><br>
+                Entre 70 et 75% : <b>7 points</b> Entre 110 et 120% : <b>14 points</b><br>
+                Entre 75 et 80% : <b>8 points</b> Égal ou plus 120% : <b>15 points</b>
+            </td>
+            <td>
+                15
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux de nourrissons 0-11 mois ayant reçu les vaccins recommandés</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Les nourrissions de moins d’un an d’âge doivent recevoir un certain nombre de vaccins, selon un calendrier recommandé, afin <br>
+                    de réduire leur morbidité, voire leur mortalité.
+                </p>
+            </td>
+            <td>
+                Moins de 60% : <b>0 point</b> Entre 85 et 90% : <b>8 points</b><br>
+                Entre 60 et 65% : <b>1 point</b> Entre 90 et 100% : <b>9 points</b><br>
+                Entre 65 et 70% : <b>2 points</b> Entre 100 et 120% : <b>10 points</b><br>
+                Entre 70 et 75% : <b>3 points</b> Entre 120 et 140% : <b>12 points</b><br>
+                Entre 75 et 80% : <b>5 points</b> Entre 140 et 150% : <b>14 points</b><br>
+                Entre 80 et 85% : <b>7 points</b> Plus ou égal à 150% : <b>15 points</b>
+            </td>
+            <td>
+                15
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux de CSPS ayant reçu un stock de gaz suffisant</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Ce indicateur de santé permet de mesurer la capacité de la municipalité à fournir du gaz aux CSPS de sa commune afin d’assurer<br>
+                    la conservation de médicaments et des vaccins et sérums. En général, les CSPS ont besoin de deux bouteilles de gaz par mois.
+                </p>
+            </td>
+            <td>
+                Pourcentage de la commune / 10 points<br>
+                Par exemple, si 2 sur 4 formations sanitaires d’une commune ont reçues un stock de  gaz <br>
+                suffisant, la commune aura 5 points pour cet indicateur : 2/4 × 100% = 50% 4<br>
+                50/10 = 5 𝑝𝑜𝑖𝑛𝑡𝑠 10
+            </td>
+            <td>
+                10
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux de la population ayant accès à une source d’eau potable fonctionnelle</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    Cet indicateur est obtenu directement du Ministère en charge de l’eau et de l’assainissement. Il concerne la capacité de la<br>
+                    municipalité à fournir de l’eau potable aux populations qui relèvent de leur espace géographique de responsabilité.
+                </p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>
+                <span><b>Taux d’actes de naissances délivrés</b><br></span>
+                <u><b>Description :</b></u><br>
+                <p>
+                    L’acte de naissance représente un document administratif de base pour tout citoyen. Il est nécessaire pour tout individu pour<br>
+                    jouir du droit fondamental d’instruction, mais aussi d’expression civique comme la participation aux scrutins électoraux pour la<br>
+                    désignation de représentants locaux (conseil municipal), législatifs (assemblée nationale) et même du président de la république.
+                </p>
+            </td>
+            <td>
+                Moins de 20% : <b>0 point</b> Entre 60 et 70% : <b>5 points</b><br>
+                Entre 20 et 30% : <b>1 point</b> Entre 70 et 80% : <b>6 points</b><br>
+                Entre 30 et 40% : <b>2 points</b> Entre 80 et 85% : <b>7 points</b><br>
+                Entre 40 et 50% : <b>3 points</b> Entre 85 et 90% : <b>8 points</b><br>
+                Entre 50 et 60% : <b>4 points</b> Entre 90 et 95% : <b>9 points</b><br>
+                Entre 95 et 100% : <b>10 points</b> Égal ou plus de 100% : <b>12 points</b><br>
+            </td>
+            <td>
+                12
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>-->

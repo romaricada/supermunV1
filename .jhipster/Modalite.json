@@ -1,0 +1,49 @@
+{
+    "name": "Modalite",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "borneMaximale",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "borneMinimale",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "valeur",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "indicateur",
+            "otherEntityRelationshipName": "modalite",
+            "relationshipName": "indicateur",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117200528",
+    "entityTableName": "modalite",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span>Posters</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-poster" [routerLink]="['/admin/poster/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Poster
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="posters?.length === 0">
+        <span>No posters found</span>
+    </div>
+    <div class="table-responsive" *ngIf="posters?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="url"><span>Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="contenu"><span>Contenu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deleted"><span>Deleted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="exerciceId"><span>Exercice</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="communeId"><span>Commune</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let poster of posters ;trackBy: trackId">
+                <td><a [routerLink]="['/admin/poster', poster.id, 'view' ]">{{poster.id}}</a></td>
+                <td>{{poster.url}}</td>
+                <td>
+                    <a *ngIf="poster.contenu" (click)="openFile(poster.contenuContentType, poster.contenu)">open</a>
+                    <span *ngIf="poster.contenu">{{poster.contenuContentType}}, {{byteSize(poster.contenu)}}</span>
+                </td>
+                <td>{{poster.deleted}}</td>
+                <td>
+                    <div *ngIf="poster.exerciceId">
+                        <a [routerLink]="['/admin/exercice', poster.exerciceId , 'view' ]" >{{poster.exerciceId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="poster.communeId">
+                        <a [routerLink]="['/admin/commune', poster.communeId , 'view' ]" >{{poster.communeId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/admin/poster', poster.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/admin/poster', poster.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/admin/poster', { outlets: { popup: poster.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="posters?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

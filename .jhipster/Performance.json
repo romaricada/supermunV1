@@ -1,0 +1,50 @@
+{
+    "name": "Performance",
+    "fields": [
+        {
+            "fieldName": "score",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "commune",
+            "otherEntityRelationshipName": "performance",
+            "relationshipName": "commune",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "indicateur",
+            "otherEntityRelationshipName": "performance",
+            "relationshipName": "indicateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "exercice",
+            "otherEntityRelationshipName": "performance",
+            "relationshipName": "exercice",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117200525",
+    "entityTableName": "performance",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

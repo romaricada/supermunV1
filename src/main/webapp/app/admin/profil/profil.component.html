@@ -1,0 +1,107 @@
+<div class="mt-2 container">
+    <div class="alert alert-warning" *ngIf="profils?.length === 0">
+        <span>Aucun profil trouvé</span>
+    </div>
+    <p-fieldset>
+        <p-header>
+            <span class="text-primary font-weight-bold">{{profil?.id ? 'Modification du profil' : 'Ajout d\'un nouveau profil'}}</span>
+        </p-header>
+        <form name="addForm" #addForm="ngForm" role="form">
+            <div class="form-group">
+                <label class="form-control-label font-weight-bold" for="profilName">
+                    Nom du profil <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                </label>
+                <input type="text" required class="form-control" id="profilName" name="profilName"
+                       placeholder="Nom du module"
+                       [(ngModel)]="profil.profilName">
+            </div>
+            <div class="form-group">
+                <label class="form-control-label font-weight-bold" for="auth">
+                    Autorisations du profil <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                </label>
+                <br/>
+                <p-multiSelect [options]="authorities" [optionLabel]="'description'" name="authoritie" id="auth"
+                               [(ngModel)]="profil.authorities" [style]="{width:'100%'}"
+                               [emptyFilterMessage]="'Aucun élément trouvé'"
+                               defaultLabel="Sélectionner les autorisations" required>
+                </p-multiSelect>
+            </div>
+            <div class="mt-2">
+                <div class="float-right">
+                    <button type="button" class="btn btn-secondary font-weight-bold" (click)="annuler()">
+                        <fa-icon [icon]="'times'"></fa-icon>
+                        <span>Annuler</span>
+                    </button>
+                    <button type="button" class="btn btn-primary font-weight-bold"
+                            [disabled]="addForm.form.invalid" (click)="save()">
+                        <fa-icon [icon]="'plus'"></fa-icon>
+                        <span>Sauvegarder</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </p-fieldset>
+    <div class="table-responsive mt-5" *ngIf="profils?.length > 0">
+        <table class="table table-striped table-bordered" aria-describedby="page-heading">
+            <caption style="caption-side: top; font-size: medium" class="border" >
+                <label class="font-weight-bold text-primary pl-2">Gestion des profils
+                    utilisateurs</label>
+                <a class="font-weight-bold float-right mr-2" [routerLink]="['/admin/user-management']">
+                    <fa-icon [icon]="'arrow-left'"></fa-icon>
+                    <span> Aller à la gestion des utilisateurs</span>
+                </a>
+            </caption>
+            <thead>
+            <tr>
+                <th scope="col"><span>Nom du profil</span></th>
+                <th scope="col" style="width: 30%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rowData of profils ;trackBy: trackId">
+                <td><span class="font-weight-bold">{{rowData.profilName}}</span></td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success btn-sm font-weight-bold" (click)="view(content, rowData)">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Autorisations</span>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm font-weight-bold" (click)="profil = rowData">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Modifier</span>
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm font-weight-bold" (click)="deleteProfil(rowData)">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Supprimer</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title font-weight-bold text-primary" id="modal-basic-title">Liste des autorisations du profil : {{profil?.profilName}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('dismiss')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p-listbox [options]="profil.authorities" optionLabel="description"></p-listbox>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary font-weight-bold" (click)="modal.close('Save click')">Quitter</button>
+        </div>
+    </ng-template>
+    <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" class="text-warning">
+        <p-footer>
+            <button type="button" class="ui-button-secondary font-weight-bold" pButton icon="pi pi-times" label="NON"
+                    (click)="cd.reject()"></button>
+            <button type="button" class="ui-button-secondary text-danger font-weight-bold" pButton icon="pi pi-check" label="OUI"
+                    (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+
+    <p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>
+</div>

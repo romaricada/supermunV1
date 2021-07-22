@@ -1,0 +1,165 @@
+#bf_carte {
+  width: 100%;
+  height: 550px;
+  background: transparent;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  border-radius: 10px;
+
+  .legend {
+    line-height: 18px;
+    color: #555;
+    text-align: left !important;
+  }
+  text-align: center;
+  i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+  }
+}
+
+img.pact_img {
+  width: 150px !important;
+}
+
+img {
+  width: 100%;
+}
+
+.img-col {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  // text-shadow: 2px -2px 2px gray !important;
+}
+
+.img-detail {
+  font-weight: bold;
+  font-size: 12%;
+  margin-bottom: 10px;
+}
+
+img.supr_img {
+  height: 100px;
+}
+
+.row.own-ui-dropdown .ui-dropdown {
+  width: 100% !important;
+}
+
+.year-row {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.own-alert {
+  position: relative;
+  padding: 0.5rem;
+  margin-bottom: 0.3rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: white !important;
+}
+
+.own-alert-success {
+  background: #4caf50 -webkit-gradient(linear, left top, left bottom, from(#67bb6a), to(#4caf50)) repeat-x;
+  background: #4caf50 linear-gradient(180deg, #67bb6a, #4caf50) repeat-x;
+  background: #c1c1c1 linear-gradient(180deg, #c1c1c1, #c1c1c1) repeat-x;
+  background: #17a458 linear-gradient(180deg, #18a156, #18a358) repeat-x;
+  background: #d6d6d6 linear-gradient(180deg, #d6d6d6, #d6d6d6) repeat-x;
+}
+
+.logo-div {
+  margin-top: 1px;
+}
+label.own-alert.own-alert-success {
+  margin-top: 8px;
+  color: black !important;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.8125rem !important;
+}
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+    stroke: #d62d20;
+  }
+  40% {
+    stroke: #0057e7;
+  }
+  66% {
+    stroke: #008744;
+  }
+  80%,
+  90% {
+    stroke: #ffa700;
+  }
+}
+.carte-row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+.filer-row {
+  margin-right: 0px !important;
+  margin-left: 13px !important;
+}
+
+@media (max-width: 600px) {
+  .carte-row {
+    margin-top: 9px;
+  }
+}
+
+.img {
+  width: 10%;
+  margin-left: -20px;
+}
+.miniForm {
+  border: inset 1px #17a2b8;
+  border-radius: 5px;
+}
+
+.govLink {
+  border-radius: 5%;
+  margin-right: 3px;
+  padding: 9px;
+  margin-top: 10px;
+  background-color: #33a834;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+}
+.govLink a {
+  color: white;
+}
+
+.btn {
+  text-transform: none;
+  // height: 40px;
+  box-shadow: none;
+}
+
+.myButton button {
+  height: 45px;
+  border: none;
+  width: 184px;
+}
+
+.counter {
+  font-weight: bolder;
+  font-size: MEDIUM;
+  /* border: 1px solid;
+  padding: 1%;
+  border-radius: 10px;
+  */
+}

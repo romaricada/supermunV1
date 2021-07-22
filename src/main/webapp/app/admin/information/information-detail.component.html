@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="information">
+            <h2><span>Information</span> {{information.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Presentation</span></dt>
+                <dd>
+                    <span>{{information.presentation}}</span>
+                </dd>
+                <dt><span>Contact</span></dt>
+                <dd>
+                    <span>{{information.contact}}</span>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{information.deleted}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/information', information.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

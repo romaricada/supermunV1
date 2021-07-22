@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="publication">
+            <h2><span>Publication</span> {{publication.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{publication.libelle}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{publication.description}}</span>
+                </dd>
+                <dt><span>Contenu</span></dt>
+                <dd>
+                    <div *ngIf="publication.contenu">
+                        <a (click)="openFile(publication.contenuContentType, publication.contenu)">open</a>
+                        {{publication.contenuContentType}}, {{byteSize(publication.contenu)}}
+                    </div>
+                </dd>
+                <dt><span>Published</span></dt>
+                <dd>
+                    <span>{{publication.published}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/publication', publication.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

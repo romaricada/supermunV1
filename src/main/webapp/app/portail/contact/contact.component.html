@@ -1,0 +1,101 @@
+<div class="container mt-4">
+    <p-panel>
+        <p-header><h3 class="text-center text-primary font-weight-bold">Contactez-nous</h3></p-header>
+        <form name="contactForm" role="form" novalidate (ngSubmit)="sendEmail()" [formGroup]="contactForm" style="font-size: medium">
+            <div class="form-group">
+                <label class="font-weight-bold">Votre nom<sup class="ml-1 text-danger">*</sup></label>
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom"
+                       formControlName="nom">
+                <div
+                *ngIf="contactForm.get('nom').invalid && (contactForm.get('nom').dirty || contactForm.get('nom').touched)">
+                <small class="form-text text-danger font-weight-bold"
+                       *ngIf="contactForm.get('nom').errors.required">
+                    Le nom est requis.
+                </small>
+                <small class="form-text text-danger font-weight-bold"
+                       *ngIf="contactForm.get('nom').errors.minlength">
+                    La taille du nom doit être d'au moins 2 caractères.
+                </small>
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold">Votre prénom<sup class="ml-1 text-danger">*</sup></label>
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom"
+                       formControlName="prenom">
+                <div
+                    *ngIf="contactForm.get('prenom').invalid && (contactForm.get('prenom').dirty || contactForm.get('prenom').touched)">
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('prenom').errors.required">
+                        Le prénom est requis.
+                    </small>
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('prenom').errors.minlength">
+                        La taille du prénom doit être d'au moins 2 caractères.
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold">Votre téléphone</label>
+                <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Votre téléphone"
+                       formControlName="telephone">
+                <div
+                    *ngIf="contactForm.get('telephone').invalid && (contactForm.get('telephone').dirty || contactForm.get('telephone').touched)">
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('telephone').errors.minlength">
+                        La taille du téléphone doit être d'au moins 8 caractères.
+                    </small>
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('telephone').errors.pattern">
+                        Le téléphone doit contenir que des caractères numériques
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold">Votre e-mail<sup class="ml-1 text-danger">*</sup></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Votre e-mail"
+                       formControlName="email">
+                <div
+                    *ngIf="contactForm.get('email').invalid && (contactForm.get('email').dirty || contactForm.get('email').touched)">
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('email').errors.required">
+                        Le mail est requis.
+                    </small>
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('email').errors.minlength">
+                        La taille du mail doit être d'au moins 4 caractères.
+                    </small>
+                    <small class="form-text text-danger font-menu-button"
+                           *ngIf="contactForm.get('email').errors.maxlength">
+                        La taille du mail ne peut pas être supérieure à 254 caractères
+                    </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="message">Votre message<sup class="ml-1 text-danger">*</sup></label>
+                <textarea id="message" name="message" formControlName="message" rows="12" class="p-2 font-weight-bold"></textarea>
+                <div
+                    *ngIf="contactForm.get('message').invalid && (contactForm.get('message').dirty || contactForm.get('message').touched)">
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('message').errors.required">
+                        Le message est requis.
+                    </small>
+                    <small class="form-text text-danger font-weight-bold"
+                           *ngIf="contactForm.get('message').errors.minlength">
+                        La taille du message doit être d'au moins 4 caractères.
+                    </small>
+                </div>
+            </div>
+            <div class="p-1">
+                <button class="btn btn-secondary font-weight-bold" [routerLink]="['/']">
+                    <i class="fa fa-times"></i>
+                    <span>Quitter</span>
+                </button>
+                <button type="submit" class="btn btn-primary font-weight-bold">
+                    <i class="fa fa-send"></i>
+                    <span>Envoyer</span>
+                </button>
+            </div>
+        </form>
+    </p-panel>
+    <p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>
+</div>

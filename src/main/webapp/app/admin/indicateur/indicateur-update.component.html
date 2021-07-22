@@ -1,0 +1,353 @@
+<div class="row justify-content-center container-fluid" xmlns="http://www.w3.org/1999/html">
+    <div class="col-sm-12">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">
+                    <div>
+                        <span *ngIf="editForm.get('id').value !== null">Modification d'un indicateur</span>
+                        <span *ngIf="editForm.get('id').value === null">Ajout d'un indicateur</span>
+                    </div>
+                </legend>
+                <!--<p-toast key="myKey1" position="center"></p-toast>-->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_type_indicateur">Groupe de domaine de
+                                l'Indicateur <sup class="champ-oblige">(*)</sup></label>
+                            <select class="form-control" id="field_type_indicateur" name="type-indicateur"
+                                    formControlName="typeIndicateur" (change)="typeIndicateurChange()">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="typeIndicateur.libelle"
+                                        *ngFor="let typeIndicateur of typeIndicateurs">{{typeIndicateur.libelle}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_domaine">Domaine de l'Indicateur <sup class="champ-oblige">(*)</sup></label>
+                            <select class="form-control" id="field_domaine" name="domaine" formControlName="domaineId">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="domaineOption.id"
+                                        *ngFor="let domaineOption of domaines; trackBy: trackDomaineById">{{domaineOption.libelle}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label form-label" for="field_code">Code <sup class="champ-oblige">(*)</sup></label>
+                            <input pKeyFilter="alpha" type="text" class="form-control" name="code" id="field_code" (change)="indicateurIsExiste()"
+                                   placeholder="Code de l'indicateur" formControlName="code"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_libelle">Libellé <sup class="champ-oblige">(*)</sup></label>
+                            <input [pKeyFilter]="blockSpecial" type="text" class="form-control" name="libelle" id="field_libelle"
+                                   placeholder="Libellé de l'indicateur"
+                                   formControlName="libelle"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_description">Description <sup class="champ-oblige">(*)</sup></label>
+                            <textarea rows="5" pInputTextarea class="form-control" [style]="{'width':'100%'}" name="description" id="field_description"
+                                      placeholder="Description de l'indicateur" autoResize="true"
+                                      formControlName="description">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="form-control-label form-label" for="field_borne_min">Borne Minimale <sup class="champ-oblige">(*)</sup></label>
+                            <input pKeyFilter="num" type="text" class="form-control" name="borneMin" id="field_borne_min"
+                                   placeholder="Borne Minimale de l'indicateur" formControlName="borneMin" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_borne_max">Borne Maximale <sup class="champ-oblige">(*)</sup></label>
+                            <input pKeyFilter="num" type="text" class="form-control" name="borneMax" id="field_borne_max"
+                                   placeholder="Borne Maximale de l'indicateur"
+                                   formControlName="borneMax" required />
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_unite_borne">Unité de Borne <sup class="champ-oblige">(*)</sup></label>
+                            <select class="form-control" name="uniteBorne" id="field_unite_borne" placeholder="Unité de Borne de l'indicateur"
+                                    formControlName="uniteBorne" required>
+                                <option [ngValue]="unite.value" *ngFor="let unite of unites">{{unite.libelle}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_image1">Image Bonne situation</label>
+                            <div>
+                                <img [src]="'data:' + editForm.get('image1ContentType').value + ';base64,' + editForm.get('image1').value"
+                                     style="max-height: 100px;" *ngIf="editForm.get('image1').value" alt="indicateur image"/>
+                                <div *ngIf="editForm.get('image1').value" class="form-text text-danger clearfix">
+                                    <span class="pull-left">{{editForm.get('image1ContentType').value}}, {{byteSize(editForm.get('image1').value)}}</span>
+                                    <button type="button" (click)="clearInputImage('image1', 'image1ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                    </button>
+                                </div>
+                                <input type="file" id="file_image1" (change)="setFileData($event, 'image1', true)" accept="image/*"/>
+                            </div>
+                            <input type="hidden" class="form-control" name="image1" id="field_image1" formControlName="image1"/>
+                            <input type="hidden" class="form-control" name="image1" id="field_image1ContentType" formControlName="image1"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_image2">Image mauvaise situation</label>
+                            <div>
+                                <img [src]="'data:' + editForm.get('image2ContentType').value + ';base64,' + editForm.get('image2').value"
+                                     style="max-height: 100px;"  *ngIf="editForm.get('image2').value" alt="indicateur image"/>
+                                <div *ngIf="editForm.get('image2').value" class="form-text text-danger clearfix">
+                                    <span class="pull-left">{{editForm.get('image2ContentType').value}}, {{byteSize(editForm.get('image2').value)}}</span>
+                                    <button type="button" (click)="clearInputImage('image2', 'imageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                        <fa-icon [icon]="'times'"></fa-icon>
+                                    </button>
+                                </div>
+                                <input type="file" id="file_image2" (change)="setFileData($event, 'image2', true)"
+                                       accept="image/*"/>
+                            </div>
+                            <input type="hidden" class="form-control" name="image2" id="field_image2"
+                                   formControlName="image2"/>
+                            <input type="hidden" class="form-control" name="image2"
+                                   id="field_image2ContentType"
+                                   formControlName="image2"/>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="row add-sous-indicateur">
+                    <div class="col-sm-4">
+                        <label class="sou-indicateur">Cet indicateur a t-il des sous indicateurs ? </label>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="checkbox" name="addSousIndicateur" id="field_addSousIndicateur" formControlName="addSousIndicateur" (click)="add()">
+                        <span *ngIf="editForm.get('addSousIndicateur').value === true">OUI</span>
+                        <span *ngIf="editForm.get('addSousIndicateur').value !== true">NON</span>
+                    </div>
+                    <div class="col-sm-5 float-left" title="Veuillez cocher le champ précédant !">
+                        <button type="button" class="btn-info btn-header" (click)="ajouter()" [disabled]="editForm.get('addSousIndicateur').value !== true">
+                            <fa-icon [icon]="'plus'"></fa-icon>Sous Indicateur
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="editForm.get('addSousIndicateur').value">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="sou-indicateur">Les sous indicateurs de cet indicateur comportent-ils des intervalles ? </label>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="intervalle" id="field_intervalle" formControlName="interval">
+                            <span *ngIf="editForm.get('interval').value === true">OUI</span>
+                            <span *ngIf="editForm.get('interval').value !== true">NON</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="sou-indicateur">Les sous indicateurs de cet indicateur comportent-ils des images ? </label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="checkbox" name="sousIndicateur" id="field_sousIndicateur" (click)="sousIndicateurChange()" formControlName="sousIndicateur">
+                            <span *ngIf="editForm.get('sousIndicateur').value === true">OUI</span>
+                            <span *ngIf="editForm.get('sousIndicateur').value !== true">NON</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="modalites?.length > 0" class="fix-height">
+
+                        <div *ngIf="editForm.get('interval').value !== true">
+                            <div *ngFor="let modalite of modalites; let i = index" class="div-group">
+                                <form name="editFormModalite" #editFormModalite="ngForm">
+                                    <fieldset class="scheduler-border-mod">
+                                        <legend class="scheduler-border">
+                                            Sous Indicateur {{i + 1}}
+                                        </legend>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label class="form-control-label">Code</label>
+                                                <input type="text" pKeyFilter="alpha" [(ngModel)]="modalite.code" [name]="'code' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label class="form-control-label">Libellé</label>
+                                                <input type="text" [pKeyFilter]="blockSpecial" [(ngModel)]="modalite.libelle" [name]="'libelle' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label class="form-control-label">Valeur</label>
+                                                <input type="text" pKeyFilter="num" [(ngModel)]="modalite.valeur" [name]="'valeur' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-3 float-right">
+                                                <br>
+                                                <button type="button" class="btn-info btn-header" (click)="ajouter()">
+                                                    <fa-icon [icon]="'plus'"></fa-icon>
+                                                </button>
+                                                <button type="button" class="btn-danger btn-header" (click)="supprimerModalite(modalite)">
+                                                    <fa-icon [icon]="'times'"></fa-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div *ngIf="editForm.get('interval').value === true">
+                            <div *ngFor="let modalite of modalites; let i = index" class="div-group">
+                                <form name="editFormModalite" #editFormModalite="ngForm">
+                                    <fieldset class="scheduler-border-mod">
+                                        <legend class="scheduler-border">
+                                            Sous Indicateur {{i + 1}}
+                                        </legend>
+                                        <div class="row div-group">
+                                            <div class="col-sm-3">
+                                                <label class="form-control-label">Code</label>
+                                                <input type="text" pKeyFilter="alpha" [(ngModel)]="modalite.code" [name]="'code' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <label class="form-control-label">Borne Minimale</label>
+                                                <input type="text" pKeyFilter="num" [(ngModel)]="modalite.borneMinimale" [name]="'borneMin' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="form-control-label">Borne Maximale</label>
+                                                <input type="text" pKeyFilter="num" [(ngModel)]="modalite.borneMaximale" [name]="'borneMax' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="form-control-label">Valeur</label>
+                                                <input type="text" pKeyFilter="num" [(ngModel)]="modalite.valeur" [name]="'valeur' + i" class="form-control">
+                                            </div>
+                                            <div class="col-sm-2 float-right">
+                                                <br>
+                                                <button type="button" class="btn-info btn-header" (click)="ajouter()">
+                                                    <fa-icon [icon]="'plus'"></fa-icon>
+                                                </button>
+                                                <button type="button" class="btn-danger btn-header" (click)="supprimerModalite(modalite)">
+                                                    <fa-icon [icon]="'times'"></fa-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- div formArrayName="modalites" class="div-group">
+                        <div class="row group-element" *ngFor="let groupModalite of modalitesArray.controls; let i = index" [formGroupName]="i">
+                            <div class="col-sm-12 modalite-item"><span > Sous Indicateur {{i + 1}}</span></div><br>
+                            <p-toast key="myKey2" position="center"></p-toast>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_code">Code (*)</label>
+                                    <input type="text" class="form-control" [name]="'code' + i" id="field_code_m" (change)="modaliteIsExiste(groupModalite)"
+                                           formControlName="code"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3" *ngIf="!editForm.get('interval').value">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_libelle">Libéllé (*)</label>
+                                    <input type="text" class="form-control" [name]="'libelle' + i" id="field_libelle_m"
+                                           formControlName="libelle"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" *ngIf="editForm.get('interval').value">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_borneMinimale">Borne Minimale
+                                        (*)</label>
+                                    <input type="number" class="form-control" [name]="'borneMinimale' + i"
+                                           id="field_borneMinimale" formControlName="borneMinimale"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" *ngIf="editForm.get('interval').value">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_borneMaximale">Borne Maximale
+                                        (*)</label>
+                                    <input type="number" class="form-control" [name]="'borneMaximale' + i"
+                                           id="field_borneMaximale" formControlName="borneMaximale"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_valeur">Valeur (*)</label>
+                                    <input type="number" class="form-control" [name]="'valeur' + i" id="field_valeur"
+                                           formControlName="valeur"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <br>
+                                <button type="button" class="btn-danger btn-header" (click)="supprimer(i)">
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div -->
+
+                    <div class="row" *ngIf="editForm.get('sousIndicateur').value">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_image1">Image OK</label>
+                                <div>
+                                    <img [src]="'data:' + editForm.get('imageModaliteOKContentType').value + ';base64,' + editForm.get('imageModaliteOK').value"
+                                         style="max-height: 100px;" *ngIf="editForm.get('imageModaliteOK').value" alt="indicateur image"/>
+                                    <div *ngIf="editForm.get('imageModaliteOK').value" class="form-text text-danger clearfix">
+                                        <span class="pull-left">{{editForm.get('imageModaliteOKContentType').value}}, {{byteSize(editForm.get('imageModaliteOK').value)}}</span>
+                                        <button type="button" (click)="clearInputImage('imageModaliteOK', 'imageModaliteOKContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                            <fa-icon [icon]="'times'"></fa-icon>
+                                        </button>
+                                    </div>
+                                    <input type="file" id="file_imageModaliteOK" (change)="setFileData($event, 'imageModaliteOK', true)"
+                                           accept="image/*"/>
+                                </div>
+                                <input type="hidden" class="form-control" name="imageModaliteOK" formControlName="imageModaliteOK"/>
+                                <input type="hidden" class="form-control" name="imageModaliteOKContentType" formControlName="imageModaliteOK"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_image2">Image NON OK</label>
+                                <div>
+                                    <img [src]="'data:' + editForm.get('imageModaliteNOKContentType').value + ';base64,' + editForm.get('imageModaliteNOK').value"
+                                         style="max-height: 100px;" *ngIf="editForm.get('imageModaliteNOK').value" alt="indicateur image"/>
+                                    <div *ngIf="editForm.get('imageModaliteNOK').value" class="form-text text-danger clearfix">
+                                        <span class="pull-left">{{editForm.get('imageModaliteNOKContentType').value}}, {{byteSize(editForm.get('imageModaliteNOK').value)}}</span>
+                                        <button type="button" (click)="clearInputImage('imageModaliteNOK', 'imageModaliteNOKContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                            <fa-icon [icon]="'times'"></fa-icon>
+                                        </button>
+                                    </div>
+                                    <input type="file" id="file_imageModaliteNOK" (change)="setFileData($event, 'imageModaliteNOK', true)" accept="image/*"/>
+                                </div>
+                                <input type="hidden" class="form-control" name="imageModaliteNOKContentType"
+                                       formControlName="imageModaliteNOK"/>
+                                <input type="hidden" class="form-control" name="imageModaliteNOKContentType"
+                                       formControlName="imageModaliteNOK"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+
+                <div class="text-center">
+                    <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                    </button>
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                            class="btn btn-primary">
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregistrer</span>
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>

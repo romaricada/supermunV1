@@ -1,0 +1,52 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "bf.gov.anptic"
+    },
+    "jhipsterVersion": "6.4.1",
+    "applicationType": "monolith",
+    "baseName": "supermun",
+    "packageName": "bf.gov.anptic",
+    "packageFolder": "bf/gov/anptic",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MWZjOWI2ZTE4MWZmZjNhNzEyMjdhZjFkODg4YzhkZTk1ZDJmM2M4NTJjZTVmNWE0YzAxNmE0NjdlZTE3ZjVjZjI0MmNlZDg4YzFmNDljYzBiYTlkNjI0M2U0NTM1YmRmMzUzYzA4ODhiYTdlYmMyMWM4YzlkMDYzYzc1NjM2ZDc=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "materia",
+    "clientThemeVariant": "light",
+    "testFrameworks": ["gatling", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-audit-helper",
+        "version": "1.0.3"
+      },
+      {
+        "name": "generator-jhipster-leafletmap",
+        "version": "2.0.0"
+      },
+      {
+        "name": "generator-jhipster-angular-material-integration",
+        "version": "1.0.17"
+      }
+    ],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}

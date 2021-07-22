@@ -1,0 +1,135 @@
+.row.own-ui-dropdown .ui-dropdown {
+  width: 100% !important;
+}
+
+.row {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+  /* margin-right: -15px; */
+  /* margin-left: -15px; */
+}
+
+.own-alert {
+  position: relative;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: white !important;
+}
+
+.own-alert-success {
+  background: #4caf50 -webkit-gradient(linear, left top, left bottom, from(#67bb6a), to(#4caf50)) repeat-x;
+  background: #4caf50 linear-gradient(180deg, #67bb6a, #4caf50) repeat-x;
+  background: #c1c1c1 linear-gradient(180deg, #c1c1c1, #c1c1c1) repeat-x;
+  background: #17a458 linear-gradient(180deg, #18a156, #18a358) repeat-x;
+  background: #d6d6d6 linear-gradient(180deg, #d6d6d6, #d6d6d6) repeat-x;
+}
+
+.heading {
+  font-size: 19px;
+  line-height: 21px;
+  text-align: center;
+  background-color: silver;
+  border-top: 2px solid;
+  font-family: monospace;
+  font-style: italic;
+}
+
+.member-value {
+  text-align: center;
+}
+
+.typHeader {
+  background-color: #84c6c0;
+}
+.typHeader1 {
+  background-color: #cf7c60;
+}
+
+.domaineHeader {
+  font-weight: bold;
+  background-color: darkseagreen;
+  text-align: center;
+  color: #ffffff;
+  font-family: fantasy;
+}
+.domaineBody {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  font-family: initial;
+}
+
+.iBody {
+  display: block;
+  height: 200px;
+  overflow: auto;
+  overflow-x: scroll;
+}
+.indicHead,
+.iBody .iTr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.indicHead {
+  width: calc(100% - 1.1em);
+}
+
+label {
+  font-size: medium;
+  font-weight: 400;
+  color: black;
+}
+
+.imgIndic {
+  width: 100%;
+  height: auto;
+}
+
+.imgIndic2 {
+  width: 64px;
+  height: 64px;
+}
+.fa-star:before,
+.fa-star-o:before {
+  color: #4cad50;
+  font-size: 20px;
+}
+
+.img2 {
+  height: 15px;
+}
+
+.sous-indicateur {
+  // display: flex;
+
+  .type-item {
+    margin-top: 0;
+    // width: 12%;
+    padding: 2px;
+    img.type-img {
+      width: 35px;
+      height: 45px;
+    }
+  }
+
+  .popup_class .tooltip-inner {
+    background-color: darkgreen;
+    font-size: 125%;
+  }
+
+  .popup_class .arrow::before {
+    border-top-color: darkgreen;
+  }
+
+  @media (max-width: 600px) {
+    .accLabel {
+      font-size: 13px;
+    }
+  }
+}

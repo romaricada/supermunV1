@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="poster">
+            <h2><span>Poster</span> {{poster.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Url</span></dt>
+                <dd>
+                    <span>{{poster.url}}</span>
+                </dd>
+                <dt><span>Contenu</span></dt>
+                <dd>
+                    <div *ngIf="poster.contenu">
+                        <a (click)="openFile(poster.contenuContentType, poster.contenu)">open</a>
+                        {{poster.contenuContentType}}, {{byteSize(poster.contenu)}}
+                    </div>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{poster.deleted}}</span>
+                </dd>
+                <dt><span>Exercice</span></dt>
+                <dd>
+                    <div *ngIf="poster.exerciceId">
+                        <a [routerLink]="['/exercice', poster.exerciceId, 'view']">{{poster.exerciceId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Commune</span></dt>
+                <dd>
+                    <div *ngIf="poster.communeId">
+                        <a [routerLink]="['/commune', poster.communeId, 'view']">{{poster.communeId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/poster', poster.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

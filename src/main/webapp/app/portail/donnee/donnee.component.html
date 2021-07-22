@@ -1,0 +1,397 @@
+<div class="container-fluid">
+    <div class="row pt-2">
+        <div class="col-sm-12 text-center">
+            <button pButton label="Visualisation" type="button" icon="fa fa-indent"
+                    (click)="changeToVisuel()"
+                    [ngClass]="{
+                            'font-weight-bold ui-button-secondary text-success':onVisualisation === false,
+                             'font-weight-bold ui-button-success text-white':onVisualisation === true
+                            }">
+            </button>
+            <button pButton label="Téléchargement" type="button" icon="fa fa-download"
+                    (click)="changeToDonnee()"
+                    [ngClass]="{
+                            'font-weight-bold ui-button-secondary text-success':onDonnee === false,
+                             'font-weight-bold ui-button-success text-white':onDonnee === true }">
+            </button>
+        </div>
+    </div>
+    <div class="card jh-card">
+        <div class="row own-ui-dropdown">
+            <div class=" own-alert own-alert-success col-sm-3" *ngIf="onVisualisation">
+                <label>Choisir une année ici</label>
+                <div>
+                    <p-spinner pKeyFilter="num" maxlength="4" id="mySpiner" placeholder="Choisir l'année" [style]="{'width':'100%'}" [(ngModel)]="year" (onChange)=" onExerciceChange(); loadTypeIndicateurByCommune()" [min]="minYear" [max]="maxYear"></p-spinner>
+                </div>
+                <!--<p-dropdown [options]="exercices" [(ngModel)]="selectedExerce" [filter]="true"
+                            [style]="{'width':'100%'}" placeholder="Selectionnez l'année"
+                            optionLabel="annee" (onChange)="onExerciceChange(); loadTypeIndicateurByCommune()"
+                            [showClear]="true">
+                </p-dropdown>-->
+            </div>
+            <div class="own-alert own-alert-success" [ngClass] ="{'col-sm':onVisualisation,'col-sm-12':onDonnee}">
+                <label>Choisir une commune ici</label>
+                <p-dropdown [options]="communes" [(ngModel)]="selectedCommune" [filter]="true"
+                            [style]="{'width':'100%'}"
+                            placeholder="Selectionnez une commune" optionLabel="libelle"
+                            (onChange)="loadTypeIndicateurByCommune(); getIndicateurByInterval()"
+                            [showClear]="true">
+                </p-dropdown>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="onVisualisation" class="card jh-card">
+        <div class="row own-ui-dropdown">
+            <h3>La performance de la commune<span *ngIf="selectedCommune"> de <strong>{{selectedCommune.libelle}}</strong></span></h3>
+            <div class="  own-alert own-alert-success col-sm-12">
+                <label>Choisir un Groupe de domaine</label>
+                <p-dropdown [options]="typeIndicateurs" [(ngModel)]="selectTypeIndicateur" [filter]="true"
+                            [style]="{'width':'100%'}"
+                            placeholder="Selectionnez un groupe de domaine" optionLabel="libelle"
+                            [showClear]="true"></p-dropdown>
+            </div>
+            <span *ngIf="isCharging1">
+                <img class="img" src="../../../content/images/ajax-loader.gif"/>
+                <span style="color: #660000; font-weight: bolder; font-size: medium">Chargement...</span><br>
+                 <span style="color: #0c4e66; font-weight: bolder">Ceci peut prendre quelques instants.</span>
+            </span>
+            <div class="col-sm-12">
+                <label class="font-weight-bold float-left"
+                       style="border-bottom: double .3em; line-height: 2; font-size: 1.5em; color:#1ebea5;">
+                    <span *ngIf="selectTypeIndicateur">{{selectTypeIndicateur?.libelle}} :</span>
+                    <span *ngIf="selectTypeIndicateur" class="ml-2 badge badge-warning" style="font-size: 1em">
+                        {{selectTypeIndicateur?.scoreTypeIndicateur ? (selectTypeIndicateur?.scoreTypeIndicateur|number:'.0-2') : ""}}
+                        {{selectTypeIndicateur?.totalTypeDomaine ? "/" + selectTypeIndicateur?.totalTypeDomaine + " pts" : "/-- pts"}}
+                    </span>
+                    <span *ngIf="selectTypeIndicateur">
+                        <span *ngIf="selectTypeIndicateur.nombreEtoile>0">
+                            <span *ngFor="let ns of nombreEtoile">
+                                <span *ngIf="ns<=selectTypeIndicateur.nombreEtoile">
+                                    <i class="fa fa-star"></i>
+                                </span>
+                                <span *ngIf="ns>selectTypeIndicateur.nombreEtoile">
+                                    <i class="fa fa-star-o"></i>
+                                </span>
+                            </span>
+                        </span>
+                        <span *ngIf="selectTypeIndicateur.nombreEtoile===0">
+                            <span *ngFor="let ns of nombreEtoile">
+                                <span>
+                                    <i class="fa fa-star-o"></i>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row mb-1" *ngIf="selectTypeIndicateur">
+            <div class="col-sm-12 mb-1">
+                <div class="row justify-content-center">
+                    <div class="col-sm" *ngFor="let domaine of  selectTypeIndicateur.domaines; let i = index">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <img *ngIf="domaine.imageContentType"
+                                     [src]="'data:' + domaine.imageContentType + ';base64,' + domaine.image"
+                                     class="img-fluid img-thumbnail imgIndic2" alt="Domain image"/>
+                                <img *ngIf="!domaine.imageContentType" src="../../../content/images/domain7.png"
+                                     class="img-fluid img-thumbnail imgIndic2" alt="Domain image"/>
+                            </div>
+                            <!--<div class="col-sm text-center">
+                                <div class="row">-->
+                                    <div class="col-sm-12 text-center">
+                                        <label class="font-weight-bold text-center"
+                                               style="font-size: 0.9em; color:rgba(8,7,9,0.97);">
+                                        <span class="ml-2 badge badge-light"
+                                              style="font-size: 1em">{{domaine?.totalScore ? (domaine?.totalScore|number:'.0-2') : "--"}}
+                                            {{domaine?.pointTotal ? "/" + domaine?.pointTotal + " pts" : "/-- pts"}}
+                                        </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                        <div *ngIf="domaine.nbEtoile>0">
+                                        <span *ngFor="let ns of nombreEtoile">
+                                            <span *ngIf="ns<=domaine.nbEtoile">
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                            <span *ngIf="ns>domaine.nbEtoile">
+                                               <i class="fa fa-star-o"></i>
+                                            </span>
+                                        </span>
+                                        </div>
+                                        <div *ngIf="domaine.nbEtoile===0">
+                                        <span *ngFor="let ns of nombreEtoile">
+                                            <span>
+                                               <i class="fa fa-star-o"></i>
+                                            </span>
+                                        </span>
+                                        </div>
+                                        <!--<p-rating [id]="'starOnDonnee'+i" [ngModel]="domaine?.nbrEtoile" readonly="true" stars="5" [cancel]="false"></p-rating>-->
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                        <span>{{domaine.libelle}}</span>
+                                    </div>
+                                <!--</div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p-accordion [multiple]="true">
+                    <p-accordionTab *ngFor="let domaine of  selectTypeIndicateur.domaines">
+                        <p-header>
+                            <label class="font-weight-bold float-left accLabel"
+                                   style="line-height: 0.8; font-size: 13px; color:rgba(8,7,9,0.97);">
+                                <span>{{domaine.libelle + " - "}}</span>
+                                <span class="ml-2 badge badge-info"
+                                      style="font-size: 0.8em">{{domaine?.totalScore ? (domaine?.totalScore|number:'.0-2') : "--"}}
+                                    {{domaine?.pointTotal ? "/" + domaine?.pointTotal + "pts" : "/-- pts"}}</span>
+                            </label>
+                        </p-header>
+                        <div class="row">
+                            <div class="col-sm" *ngFor="let indicateur of  domaine.indicateurs">
+                                 <!--[ngClass]="{'col-sm-4': indicateur.image1 !== null || indicateur.image2 !== null,
+                                 'col-sm-12': indicateur.image1 === null &&  indicateur.image2 === null }">-->
+                                <div class="row">
+                                    <div class="col-sm text-right" *ngIf="indicateur.image1 !== null || indicateur.image2 !== null">
+                                        <img *ngIf="indicateur.image2"
+                                             [src]="'data:' + indicateur.image2ContentType + ';base64,' + indicateur.image2"
+                                             class="img-fluid img-thumbnail imgIndic" alt="Generic placeholder image"/>
+                                        <img *ngIf="!indicateur.image2 && indicateur.image1"
+                                             [src]="'data:' + indicateur.image1ContentType + ';base64,' + indicateur.image1"
+                                             class="img-fluid img-thumbnail imgIndic" alt="Generic placeholder image"/>
+                                    </div>
+                                    <div class="col-sm text-left" *ngIf="indicateur.image1 !== null || indicateur.image2 !== null">
+                                        <h5 *ngIf="indicateur.image2 !== null">
+                                            Valeur:
+                                            <span class="ml-2 badge badge-light" style="font-size: 1em">
+                                                {{indicateur?.valeurIndicateur !== null ? (indicateur?.valeurIndicateur|number:'.0-2') : "&#45;&#45;" }}
+                                                {{indicateur?.uniteBorne}}</span>
+                                        </h5>
+                                        <h5>
+                                            Score:
+                                            <span class="ml-2 badge badge-success" style="font-size: 1em">
+                                                {{indicateur?.sroreIndicateur !== null ? (indicateur?.sroreIndicateur|number:'.0-2') : "--" }}
+                                                {{indicateur?.totalPoint ? "/" + indicateur?.totalPoint + " pts" : "/-- pts"}}</span>
+                                        </h5>
+                                        <!--a template to show the popup with information-->
+                                        <ng-template #tipContent let-greeting="greeting">
+                                            {{indicateur.description}}<br>
+                                            <button [routerLink]="['/portail/dictionnaire']">Voir plus</button><br>
+                                        </ng-template>
+                                        <p>{{indicateur.libelle}}
+                                            <button type="button" class="fa fa-info-circle ml-2"
+                                                    triggers="click" tooltipClass="popup_class" [autoClose]="'outside'" [ngbTooltip]="tipContent" ></button>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12" *ngIf="indicateur.image1 === null &&  indicateur.image2 === null">
+                                        <div class="col-sm-12 text-center">
+                                            <ng-template #tipContent let-greeting="greeting">
+                                                {{indicateur.description}}<br>
+                                                <button [routerLink]="['/portail/dictionnaire']">Voir plus</button><br>
+                                            </ng-template>
+                                            <p>{{indicateur.libelle}}
+                                                <button type="button" class="fa fa-info-circle ml-2"
+                                                        triggers="click" tooltipClass="popup_class" [autoClose]="'outside'" [ngbTooltip]="tipContent" ></button>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-12 text-center" *ngIf="indicateur.valeurmodalites?.length > 0">
+                                            <div class="sous-indicateur row">
+                                                <div class="type-item col-sm" *ngFor="let sousIndicateur of indicateur.valeurmodalites">
+                                                    <div class="text-center">
+                                                        <img
+                                                            *ngIf="sousIndicateur.valeur.toUpperCase()==='NON' || sousIndicateur.valeur.toUpperCase()==='FALSE'"
+                                                            class='type-img'
+                                                            [src]="'data:' + indicateur.imageModaliteNOKContentType + ';base64,' + indicateur.imageModaliteNOK"/>
+                                                        <img
+                                                            *ngIf="sousIndicateur.valeur.toUpperCase()==='OUI' || sousIndicateur.valeur.toUpperCase()==='TRUE'"
+                                                            class='type-img'
+                                                            [src]="'data:' + indicateur.imageModaliteOKContentType + ';base64,' + indicateur.imageModaliteOK"/>
+                                                    </div>
+                                                    <div class="text-center">{{sousIndicateur.modalite?.libelle}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p-accordionTab>
+                </p-accordion>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="onDonnee" class="card jh-card">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 style="font-weight: bold">Evolution des scores des indicateurs &nbsp;
+                    <span *ngIf="selectedCommune !== null">de la commune de&nbsp;{{selectedCommune?.libelle}}</span>
+                </h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-8 float-left">
+                        <div class="row own-ui-dropdown">
+                            <div class=" own-alert own-alert-success col-sm-6">
+                                <div class="form-group">
+                                    <label>Chosir Année debut</label>
+                                    <div>
+                                        <p-spinner pKeyFilter="num" maxlength="4" id="mySpiner1" placeholder="Selectionnez l'année debut" [style]="{'width':'100%'}" [(ngModel)]="year1" (onChange)="getIndicateurByInterval()" [min]="minYear" [max]="maxYear"></p-spinner>
+                                    </div>
+                                    <!--<p-dropdown [options]="exercices" [(ngModel)]="selectedExerce1" [filter]="true"
+                                                placeholder="Selectionnez l'année debut"
+                                                optionLabel="annee" (onChange)="getIndicateurByInterval()"
+                                                [showClear]="true">
+                                    </p-dropdown>-->
+                                </div>
+                            </div>
+                            <div class=" own-alert own-alert-success col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>Choisir Année fin</label>
+                                        <div>
+                                            <p-spinner pKeyFilter="num" maxlength="4" id="mySpiner2" placeholder="Selectionnez l'année fin" [style]="{'width':'100%'}" [(ngModel)]="year2" (onChange)="getIndicateurByInterval()" [min]="minYear" [max]="maxYear"></p-spinner>
+                                        </div>
+                                        <!--<p-dropdown [options]="exercices" [(ngModel)]="selectedExerce2" [filter]="true"
+                                                    placeholder="Selectionnez l'année fin"
+                                                    optionLabel="annee" (onChange)="getIndicateurByInterval()"
+                                                    [showClear]="true">
+                                        </p-dropdown>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="table-responsive-sm">
+                    <p-table #dtf [columns]="indicateurs[0]?.scores" [value]="indicateurs"
+                             selectionMode="single" (onRowSelect)="grapgOfByIndicateur($event, null)"
+                             [globalFilterFields]="['libelle']">
+                        <ng-template pTemplate="caption">
+                            <div class="row">
+                                <div class="col-sm-8 mb-1 text-left">
+                                    <input type="text" pInputText [style]="{'width':'100%'}"
+                                           placeholder="Rechercher un indicateur"
+                                           (input)="dtf.filterGlobal($event.target.value, 'contains')"
+                                           style="width:auto">
+                                </div>
+                                <div class="col-sm-4 mb-1 text-right">
+                                    <span *ngIf="isCharging">
+                                        <img class="img" src="../../../content/images/ajax-loader.gif"/>
+                                        <span style="color: #660000">Chargement...</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th width="30">N°</th>
+                                <th [pSortableColumn]="'libelle'" width="200">Indicateurs</th>
+                                <th width="60"></th>
+                                <th width="60" *ngFor="let col of columns">
+                                    {{col.annee}}
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                            <tr [pSelectableRow]="rowData">
+                                <td width="30">{{index + 1}}</td>
+                                <td width="200">{{rowData.libelle}}</td>
+                                <td width="60" class="text-center">
+                                    <button type="button" class="ui-button-secondary text-success" pButton
+                                            pTooltip="Afficher le graph"
+                                            tooltipPosition="left" icon="fa fa-line-chart"
+                                            (click)="grapgOfByIndicateur($event, rowData)">
+                                    </button>
+                                </td>
+                                <td width="60" *ngFor="let data of rowData.scores">
+                                    <span *ngIf="data.score !== null">
+                                        {{data.score|number:'.0-2'}}{{" /"+rowData.totalPoint+" Pts"}}
+                                    </span>
+                                    <span *ngIf="data.score === null">
+                                        Néant
+                                    </span>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <span><strong>Télécharger</strong></span>&nbsp;
+                    <button type="button" class="btn-success text-white"
+                            pTooltip="En format xls" icon="fa fa-download" (click)="exportExcelScore(true)"
+                            tooltipPosition="left"><span *ngIf="isExcel">
+                        <img class="img2" src="../../../content/images/ajax-loader.gif"/></span>&nbsp;<i
+                        class="fa fa-download">&nbsp;</i>
+                        xls
+                    </button>
+                    <button type="button" class="btn-success text-white"
+                            pTooltip="En format csv" icon="fa fa-download" (click)="exportExcelScore(false)"
+                            tooltipPosition="left"> <span *ngIf="isCsv">
+                        <img class="img2" src="../../../content/images/ajax-loader.gif"/></span>&nbsp;<i
+                        class="fa fa-download">&nbsp;</i>
+                        csv
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <button type="button" class="ui-button-success text-white" pButton
+                                    pTooltip="Affichage en courbe"
+                                    tooltipPosition="left" icon="fa fa-line-chart"
+                                    (click)="changerGraphe('LINE')">
+                            </button>
+                            <button type="button" class="ui-button-success text-white" pButton
+                                    pTooltip="Affichage en Battonés"
+                                    tooltipPosition="left" icon="fa fa-bar-chart"
+                                    (click)="changerGraphe('BAR')">
+                            </button>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="text-center">
+                                <span *ngIf="selectIndicate">
+                                    {{selectIndicate?.libelle}}
+                                </span>
+                            </div>
+                            <div class="text-left"><span>Point(pts)</span></div>
+                            <div id="print" *ngIf="isChartLine">
+                                <p-chart #chart type="line" height="400" [data]="data" [options]="chartOptions"></p-chart>
+                                <div class="text-right"><span>Année</span></div>
+                                <div class="text-center">
+                                    <span *ngIf="selectIndicate && selectedExerce1 && selectedExerce2">
+                                 Le graph d'evolution sur {{selectedExerce1?.annee + " à " + selectedExerce2?.annee}}</span>
+                                </div>
+                                <button type="button" class="ui-button-success text-white" pButton
+                                        pTooltip="Télécharger en png" (click)="print(chart)" label="graph(png)"
+                                        tooltipPosition="left" icon="fa fa-download">
+
+                                </button>
+                            </div>
+                            <div *ngIf="!isChartLine">
+                                <span style="margin-left: 346px;">
+                                    <span>Point(pts)</span>
+                                </span>
+                                <p-chart #chart type="bar" height="400" [data]="data" [options]="chartOptions"></p-chart>
+                                <div class="text-right"><span>Année</span></div>
+                                <div class="text-center">
+                                    <span *ngIf="selectIndicate && selectedExerce1 && selectedExerce2">
+                                 Le graph d'evolution sur {{selectedExerce1?.annee + " à " + selectedExerce2?.annee}}</span>
+                                </div>
+                                <button type="button" class="ui-button-success text-white" pButton
+                                        pTooltip="Télécharger en png" (click)="print(chart)" label="graph(png)"
+                                        tooltipPosition="left" icon="fa fa-download">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</div>

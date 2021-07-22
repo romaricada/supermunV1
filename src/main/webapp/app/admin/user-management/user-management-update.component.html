@@ -1,0 +1,207 @@
+<div class="container mt-2">
+    <p-fieldset>
+        <p-header>
+            <span
+                class="text-primary font-weight-bold">{{user?.id ? 'Modification des informations d\'un utilisateur' : 'Enregistrement d\'un compte utilisateur'}}</span>
+        </p-header>
+        <div>
+            <div class="alert alert-success font-weight-bold" *ngIf="success">
+                <strong>Création ddu compte effectuée avec succès !</strong>
+            </div>
+
+            <div class="alert alert-danger font-weight-bold" *ngIf="error">
+                <strong>Echec de la création du compte !</strong> Merci d'essayer plustard.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorUserExists">
+                <strong>Le nom d'utilisateur est déjà utilisé !</strong> Merci de choisir de choisir un autre .
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorEmailExists">
+                <strong>L'adresse email est déjà utilisée !</strong> Merci de choisir une autre .
+            </div>
+
+            <div class="alert alert-danger" *ngIf="doNotMatch">
+                Le mot de passe et sa confirmation ne correspondent !
+            </div>
+            <!-- jhi-alert-error></jhi-alert-error -->
+        </div>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="mb-5 p-3 border border-primary">
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="nom">
+                        Nom <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <input type="text" class="form-control" name="firstName" id="nom"
+                           formControlName="firstName">
+                    <div
+                        *ngIf="editForm.get('firstName').invalid && (editForm.get('firstName').dirty || editForm.get('firstName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('firstName').errors.maxlength">
+                            La taille du nom ne doit pas dépasser 50 caractères.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="font-weight-bold" for="prenom">
+                        Prénom <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <input type="text" class="form-control" name="lastName" id="prenom"
+                           formControlName="lastName">
+                    <div
+                        *ngIf="editForm.get('lastName').invalid && (editForm.get('lastName').dirty || editForm.get('lastName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastName').errors.maxlength">
+                            La taille du prénom ne doit pas dépasser 50 caractères.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="email">
+                        Email <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <input type="email" class="form-control" name="email" formControlName="email" id="email">
+                    <div
+                        *ngIf="editForm.get('email').invalid && (editForm.get('email').dirty || editForm.get('email').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('email').errors.required">
+                            Le champs est obligatoire .
+                        </small>
+
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('email').errors.maxlength">
+                            La taille du email ne doit pas dépasser 100 caractères.
+                        </small>
+
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('email').errors.minlength">
+                            Le champs email doit avoir au moins une taille de 5 caractères.
+                        </small>
+
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('email').errors.email">
+                            L'adresse email est invalide.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 p-3 border border-primary">
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="username">
+                        Nom d'utilisateur <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <input type="text" class="form-control" name="login" formControlName="login" id="username">
+                    <div
+                        *ngIf="editForm.get('login').invalid && (editForm.get('login').dirty || editForm.get('login').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('login').errors.required">
+                            Le champs est obligatoire.
+                        </small>
+
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('login').errors.maxlength">
+                            La taille du nom d'utilisateur ne doit pas dépasser 50 caractères.
+                        </small>
+
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('login').errors.pattern">
+                            Ce champs ne peut contenir que des lettres, des chiffes et des adresses email
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="prof">
+                        Choisir son profil <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <br/>
+                    <p-multiSelect [options]="profils" [optionLabel]="'profilName'" name="profil" id="prof"
+                                   [style]="{width:'100%'}"
+                                   [emptyFilterMessage]="'Aucun élément trouvé'" [selectionLimit]="1"
+                                   defaultLabel="Sélectionner son profil" required formControlName="profils">
+                    </p-multiSelect>
+                </div>
+                <div class="form-group" *ngIf="user?.id">
+                    <label class="form-control-label font-weight-bold" for="currentPassword">Mot de passe actuel</label>
+                    <input type="password" class="form-control" id="currentPassword" name="currentPassword"
+                           placeholder="Mot de passe actuel" formControlName="currentPassword">
+                    <div
+                        *ngIf="editForm.get('currentPassword').invalid && (editForm.get('currentPassword').dirty || editForm.get('currentPassword').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('currentPassword').errors.required">
+                            Votre mot de passe est requis.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="password">
+                        Mot de passe <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           formControlName="password">
+                    <div
+                        *ngIf="editForm.get('password').invalid && (editForm.get('password').dirty || editForm.get('password').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('password').errors.required"
+                        >
+                            Le mot de passe est obligatoire .
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('password').errors.minlength"
+                        >
+                            La taille du mot de passe doit être d'au moins 4 caractères.
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('password').errors.maxlength"
+                        >
+                            La taille du mot de passe ne peut pas être supérieure à 50 caractères
+                        </small>
+                    </div>
+                    <jhi-password-strength-bar
+                        [passwordToCheck]="editForm.get('password').value"></jhi-password-strength-bar>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="confirmPassword">
+                        Mot de passe de confirmation <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup>
+                    </label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                           formControlName="confirmPassword">
+                    <div
+                        *ngIf="editForm.get('confirmPassword').invalid && (editForm.get('confirmPassword').dirty || editForm.get('confirmPassword').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('confirmPassword').errors.required"
+                        >
+                            Le mot de passe de confirmation est requis.
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="editForm.get('confirmPassword').errors.minlength"
+                        >
+                            La taille du mot de passe de confirmation doit être d'au moins 4 caractères.
+                        </small>
+                        <small class="form-text text-danger font-menu-button"
+                               *ngIf="editForm.get('confirmPassword').errors.maxlength"
+                        >
+                            La taille du mot de passe de confirmation ne peut pas être supérieure à 50 caractères
+                        </small>
+                    </div>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="activated">
+                        <input class="form-check-input" [disabled]="user.id === null" type="checkbox" id="activated"
+                               name="activated" formControlName="activated">
+                        <span class="font-weight-bold">Activé le compte <sup class="text-danger ml-1"><i class="fa fa-star"></i></sup></span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="float-right">
+                    <button type="button" class="btn btn-secondary font-weight-bold" (click)="previousState()">
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Anunuler</span>
+                    </button>
+                    <button type="submit" [disabled]="editForm.invalid" class="btn btn-primary font-weight-bold">
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Sauvegarder</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </p-fieldset>
+</div>

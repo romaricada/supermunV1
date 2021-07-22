@@ -1,0 +1,120 @@
+<div class="container-fluid row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate #editForm="ngForm">
+            <h2 id="jhi-couleur-heading">Create or edit a Couleur</h2>
+            <jhi-alert-error></jhi-alert-error>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_commune">Domaine</label>
+                        <select class="form-control" id="field_commune" name="commune" [(ngModel)]="domaine"
+                                (change)="domaineChange()" required>
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="domaine" *ngFor="let domaine of domaines">{{domaine.libelle}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_idPerformance">Indicateur</label>
+                        <select class="form-control" id="field_idPerformance" name="idPerformance"
+                                [(ngModel)]="couleur.indicateurId" (change)="domaineChange()" required>
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="indicateur"
+                                    *ngFor="let indicateur of indicateurs">{{indicateur.libelle}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_minVal">Valeur Minimale</label>
+                        <input type="number" class="form-control" name="minVal" id="field_minVal"
+                               [(ngModel)]="couleur.minVal" required/>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_maxVal">Valeur Maximale</label>
+                        <input type="number" class="form-control" name="maxVal" id="field_maxVal"
+                               [(ngModel)]="couleur.maxVal" required/>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <br>
+                        <label class="form-control-label" for="field_couleur">Couleur</label>
+                        <input type="color" name="couleur" id="field_couleur" [(ngModel)]="couleur.couleur" required/>
+                        <!-- p-colorPicker name="couleur" [(ngModel)]="couleur.couleur" [inline]="true" (onChange)="couleurChange()" format="hex"></p-colorPicker -->
+                        <!-- p style="margin-top:.5em">Selected Color: <span style="display:inline-block;width:32px;height:32px;vertical-align:middle" [style.backgroundColor]="color1"></span> {{couleur.couleur}} </p -->
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="content-center">
+                <button type="button" id="cancel-save">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" (click)="add()">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregistrer</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div *ngIf="couleurTab?.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+        <tr>
+            <th><span>Indicateur</span>
+                <fa-icon [icon]="'sort'"></fa-icon>
+            </th>
+            <th><span>Intervalle</span>
+                <fa-icon [icon]="'sort'"></fa-icon>
+            </th>
+            <th><span>Couleur</span>
+                <fa-icon [icon]="'sort'"></fa-icon>
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let couleur of couleurTab;">
+            <td>
+                <div *ngIf="couleur.communeId"><a
+                    [routerLink]="['/admin/commune', couleur.communeId , 'view' ]">{{couleur.communeId}}</a></div>
+            </td>
+            <td>[{{couleur.minVal}} - {{couleur.maxVal}}]</td>
+            <td>{{couleur.couleur}}</td>
+            <td class="text-right">
+                <div class="btn-group">
+                    <button type="submit"
+                            [routerLink]="['/admin/couleur', couleur.id, 'view' ]"
+                            class="btn btn-info btn-sm">
+                        <fa-icon [icon]="'eye'"></fa-icon>
+                        <span class="d-none d-md-inline">View</span>
+                    </button>
+                    <button type="submit"
+                            [routerLink]="['/admin/couleur', couleur.id, 'edit']"
+                            class="btn btn-primary btn-sm">
+                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                        <span class="d-none d-md-inline">Edit</span>
+                    </button>
+                    <button type="submit"
+                            [routerLink]="['/admin/couleur', { outlets: { popup: couleur.id + '/delete'} }]"
+                            replaceUrl="true"
+                            queryParamsHandling="merge"
+                            class="btn btn-danger btn-sm">
+                        <fa-icon [icon]="'times'"></fa-icon>
+                        <span class="d-none d-md-inline">Delete</span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+

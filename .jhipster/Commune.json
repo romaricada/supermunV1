@@ -1,0 +1,64 @@
+{
+    "name": "Commune",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "unique"
+            ]
+        },
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "population",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "superficie",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "positionLabelLat",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "positionLabelLon",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "geom",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "province",
+            "otherEntityRelationshipName": "commune",
+            "relationshipName": "province",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117200521",
+    "entityTableName": "commune",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

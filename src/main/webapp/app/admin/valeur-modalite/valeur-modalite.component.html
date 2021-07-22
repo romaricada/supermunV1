@@ -1,0 +1,237 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12 text-center accueil-entete">
+            <span>Gestion des Valeurs des Modalités </span>
+        </div>
+    </div>
+    <form novalidate>
+        <p-toolbar name="toolbar">
+            <div class="ui-toolbar-group-left">
+                <i class="fa fa-search"></i>
+                <input type="text" pInputText [style]="{'size':'100%'}" placeholder="Rechercher">
+
+            </div>
+            <div class="ui-toolbar-group-right">
+                <button class="btn-info" pButton type="button"
+                        title="Exportation" name="exportation" label="Exporter modèle" icon="fa fa-download"
+                        (click)="modalExportation()"></button>
+                <button class="btn-info" pButton type="button"
+                        title="Importation" name="importation" label="Importer" (click)="modalImportation()"
+                        icon="fa fa-download"></button>
+                <button class="btn-info" pButton type="button"
+                        title="validation" name="validation" label="Valider indicateur" (click)="modalImportation()"
+                        icon="fa fa-check"></button>
+                <button class="btn-info" pButton type="button"
+                        title="annuler" name="annuler" label="Annuler validation" (click)="modalImportation()"
+                        icon="fa fa-ban"></button>
+            </div>
+        </p-toolbar>
+    </form>
+    <br>
+    <!-- <div class="row contour">
+         <div class="col-sm-4 float-left ui-fluid champ-shearch">
+             <fa-icon class="search-icon" icon="search" size="2x"></fa-icon>
+             <input type="text" class="form-control chanp-texte" placeholder="Rechercher" aria-label="Username" aria-describedby="basic-addon1">
+             &lt;!&ndash; fa-icon class="search-icon" icon="search" size="2x"></fa-icon>
+             <input class="chanp-texte" type="text" pInputText placeholder="Rechercher"
+                    (input)="filterTable.filterGlobal($event.target.value, 'contains')" style="width: 90%;" &ndash;&gt;
+             &lt;!&ndash; span class="ui-fluid">
+                 <fa-icon icon="search" size="2x"></fa-icon>
+                 <p-autoComplete [(ngModel)]="countries" [suggestions]="filteredCountriesMultiple" (completeMethod)="filterCountryMultiple($event)" styleClass="wid100"
+                                 [minLength]="1" placeholder="Countries" field="name" [multiple]="true">
+                 </p-autoComplete>
+             </span &ndash;&gt;
+         </div>
+         <div class="col-sm-8 float-right">
+             <button class="btn-add" [routerLink]="['/admin/indicateur/new']" >
+                 <fa-icon [icon]="'plus'"></fa-icon>
+                 <span>Indicateur</span>
+             </button>
+             &lt;!&ndash;<button class="btn-del" (click)="displayDel = true" [disabled]="indicateurSelects?.length <= 0">
+                 <fa-icon [icon]="'times'"></fa-icon>
+                 <span>Exporter</span>
+             </button>
+             <button class="btn-del" (click)="displayDel = true" [disabled]="indicateurSelects?.length <= 0">
+                 <fa-icon [icon]="'times'"></fa-icon>
+                 <span>Supprimer</span>
+             </button>&ndash;&gt;
+         </div>
+     </div>-->
+    <div class="row filter-item">
+        <div class="col-sm-3">
+            <label class="form-group"> Année </label>
+            <p-dropdown [options]="exercices" [style]="{'width':'95%'}" [(ngModel)]="exercice" placeholder="Année"
+                        optionLabel="annee" [showClear]="true"></p-dropdown>
+        </div>
+        <div class="col-sm-3">
+            <label class="form-group">Région</label>
+            <p-dropdown [options]="regions" [style]="{'width':'95%'}" [(ngModel)]="region" placeholder="Région"
+                        optionLabel="libelle" [showClear]="true" (onChange)="onRegionChange()"></p-dropdown>
+        </div>
+        <div class="col-sm-3">
+            <label class="form-group">Province</label>
+            <p-dropdown [options]="provinces" [style]="{'width':'95%'}" [(ngModel)]="province" placeholder="Province"
+                        optionLabel="libelle" [showClear]="true" (onChange)="onProvinceChange()"></p-dropdown>
+        </div>
+        <div class="col-sm-3">
+            <label class="form-group">Commune</label>
+            <p-dropdown [options]="communes" [style]="{'width':'95%'}" [(ngModel)]="commune" placeholder="Commune"
+                        optionLabel="libelle" [showClear]="true"
+                        (onChange)="onCommuneChange(exercice, commune)"></p-dropdown>
+        </div>
+    </div>
+
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive table-bordered table-responsive-sm ">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th scope="col" jhiSortBy="exerciceId"><span>Exercice</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="communeId"><span>Commune</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="modaliteId"><span>Modalite</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="valeur"><span>Valeur</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let valeurModalite of valeurModalites ;trackBy: trackId">
+                <td>
+                    <div *ngIf="valeurModalite.exerciceId">
+                        <a [routerLink]="['/admin/exercice', valeurModalite.exerciceId , 'view' ]">{{valeurModalite?.exercice?.annee}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="valeurModalite.communeId">
+                        <a [routerLink]="['/admin/commune', valeurModalite.communeId , 'view' ]">{{valeurModalite?.commune?.libelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="valeurModalite.modaliteId">
+                        <a [routerLink]="['/admin/modalite', valeurModalite.modaliteId , 'view' ]">{{valeurModalite?.modalite?.libelle}}</a>
+                    </div>
+                </td>
+                <td>{{valeurModalite.valeur}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/admin/valeur-modalite', valeurModalite.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/admin/valeur-modalite', valeurModalite.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/admin/valeur-modalite', { outlets: { popup: valeurModalite.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="valeurModalites?.length <= 0">
+                <td colspan="5">
+                    <span style="text-align: center !important; font-weight: bold !important;">
+                        Aucune données trouvée !
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="valeurModalites?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+
+    <p-dialog header="Importation de fichier" [(visible)]="showModalImportation"
+              [style]="{width: '500px'}">
+        <form (ngSubmit)="importationFichier()" enctype="multipart/form-data">
+            <div class="ui-dialog-content" style="height: 300px">
+                <div class="form-group">
+                    <label class="form-control-label">Exercice</label>
+                    <p-dropdown [options]="exercices" [style]="{'width':'100%'}"
+                                [(ngModel)]="exercice" placeholder="Année" name="annee" optionLabel="annee"
+                                filter="filter"
+                                [showClear]="true"></p-dropdown>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">Type indicateur</label>
+                    <p-dropdown [options]="typeIndicateurs" [style]="{'width':'100%'}" [(ngModel)]="typeIndicateur"
+                                placeholder="Type indicateur" name="typIndicateur" optionLabel="libelle"
+                                [showClear]="true"></p-dropdown>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">Type fichier</label>
+                    <p-dropdown [options]="types" [style]="{'width':'100%'}" name="type" [(ngModel)]="type"
+                                placeholder="Type fichier"
+                                optionLabel="libelle" [showClear]="true"></p-dropdown>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">Fichier</label>
+                    <input type="file" id="file" name="file" (change)="setFileData($event)"/>
+                </div>
+            </div><br>
+            <p-footer>
+                <div class="float-right">
+                    <button class="ui-button-danger" (click)="annuler()" pButton type="button" title="annuler"
+                            name="pv" label="Annuler" icon="fa fa-ban">
+                    </button>
+                    <button class="ui-button-info"
+                            pButton type="submit" title="importation" name="data" label="Importer"
+                            icon="fa fa-download">
+                    </button>
+                </div>
+            </p-footer>
+        </form>
+    </p-dialog>
+    <p-dialog header="Exportion du fichier modèle" [(visible)]="showModalExportation"
+              [style]="{width: '500px'}">
+        <div class="ui-dialog-content" style="height: 200px">
+            <div class="form-group">
+                <label class="form-control-label">Type indicateur</label>
+                <p-dropdown [options]="typeIndicateurs" [style]="{'width':'100%'}" [(ngModel)]="typeIndicateur"
+                            placeholder="Type indicateur" optionLabel="libelle" [showClear]="true"></p-dropdown>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label">Type fichier</label>
+                <p-dropdown [options]="types" [style]="{'width':'100%'}" [(ngModel)]="type" placeholder="Type fichier"
+                            optionLabel="libelle" [showClear]="true"></p-dropdown>
+            </div>
+        </div>
+        <p-footer>
+            <div class="">
+                <button class="ui-button-danger" (click)="annuler()" pButton type="button" title="annuler"
+                        name="pv" label="Annuler" icon="fa fa-ban">
+                </button>
+                <button class="ui-button-info"
+                        pButton type="button" title="exportation"
+                        name="export" label="Exportater" icon="fa fa-download"
+                        (click)="exportationFichier(typeIndicateur,type)">
+                </button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>

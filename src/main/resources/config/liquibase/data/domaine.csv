@@ -1,0 +1,8 @@
+id;code;libelle;description;point_total;image;image_content_type;deleted;type_indicateur_id;created_by;created_date;last_modified_by;last_modified_date
+1201;10;écoles primaires;;70;;;f;1051;admin;2019-11-23 16:41:49.684;admin;2019-11-23 16:41:49.684
+1202;11;Santé;;40;;;f;1051;admin;2019-11-23 16:42:21.028;admin;2019-11-23 16:42:21.028
+1203;12;Eau et assainissement;;18;;;f;1051;admin;2019-11-23 16:42:21.029;admin;2019-11-23 16:42:21.029
+1204;13;Acte de naissance;;12;;;f;1051;admin;2019-11-23 16:42:21.030;admin;2019-11-23 16:42:21.030
+1205;14;Mairie/Personne municipale;;10;;;f;1052;admin;2019-11-23 16:42:21.031;admin;2019-11-23 16:42:21.031
+1206;15;Conseil municipal;;23;;;f;1052;admin;2019-11-23 16:42:21.032;admin;2019-11-23 16:42:21.032
+1207;16;Gestion financière;;53;;;f;1052;admin;2019-11-23 16:42:21.033;admin;2019-11-23 16:42:21.033

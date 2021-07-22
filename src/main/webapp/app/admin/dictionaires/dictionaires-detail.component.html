@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dictionaires">
+            <h2><span>Dictionaires</span> {{dictionaires.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Entite</span></dt>
+                <dd>
+                    <span>{{dictionaires.entite}}</span>
+                </dd>
+                <dt><span>Definition</span></dt>
+                <dd>
+                    <span>{{dictionaires.definition}}</span>
+                </dd>
+                <dt><span>Regle Calcule</span></dt>
+                <dd>
+                    <span>{{dictionaires.regleCalcule}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dictionaires', dictionaires.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

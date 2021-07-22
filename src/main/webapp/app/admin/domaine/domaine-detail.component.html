@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="domaine">
+            <h2><span>Domaine</span> {{domaine.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{domaine.code}}</span>
+                </dd>
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{domaine.libelle}}</span>
+                </dd>
+                <dt><span>Image</span></dt>
+                <dd>
+                    <div *ngIf="domaine.image">
+                        <a (click)="openFile(domaine.imageContentType, domaine.image)">
+                            <img [src]="'data:' + domaine.imageContentType + ';base64,' + domaine.image" style="max-width: 100%;" alt="domaine image"/>
+                        </a>
+                        {{domaine.imageContentType}}, {{byteSize(domaine.image)}}
+                    </div>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{domaine.deleted}}</span>
+                </dd>
+                <dt><span>Type Indicateur</span></dt>
+                <dd>
+                    <div *ngIf="domaine.typeIndicateurId">
+                        <a [routerLink]="['/type-indicateur', domaine.typeIndicateurId, 'view']">{{domaine.typeIndicateurId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/domaine', domaine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+id;code;libelle;formule;borne_maximale;borne_minimale;valeur;deleted;image_1;image_1_content_type;image_2;image_2_content_type;indicateur_id;created_by;created_date;last_modified_by;last_modified_date
+1301;1;agent de matière transférée;;;;1;f;;;;;1261;admin;2019-11-23 16:45:36.57;admin;2019-11-23 16:45:36.57
+1302;2;secrétaire de la mairie;;;;1;f;;;;;1261;admin;2019-11-23 16:45:36.58;admin;2019-11-23 16:45:36.58
+1303;3;agent d’état civil;;;;2;f;;;;;1261;admin;2019-11-23 16:45:36.59;admin;2019-11-23 16:45:36.59
+1304;4;agent de service statistique;;;;1;f;;;;;1261;admin;2019-11-23 16:45:36.6;admin;2019-11-23 16:45:36.6
+1305;5;agent de service technique;;;;1;f;;;;;1261;admin;2019-11-23 16:45:36.61;admin;2019-11-23 16:45:36.61
+1306;6;comptable;;;;2;f;;;;;1261;admin;2019-11-23 16:45:36.62;admin;2019-11-23 16:45:36.62
+1307;7;régisseur de recettes;;;;1;f;;;;;1261;admin;2019-11-23 16:45:36.63;admin;2019-11-23 16:45:36.63
+1308;8;agent des affaires domaniales;;;;1;f;;;;;1261;admin;2019-11-23 16:45:36.64;admin;2019-11-23 16:45:36.64
+1309;9;première session ordinaire organisée;;;;1;f;;;;;1262;admin;2019-11-23 16:45:36.65;admin;2019-11-23 16:45:36.65
+1310;10;deuxième session ordinaire organisée;;;;2;f;;;;;1262;admin;2019-11-23 16:45:36.66;admin;2019-11-23 16:45:36.66
+1311;11;troisième session ordinaire organisée;;;;3;f;;;;;1262;admin;2019-11-23 16:45:36.67;admin;2019-11-23 16:45:36.67
+1312;12;quatrième session ordinaire organisée;;;;5;f;;;;;1262;admin;2019-11-23 16:45:36.68;admin;2019-11-23 16:45:36.68
+1313;13;premier cadre de concertation organisé;;;;1;f;;;;;1263;admin;2019-11-23 16:45:36.69;admin;2019-11-23 16:45:36.69
+1314;14;deuxième cadre de concertation organisé;;;;2;f;;;;;1263;admin;2019-11-23 16:45:36.7;admin;2019-11-23 16:45:36.7
+1315;15;troisième cadre de concertation organisé;;;;3;f;;;;;1263;admin;2019-11-23 16:45:36.71;admin;2019-11-23 16:45:36.71
+1316;16;quatrième cadre de concertation organisé;;;;5;f;;;;;1263;admin;2019-11-23 16:45:36.72;admin;2019-11-23 16:45:36.72

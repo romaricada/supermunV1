@@ -1,0 +1,29 @@
+{
+    "name": "Information",
+    "fields": [
+        {
+            "fieldName": "presentation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contact",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191117200532",
+    "entityTableName": "information",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

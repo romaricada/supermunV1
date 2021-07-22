@@ -1,0 +1,43 @@
+{
+    "name": "Couleur",
+    "fields": [
+        {
+            "fieldName": "couleur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "idPerformance",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "commune",
+            "otherEntityRelationshipName": "couleur",
+            "relationshipName": "commune",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "exercice",
+            "otherEntityRelationshipName": "couleur",
+            "relationshipName": "exercice",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117200526",
+    "entityTableName": "couleur",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

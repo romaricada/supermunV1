@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span>Modalites</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-modalite" [routerLink]="['/admin/modalite/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Modalite
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="modalites?.length === 0">
+        <span>No modalites found</span>
+    </div>
+    <div class="table-responsive" *ngIf="modalites?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="code"><span>Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="libelle"><span>Libelle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="borneMaximale"><span>Borne Maximale</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="borneMinimale"><span>Borne Minimale</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="valeur"><span>Valeur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="deleted"><span>Deleted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="indicateurId"><span>Indicateur</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let modalite of modalites ;trackBy: trackId">
+                <td><a [routerLink]="['/admin/modalite', modalite.id, 'view' ]">{{modalite.id}}</a></td>
+                <td>{{modalite.code}}</td>
+                <td>{{modalite.libelle}}</td>
+                <td>{{modalite.borneMaximale}}</td>
+                <td>{{modalite.borneMinimale}}</td>
+                <td>{{modalite.valeur}}</td>
+                <td>{{modalite.deleted}}</td>
+                <td>
+                    <div *ngIf="modalite.indicateurId">
+                        <a [routerLink]="['/admin/indicateur', modalite.indicateurId , 'view' ]" >{{modalite.indicateurId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/admin/modalite', modalite.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/admin/modalite', modalite.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/admin/modalite', { outlets: { popup: modalite.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="modalites?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

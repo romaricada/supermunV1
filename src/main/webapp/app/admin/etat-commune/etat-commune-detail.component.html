@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="etatCommune">
+            <h2><span>Etat Commune</span> {{etatCommune.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Validated</span></dt>
+                <dd>
+                    <span>{{etatCommune.validated}}</span>
+                </dd>
+                <dt><span>Prise En Compte</span></dt>
+                <dd>
+                    <span>{{etatCommune.priseEnCompte}}</span>
+                </dd>
+                <dt><span>Commune</span></dt>
+                <dd>
+                    <div *ngIf="etatCommune.communeId">
+                        <a [routerLink]="['/commune', etatCommune.communeId, 'view']">{{etatCommune.communeLibelle}}</a>
+                    </div>
+                </dd>
+                <dt><span>Exercice</span></dt>
+                <dd>
+                    <div *ngIf="etatCommune.exerciceId">
+                        <a [routerLink]="['/exercice', etatCommune.exerciceId, 'view']">{{etatCommune.exerciceAnnee}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/etat-commune', etatCommune.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

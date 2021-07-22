@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="couleur">
+            <h2><span>Couleur</span> {{couleur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Couleur</span></dt>
+                <dd>
+                    <span>{{couleur.couleur}}</span>
+                </dd>
+                <dt><span>Id Performance</span></dt>
+                <dd>
+                    <span>{{couleur.idPerformance}}</span>
+                </dd>
+                <dt><span>Commune</span></dt>
+                <dd>
+                    <div *ngIf="couleur.communeId">
+                        <a [routerLink]="['/commune', couleur.communeId, 'view']">{{couleur.communeId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Exercice</span></dt>
+                <dd>
+                    <div *ngIf="couleur.exerciceId">
+                        <a [routerLink]="['/exercice', couleur.exerciceId, 'view']">{{couleur.exerciceId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/couleur', couleur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Gestion des publications </span>
+        </div>
+    </div>
+    <!-- menu de la page -->
+    <p-toolbar>
+        <div class="ui-toolbar-group-left search-border">
+            <i class="fa fa-search-plus ml-1"></i>
+            <input type="text" class="border-0" pInputText [style]="{'width':'100%'}" placeholder="Rechercher"
+                   (input)="tdf.filterGlobal($event.target.value, 'contains')" style="width:auto" aria-describedby="basic-addon1">
+        </div>
+        <div class="ui-toolbar-group-right">
+            <button *jhiHasAnyAuthority="'ROLE_ADD_PUB'" id="jh-create-entity" class="btn btn-secondary font-weight-bold text-primary" (click)="display = true" >
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span>Ajouter une Publication</span>
+            </button>
+        </div>
+    </p-toolbar>
+    <br>
+    <!-- affichage du tableau de publication -->
+    <div>
+        <p-table #tdf [value]="publications" [resizableColumns]="true" [responsive]="true"
+                 [globalFilterFields]="['typePublicationLibelle', 'libelle', 'description']">
+            <ng-template let-columns pTemplate="header">
+                <tr [(ascending)]="reverse" [(predicate)]="predicate" [callback]="transition.bind(this)" jhiSort>
+                    <th [pSortableColumn]="'typePublicationLibelle'" scope="col"><span>Categorie</span>
+                        <p-sortIcon [field]="'typePublicationLibelle'"></p-sortIcon>
+                    </th>
+                    <th [pSortableColumn]="'libelle'"><span>Libelle</span>
+                        <p-sortIcon [field]="'libelle'"></p-sortIcon>
+                    </th>
+                    <th [pSortableColumn]="'description'"><span>Description</span>
+                        <p-sortIcon [field]="'description'"></p-sortIcon>
+                    </th>
+                    <th><span>Document</span></th>
+                    <th><span>Page de garde</span></th>
+                    <th width="70" *jhiHasAnyAuthority="'ROLE_PUBLIER_PUB'">Publier</th>
+                    <th width="90">Image</th>
+                    <th scope="col" style="width: 17%" *jhiHasAnyAuthority="['ROLE_EDIT_PUB', 'ROLE_SUPP_PUB']">Actions</th>
+                </tr>
+            </ng-template>
+
+            <ng-template let-columns="columns" let-publication pTemplate="body">
+                <tr [pSelectableRow]="publication">
+                    <td>{{publication.typePublicationLibelle}}</td>
+                    <td>{{publication.libelle}}</td>
+                    <td>{{publication.description}}</td>
+                    <td>
+                        <a *ngIf="publication.contenu" (click)="openFile(publication.contenuContentType, publication.contenu)">open</a>
+                        <span *ngIf="publication.contenu">{{publication.contenuContentType}}, {{byteSize(publication.contenu)}}</span>
+                    </td>
+                    <td>
+                        <a (click)="openFile(publication.imageContentType, publication.image)" *ngIf="publication.image"></a>
+                        <span *ngIf="publication.image">{{publication.imageContentType}}, {{byteSize(publication.image)}}</span>
+                    </td>
+                    <td *jhiHasAnyAuthority="'ROLE_PUBLIER_PUB'">
+                        <p-inputSwitch *ngIf="publication.published" [(ngModel)]="publication.published"
+                                       (onChange)="handleChange(publication)" pTooltip="Rétirer"
+                                       tooltipPosition="top" class="mt-2"></p-inputSwitch>
+                        <p-inputSwitch *ngIf="!publication.published" [(ngModel)]="publication.published"
+                                       (onChange)="handleChange(publication)" pTooltip="Publier"
+                                       tooltipPosition="top" class="mt-2"></p-inputSwitch>
+                    </td>
+                    <td width="90">
+                        <button (click)="viewImg(publication)" class="btn-modif" type="submit">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Image</span>
+                        </button>
+                    </td>
+                    <td class="text-right" style="width: 18%" *jhiHasAnyAuthority="'ROLE_EDIT_PUB'||'ROLE_SUPP_PUB'">
+                        <div class="btn-group">
+                            <button *jhiHasAnyAuthority="'ROLE_EDIT_PUB'" (click)="updateForm(publication)" class="btn-modif" type="submit">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Modifier</span>
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_SUPP_PUB'"
+                                    class="btn-delete" [disabled]="publication.published" (click)="deleteElement(publication)" type="submit">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Supprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <div [hidden]="publications?.length === 0">
+            <div class="row justify-content-center mt-1">
+                <jhi-item-count [itemsPerPage]="itemsPerPage" [page]="page" [total]="totalItems"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination (pageChange)="loadPage(page)" [(page)]="page" [boundaryLinks]="true" [collectionSize]="totalItems"
+                                [maxSize]="5" [pageSize]="itemsPerPage" [rotate]="true"></ngb-pagination>
+            </div>
+        </div>
+ </div>
+
+    <p-dialog (onHide)="annuler()" [(visible)]="display" [baseZIndex]="10000" [minY]="70"
+              [modal]="true" [responsive]="true" [style]="{width: '60%', minWidth: '200px'}" header="Création/Ajout d'un Domaine">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_type_publication">Type Publication</label>
+                        <select type="text" class="form-control" name="typePublicationId" id="field_type_publication"
+                                formControlName="typePublicationId">
+                            <option [ngValue]="null">...</option>
+                            <option [ngValue]="type.id" *ngFor="let type of typePublications">{{type?.libelle}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_libelle">Libellé</label>
+                        <input type="text" class="form-control" name="libelle" id="field_libelle"
+                               formControlName="libelle"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_description">Description</label>
+                        <input type="text" class="form-control" name="description" id="field_description"
+                               formControlName="description"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_contenu">Contenu</label>
+                        <div>
+                            <div *ngIf="editForm.get('contenu').value" class="form-text text-danger clearfix">
+                                <a class="pull-left" (click)="openFile(editForm.get('contenuContentType').value, editForm.get('contenu').value)">open</a><br>
+                                <span class="pull-left">{{editForm.get('contenuContentType').value}}, {{byteSize(editForm.get('contenu').value)}}</span>
+                                <button type="button" (click)="editForm.patchValue({contenu: null});editForm.patchValue({contenuContentType: null});"
+                                        class="btn btn-secondary btn-xs pull-right">
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                </button>
+                            </div>
+                            <input type="file" id="file_contenu" (change)="setFileData($event, 'contenu', false)"/>
+                        </div>
+                        <input type="hidden" class="form-control" name="contenu" id="field_contenu"
+                               formControlName="contenu"/>
+                        <input type="hidden" class="form-control" name="contenuContentType" id="field_contenuContentType"
+                               formControlName="contenuContentType" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_image">Page de garde </label>
+                        <div>
+                            <img [src]="'data:' + editForm.get('imageContentType').value + ';base64,' + editForm.get('image').value" style="max-height: 100px;" *ngIf="editForm.get('image').value" alt="publication image"/>
+                            <div *ngIf="editForm.get('image').value" class="form-text text-danger clearfix">
+                                <span class="pull-left">{{editForm.get('imageContentType').value}}, {{byteSize(editForm.get('image').value)}}</span>
+                            </div>
+                            <input type="file" id="file_image" (change)="setFileData($event, 'image', true)" accept="image/*"/>
+                        </div>
+                        <input type="hidden" class="form-control" name="image" id="field_image"
+                               formControlName="image"/>
+                        <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                               formControlName="imageContentType" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="button" id="cancel-save" class=" btn-del"  (click)="annuler()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn-primary btn-form-save">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregistrer</span>
+                </button>
+            </div>
+        </form>
+    </p-dialog>
+
+    <p-dialog [(visible)]="displayImg" [baseZIndex]="10000" [minY]="70"
+              [modal]="true" [responsive]="true" [style]="{width: '30%', minWidth: '200px'}" header="Image">
+        <span>Image</span><br>
+        <span class="img-detail"> <span *ngIf="publication.imageContentType"> Nom :  {{publication?.imageContentType}}</span> <br>
+                <span *ngIf="publication?.image">Taille : {{byteSize(publication?.image)}}</span>
+            </span>
+        <img class="image-indicateur" style="width: 458px;height: 300px;" [src]= "'data:' + publication?.imageContentType + ';base64,' + publication?.image">
+    </p-dialog>
+</div>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" class="text-warning">
+    <p-footer>
+        <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-times" label="NON" (click)="cd.reject()"></button>
+        <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-check" label="OUI" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
+
+<p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>

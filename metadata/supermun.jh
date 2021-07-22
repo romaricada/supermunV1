@@ -1,0 +1,120 @@
+/* entités du diagramme de classe de SUPERMUN */
+entity Region {
+    code String unique,
+    libelle String required,
+    deleted Boolean
+}
+entity Province {
+    code String unique,
+    libelle String required,
+    deleted Boolean
+}
+
+entity Commune {
+    code String unique,
+    libelle String required,
+    population Integer,
+    superficie Double,
+    positionLabelLat Float,
+    positionLabelLon Float,
+    geom Blob,
+    deleted Boolean
+}
+
+entity Indicateur {
+    code String unique,
+    libelle String required,
+    description String,
+    image1 ImageBlob,
+    image2 ImageBlob,
+    totalPoint Double,
+    interval Boolean,
+    deleted Boolean
+}
+
+entity TypeIndicateur {
+    libelle String unique,
+    deleted Boolean
+}
+
+entity Domaine {
+    code String,
+    libelle String required,
+    image ImageBlob,
+    deleted Boolean
+}
+
+entity Performance {
+    score Double required,
+    deleted Boolean
+}
+
+ entity Couleur {
+ couleur String required,
+ idPerformance Long
+ }
+ 
+entity Formule {
+    code String unique,
+    libelle String required
+}
+
+entity Modalite {
+    code String,
+    libelle String,
+    borneMaximale Double,
+    borneMinimale Double,
+    valeur Double,
+    deleted Boolean
+}
+entity ValeurModalite {
+valeur String required
+}
+
+entity Exercice {
+    annee Integer required unique,
+    deleted Boolean
+}
+
+entity Poster {
+    url String,
+    contenu Blob,
+    deleted Boolean
+}
+
+entity Information {
+    presentation String,
+    contact String,
+    deleted Boolean
+}
+
+entity Publication {
+    libelle String,
+    description String,
+    contenu Blob, 
+    published Boolean
+}
+
+/* relations entre les entités du diagramme de classe de SUPERMUN*/
+relationship ManyToOne {
+    Province{region} to Region
+    Commune{province} to Province
+    Performance{commune} to Commune
+    Performance{indicateur} to Indicateur
+    Performance{exercice} to Exercice
+    Indicateur{domaine} to Domaine
+    Modalite{indicateur} to  Indicateur
+    Poster{exercice} to Exercice
+    Poster{commune} to Commune
+    Domaine{typeIndicateur} to TypeIndicateur
+    Formule{modalite} to Modalite
+    ValeurModalite {exercice} to Exercice 
+    ValeurModalite {commune} to Commune
+    ValeurModalite {modalite} to Modalite
+    Couleur {commune} to Commune
+    Couleur {exercice} to Exercice
+}
+
+dto * with mapstruct
+service * with serviceClass
+paginate * with pagination

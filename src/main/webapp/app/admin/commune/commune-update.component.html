@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-commune-heading">Create or edit a Commune</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                    <div *ngIf="editForm.get('code').invalid && (editForm.get('code').dirty || editForm.get('code').touched)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libelle">Libelle</label>
+                    <input type="text" class="form-control" name="libelle" id="field_libelle"
+                           formControlName="libelle"/>
+                    <div *ngIf="editForm.get('libelle').invalid && (editForm.get('libelle').dirty || editForm.get('libelle').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libelle').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_population">Population</label>
+                    <input type="number" class="form-control" name="population" id="field_population"
+                           formControlName="population"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_superficie">Superficie</label>
+                    <input type="number" class="form-control" name="superficie" id="field_superficie"
+                           formControlName="superficie"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_positionLabelLat">Position Label Lat</label>
+                    <input type="number" class="form-control" name="positionLabelLat" id="field_positionLabelLat"
+                           formControlName="positionLabelLat"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_positionLabelLon">Position Label Lon</label>
+                    <input type="number" class="form-control" name="positionLabelLon" id="field_positionLabelLon"
+                           formControlName="positionLabelLon"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_geom">Geom</label>
+                    <div>
+                        <div *ngIf="editForm.get('geom').value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('geomContentType').value, editForm.get('geom').value)">open</a><br>
+                            <span class="pull-left">{{editForm.get('geomContentType').value}}, {{byteSize(editForm.get('geom').value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({geom: null});editForm.patchValue({geomContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_geom" (change)="setFileData($event, 'geom', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="geom" id="field_geom"
+                           formControlName="geom"/>
+                    <input type="hidden" class="form-control" name="geomContentType" id="field_geomContentType"
+                           formControlName="geomContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                           formControlName="deleted"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_province">Province</label>
+                    <select class="form-control" id="field_province" name="province" formControlName="provinceId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="provinceOption.id" *ngFor="let provinceOption of provinces; trackBy: trackProvinceById">{{provinceOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

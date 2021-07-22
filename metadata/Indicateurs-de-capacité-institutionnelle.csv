@@ -1,0 +1,350 @@
+Région;Province;Commune;premier cadre de concertation organisé;deuxième cadre de concertation organisé;troisième cadre de concertation organisé;quatrième cadre de concertation organisé;première session ordinaire organisée;deuxième session ordinaire organisée;troisième session ordinaire organisée;quatrième session ordinaire organisée;agent de matière transférée;secrétaire de la mairie;agent d’état civil;agent de service statistique;agent de service technique;comptable;régisseur de recettes;agent des affaires domaniales;Recettes fiscales collectées par habitant;Taux de participation aux sessions ordinaires du conseil municipal;Taux de recouvrement de taxes en fonction des prévisions;Taux d’exécution du plan de passation des marchés;Points-Nombre de cadres de concertations organisés par la Mairie;Points-Nombre de sessions ordinaires du Conseil municipal tenues;Points-Personnel de la municipalité remplissant l’organigramme type;Points-Recettes fiscales collectées par habitant;Points-Taux de participation aux sessions ordinaires du conseil municipal;Points-Taux de recouvrement de taxes en fonction des prévisions;Points-Taux d’exécution du plan de passation des marchés;Points-Conseil municipal;Nombre d'étoiles-Conseil municipal;Points-Gestion financière;Nombre d'étoiles-Gestion financière;Points-Mairie/Personne municipale;Nombre d'étoiles-Mairie/Personne municipale;Performance globale;Nombre d'étoiles-Performance globale
+PLATEAU CENTRAL;OUBRITENGA;ABSOUYA;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;233,5;90,80000305;76,40000153;89;0;3;5;2;7,199999809;5;12;10,19999981;2;19;2;5;1;34,20000076;2
+CENTRE EST;KOURITENGA;ANDEMTENGA;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;230,5;89,5;57,20000076;91,19999695;0;5;5;2;6,900000095;1;14;11,89999962;4;17;2;5;1;33,90000153;2
+SAHEL;SOUM;ARBINDA;non;non;non;non;oui;oui;oui;non;oui;non;non;non;oui;oui;non;oui;234,5;87;18,29999924;2;0;4;7;2;6,400000095;0;0;10,39999962;2;2;1;7;4;19,39999962;1
+NORD;PASSORE;ARBOLLÉ;non;non;non;non;oui;oui;non;non;non;non;oui;oui;oui;oui;non;non;1282,400024;100;52,20000076;88;0;3;6;6;10;0;12;13;5;18;2;6;2;37;3
+NORD;PASSORE;BAGARÉ;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;110,8000031;73,90000153;66,19999695;95;0;3;5;1;4,400000095;3;16;7,400000095;1;20;2;5;1;32,40000153;2
+BOUCLE DU MOUHOUN;BALE;BAGASSI;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;11131,7998;95;106;90;0;4;8;25;8,5;10;14;12,5;4;49;5;8;5;69,5;5
+CENTRE EST;BOULGOU;BAGRÉ;non;non;non;non;oui;oui;oui;oui;oui;non;oui;oui;oui;oui;non;non;216,8000031;89,40000153;119,0999985;86;0;5;7;2;6,900000095;10;12;11,89999962;4;24;4;7;4;42,90000153;4
+CENTRE OUEST;ZIRO;BAKATA;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;225,6999969;91,30000305;71,40000153;94,09999847;0;3;5;2;7,400000095;4;14;10,39999962;2;20;2;5;1;35,40000153;2
+BOUCLE DU MOUHOUN;BANWA;BALAVÉ;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;527,5;98,19999695;46,70000076;90;0;3;6;3;9,5;0;14;12,5;4;17;2;6;2;35,5;2
+HAUTS BASSINS;HOUET;BAMA;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;non;oui;non;oui;945,0999756;95,80000305;110,6999969;83;0;5;6;4;8,800000191;10;11;13,80000019;5;25;4;6;2;44,79999924;4
+BOUCLE DU MOUHOUN;BALE;BANA;non;non;non;non;oui;oui;oui;oui;non;oui;oui;oui;oui;oui;non;non;1727,699951;62,5;151,8000031;46,70000076;0;5;7;7;3,299999952;10;4;8,300000191;1;21;3;7;4;36,29999924;3
+CASCADES;COMOE;BANFORA;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;667,5;67,5;87,40000153;99;0;4;7;4;3,700000048;7;16;7,699999809;1;27;4;7;4;41,70000076;4
+NORD;LOROUM;BANH;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;2171,600098;92,5;107,4000015;63;0;5;6;9;7,800000191;10;7;12,80000019;4;26;4;6;2;44,79999924;4
+SAHEL;SENO;BANI;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;610,7999878;64;67,09999847;95;0;4;6;4;3,400000095;3;16;7,400000095;1;23;3;6;2;36,40000153;3
+HAUTS BASSINS;KENEDOUGOU;BANZON;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;509;76,80000305;120,4000015;81;2;4;7;3;4,699999809;10;11;10,69999981;3;24;4;7;4;41,70000076;4
+CENTRE EST;BOULGOU;BANÉ;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;2114,800049;95,40000153;78,59999847;80;0;4;7;9;8,600000381;5;11;12,60000038;4;25;4;7;4;44,59999847;4
+SAHEL;SOUM;BARABOULE;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;157,8000031;87,5;92,09999847;58;0;5;5;1;6,5;8;6;11,5;3;15;1;5;1;31,5;1
+BOUCLE DU MOUHOUN;KOSSI;BARANI;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;oui;672;90,59999847;59;43;0;3;6;4;7,199999809;1;4;10,19999981;2;9;1;6;2;25,20000076;1
+NORD;YATENGA;BARGA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;538,9000244;84,80000305;79,30000305;62,5;2;4;4;3;6;5;7;12;4;15;1;4;1;31;1
+CENTRE NORD;SANMATENGA;BARSALOGHO;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;non;non;non;233,1999969;90,80000305;106,8000031;80;0;4;2;2;7,199999809;10;11;11,19999981;3;23;3;2;1;36,29999924;3
+EST;KOMANDJOARI;BARTIÉBOUGOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;non;237,3000031;80,90000153;107,6999969;42;0;4;5;2;5,199999809;10;4;9,199999809;2;16;1;5;1;30,20000076;1
+CENTRE EST;KOURITENGA;BASKOURE;oui;non;non;non;oui;oui;oui;oui;non;oui;oui;oui;non;oui;non;oui;987,4000244;87,80000305;117,8000031;99,59999847;2;5;7;4;6,599999905;10;16;13,60000038;5;30;5;7;4;50,59999847;5
+NORD;ZONDOMA;BASSI;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;non;oui;1283,199951;87,59999847;120,9000015;85;0;4;6;6;6,5;10;12;10,5;3;28;5;6;2;44,5;4
+SUD OUEST;NOUMBIEL;BATIÉ;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1249,699951;95,80000305;76,40000153;55;0;4;7;6;8,699999809;5;6;12,69999981;4;17;2;7;4;36,79999924;3
+HAUTS BASSINS;TUY;BEKUY;non;non;non;non;oui;oui;oui;oui;oui;oui;non;non;non;oui;non;oui;1155;90,40000153;61,59999847;68;0;5;7;5;7,099999905;2;8;12,10000038;4;15;1;7;4;34,09999847;2
+CENTRE SUD;ZOUNDWEOGO;BERE;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;282;86,09999847;38,70000076;65;0;3;4;2;6,199999809;0;8;9,199999809;2;10;1;4;1;23,20000076;1
+CASCADES;COMOE;BEREGADOUGOU;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;176,6999969;88,90000153;8,100000381;100;2;4;6;1;6,800000191;0;18;12,80000019;4;19;2;6;2;37,79999924;3
+CENTRE OUEST;SISSILI;BIEHA;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;oui;320,5;85;21,89999962;73;0;3;6;2;6;0;9;9;1;11;1;6;2;26;1
+EST;GNAGNA;BILANGA;non;non;non;non;oui;oui;non;non;oui;oui;oui;oui;oui;oui;non;oui;827,4000244;88,5;95,59999847;78;0;3;9;4;6,699999809;9;10;9,699999809;2;23;3;9;5;41,70000076;4
+CENTRE SUD;ZOUNDWEOGO;BINDÉ;oui;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;277,2999878;83,30000305;66,19999695;69;2;4;4;2;5,699999809;3;8;11,69999981;3;13;1;4;1;28,70000076;1
+CENTRE OUEST;BOULKIEMDE;BINGO;oui;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;533,5999756;74,09999847;75,59999847;85;2;5;7;3;4,400000095;5;12;11,39999962;3;20;2;7;4;38,40000153;3
+CENTRE EST;BOULGOU;BISSIGA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;282,3999939;92,80000305;14,19999981;42;0;4;7;2;7,800000191;0;4;11,80000019;4;6;1;7;4;24,79999924;1
+CENTRE EST;BOULGOU;BITTOU;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;646,7000122;95;89,09999847;94;0;3;5;4;8,5;7;14;11,5;3;25;4;5;1;41,5;4
+CENTRE NORD;NAMENTENGA;BOALA;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;4717,799805;91,69999695;95,19999695;76,09999847;0;3;6;16;7,5;9;10;10,5;3;35;5;6;2;51,5;5
+HAUTS BASSINS;HOUET;BOBO-DIOULASSO;non;non;non;non;oui;oui;oui;non;oui;oui;oui;oui;non;oui;non;oui;1012;98,09999847;88,59999847;67;0;4;8;5;9,399999619;7;8;13,39999962;5;20;2;8;5;41,40000153;4
+EST;GNAGNA;BOGANDÉ;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;1165,300049;90,80000305;127,8000031;85;0;4;7;5;7,199999809;10;12;11,19999981;3;27;4;7;4;45,20000076;4
+NORD;PASSORE;BOKIN;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;771,2000122;96,69999695;41,20000076;100;2;4;7;4;9;0;18;15;5;22;3;7;4;44;4
+BOUCLE DU MOUHOUN;KOSSI;BOMBOROKUY;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;505;79,19999695;42,79999924;75;2;5;5;3;4,900000095;0;10;11,89999962;4;13;1;5;1;29,89999962;1
+SUD OUEST;BOUGOURIBA;BONDIGUI;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;3207,300049;90,80000305;95,80000305;87;0;4;8;13;7,199999809;9;12;11,19999981;3;34;5;8;5;53,20000076;5
+BOUCLE DU MOUHOUN;MOUHOUN;BONDOKUY;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;280,1000061;78,59999847;20,5;84;0;4;6;2;4,900000095;0;11;8,899999619;1;13;1;6;2;27,89999962;1
+HAUTS BASSINS;TUY;BONI;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;1065,099976;78,90000153;70,69999695;87,30000305;0;4;8;5;4,900000095;4;12;8,899999619;1;21;3;8;5;37,90000153;3
+BOUCLE DU MOUHOUN;BALE;BOROMO;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1808,099976;92;86,59999847;85;2;4;7;8;7,599999905;7;12;13,60000038;5;27;4;7;4;47,59999847;5
+EST;TAPOA;BOTOU;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;648,9000244;84,69999695;86,59999847;50;0;4;7;4;5,900000095;7;5;9,899999619;2;16;1;7;4;32,90000153;2
+PLATEAU CENTRAL;GANZOURGOU;BOUDRY;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;231,1000061;95,80000305;98,5;15,30000019;0;4;8;2;8,699999809;9;0;12,69999981;4;11;1;8;5;31,70000076;2
+CENTRE OUEST;ZIRO;BOUGNOUNOU;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;4273,5;92;379;64;0;4;8;15;7,599999905;10;7;11,60000038;3;32;5;8;5;51,59999847;5
+CENTRE NORD;NAMENTENGA;BOULSA;non;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;481,7000122;92,59999847;102,4000015;75,09999847;0;4;8;3;7,800000191;10;10;11,80000019;3;23;3;8;5;42,79999924;4
+SAHEL;YAGHA;BOUNDORÉ;non;non;non;non;oui;non;non;non;non;non;oui;oui;oui;oui;non;non;502;86,80000305;84,5;39;0;1;6;3;6,400000095;6;3;7,400000095;1;12;1;6;2;25,39999962;1
+CENTRE OUEST;SISSILI;BOURA;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;598,5999756;100;87,09999847;78;2;4;7;3;10;7;10;16;5;20;2;7;4;43;4
+BOUCLE DU MOUHOUN;KOSSI;BOURASSO;oui;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;oui;857,9000244;93,59999847;108,6999969;97,40000153;2;4;6;4;8,100000381;10;16;14,10000038;5;30;5;6;2;50,09999847;5
+CENTRE NORD;NAMENTENGA;BOUROUM;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;non;non;oui;731,2000122;87,19999695;55,70000076;90;0;4;5;4;6,400000095;1;14;10,39999962;2;19;2;5;1;34,40000153;2
+SUD OUEST;PONI;BOUROUM-BOUROUM;non;non;non;non;non;non;non;non;non;non;non;non;non;non;non;oui;375,3999939;0;77,19999695;92;0;0;3;2;0;5;14;0;1;21;3;3;1;24;1
+CENTRE NORD;BAM;BOURZANGA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;585,0999756;100;15,89999962;95;0;4;5;3;10;0;16;14;5;19;2;5;1;38;3
+NORD;ZONDOMA;BOUSSOU;oui;oui;oui;non;oui;oui;non;non;oui;non;non;non;non;oui;oui;oui;2764,699951;96;43,09999847;99;6;3;7;11;8,800000191;0;16;17,79999924;5;27;4;7;4;51,79999924;5
+SUD OUEST;NOUMBIEL;BOUSSOUKOULA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;391;82,59999847;81,19999695;85;0;4;7;2;5,5;6;12;9,5;2;20;2;7;4;36,5;3
+CENTRE EST;BOULGOU;BOUSSOUMA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;245,6000061;90,09999847;89,59999847;100;0;4;7;2;7;7;18;11;3;27;4;7;4;45;4
+CENTRE NORD;SANMATENGA;BOUSSOUMA;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;151,1999969;89,09999847;64,5;98;0;3;4;1;6,800000191;2;16;9,800000191;2;19;2;4;1;32,79999924;2
+PLATEAU CENTRAL;KOURWEOGO;BOUSSÉ;oui;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;oui;16405,59961;98,40000153;1016,700012;74;2;3;8;25;9,5;10;9;14,5;5;44;5;8;5;66,5;5
+SUD OUEST;PONI;BOUSSÉRA;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;591,2999878;95,40000153;106,1999969;73,30000305;2;5;4;3;8,600000381;10;9;15,60000038;5;22;3;4;1;41,59999847;4
+CENTRE EST;BOULGOU;BÉGUÉDO;oui;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;2628,600098;91,40000153;57,40000153;88,90000153;2;4;8;11;7,400000095;1;12;13,39999962;5;24;4;8;5;45,40000153;5
+HAUTS BASSINS;TUY;BÉRÉBA;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;non;oui;non;oui;733,5;96,69999695;79,19999695;98;0;4;7;4;9;5;16;13;5;25;4;7;4;45;4
+CENTRE OUEST;ZIRO;CASSOU;non;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;4680,200195;99,30000305;101,0999985;80;0;4;8;16;9,800000191;10;11;13,80000019;5;37;5;8;5;58,79999924;5
+EST;GNAGNA;COALLA;non;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;non;1257,199951;95,80000305;59;46;0;4;5;6;8,699999809;1;4;12,69999981;4;11;1;5;1;28,70000076;1
+CENTRE EST;KOULPELOGO;COMIN-YANGA;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;2611,800049;76,69999695;135,5;80;0;4;8;11;4,699999809;10;11;8,699999809;1;32;5;8;5;48,70000076;5
+CENTRE NORD;SANMATENGA;DABLO;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1790,400024;58,70000076;121,8000031;82;0;4;7;7;2,900000095;10;11;6,900000095;1;28;5;7;4;41,90000153;4
+CASCADES;LERABA;DAKORO;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;5280,899902;98,40000153;59,29999924;80;0;5;7;17;9,5;1;11;14,5;5;29;5;7;4;50,5;5
+CENTRE OUEST;ZIRO;DALO;oui;non;non;non;oui;oui;oui;oui;non;oui;non;non;non;oui;non;non;246,1999969;68,40000153;109,6999969;67;2;5;5;2;3,799999952;10;8;10,80000019;3;20;2;5;1;35,79999924;2
+HAUTS BASSINS;HOUET;DANDE;oui;non;non;non;oui;oui;non;non;oui;oui;oui;oui;oui;oui;non;oui;4844,799805;89,19999695;78,40000153;46,59999847;2;3;9;16;6,800000191;5;4;11,80000019;4;25;4;9;5;45,79999924;5
+SUD OUEST;IOBA;DANO;oui;oui;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;150,6000061;66,5;13,39999962;67;4;5;4;1;3,700000048;0;8;12,69999981;4;9;1;4;1;25,70000076;1
+PLATEAU CENTRAL;OUBRITENGA;DAPELOGO;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;oui;196,6999969;69,40000153;108,9000015;60;0;3;6;1;3,900000095;10;7;6,900000095;1;18;2;6;2;30,89999962;1
+CENTRE NORD;NAMENTENGA;DARGO;non;non;non;non;oui;oui;oui;oui;oui;non;non;non;oui;oui;non;oui;185,6000061;82,40000153;60,90000153;92;0;5;7;1;5,5;2;14;10,5;3;17;2;7;4;34,5;2
+CENTRE OUEST;SANGUIE;DASSA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;438,2999878;80,69999695;93,30000305;98;0;4;4;3;5,099999905;8;16;9,100000381;1;27;4;4;1;40,09999847;3
+SAHEL;OUDALAN;DEOU;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;836,5999756;86,5;33;100;0;3;5;4;6,300000191;0;18;9,300000191;2;22;3;5;1;36,29999924;3
+BOUCLE DU MOUHOUN;SOUROU;DI;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;906,0999756;88,30000305;89,30000305;76;0;4;5;4;6,699999809;7;10;10,69999981;3;21;3;5;1;36,70000076;3
+EST;GOURMA;DIABO;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;129,1999969;100;82,30000305;77;0;5;4;1;10;6;10;15;5;17;2;4;1;36;3
+CENTRE EST;KOURITENGA;DIALGAYE;non;non;non;non;oui;oui;non;non;non;oui;non;non;oui;oui;non;oui;12333,09961;98,80000305;126,8000031;100;0;3;7;25;9,600000381;10;18;12,60000038;4;53;5;7;4;72,59999847;5
+EST;TAPOA;DIAPAGA;non;non;non;non;oui;oui;non;non;non;non;non;non;non;non;non;non;311,3999939;93,19999695;100,0999985;100;0;3;2;2;8;10;18;11;3;30;5;2;1;43;4
+EST;GOURMA;DIAPANGOU;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;oui;non;675,2000122;84,30000305;68,30000305;99;0;4;6;4;5,900000095;3;16;9,899999619;2;23;3;6;2;38,90000153;3
+CENTRE OUEST;SANGUIE;DIDYR;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;oui;oui;1273,400024;86,40000153;93,80000305;71,40000153;0;3;7;6;6,300000191;8;9;9,300000191;2;23;3;7;4;39,29999924;3
+SUD OUEST;IOBA;DISSIN;non;non;non;non;oui;non;non;non;oui;oui;non;non;non;oui;non;oui;1253,400024;100;60,29999924;43,79999924;0;1;7;6;10;2;4;11;3;12;1;7;4;30;1
+SUD OUEST;BOUGOURIBA;DIÉBOUGOU;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;oui;205,1000061;70,80000305;20;100;0;5;6;2;4,099999905;0;18;9,100000381;1;20;2;6;2;35,09999847;2
+BOUCLE DU MOUHOUN;KOSSI;DJIBASSO;oui;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;1640,199951;85;99,90000153;20,39999962;2;3;6;7;6;9;1;11;3;17;2;6;2;34;2
+SAHEL;SOUM;DJIBO;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;1345,900024;91,09999847;80,40000153;70;0;5;7;6;7,300000191;6;9;12,30000019;4;21;3;7;4;40,29999924;3
+SUD OUEST;PONI;DJIGOUÉ;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;434,6000061;91,09999847;67,80000305;95;0;3;6;3;7,300000191;3;16;10,30000019;2;22;3;6;2;38,29999924;3
+HAUTS BASSINS;KENEDOUGOU;DJIGOUÉRA;oui;oui;oui;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;1306,699951;91,90000153;45,09999847;98;6;5;6;6;7,599999905;0;16;18,60000038;5;22;3;6;2;46,59999847;5
+SAHEL;SOUM;DJIGUEL;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;non;178,3999939;90,59999847;42,09999847;100;0;4;5;1;7,199999809;0;18;11,19999981;3;19;2;5;1;35,20000076;2
+BOUCLE DU MOUHOUN;KOSSI;DOKUY;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;non;140,1000061;65,19999695;18,89999962;70;0;3;5;1;3,5;0;9;6,5;1;10;1;5;1;21,5;1
+SUD OUEST;BOUGOURIBA;DOLO;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;589,7999878;92,59999847;128,3000031;72;0;5;6;3;7,800000191;10;9;12,80000019;4;22;3;6;2;40,79999924;3
+SAHEL;SENO;DORI;oui;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;348;83,90000153;61;81,30000305;2;5;7;2;5,800000191;2;11;12,80000019;5;15;1;7;4;34,79999924;2
+CENTRE SUD;BAZEGA;DOULOUGOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;non;non;non;127,3000031;91,09999847;57,20000076;90;0;4;2;1;7,300000191;1;14;11,30000019;3;16;1;2;1;29,29999924;1
+BOUCLE DU MOUHOUN;KOSSI;DOUMBALA;non;non;non;non;oui;oui;non;non;non;oui;non;non;non;non;non;non;102,5;99;72,90000153;85;0;3;3;1;9,699999809;4;12;12,69999981;4;17;2;3;1;32,70000076;2
+CASCADES;LERABA;DOUNA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;oui;329,6000061;60,79999924;129,1999969;95;2;4;6;2;3,099999905;10;16;9,100000381;1;28;5;6;2;43,09999847;4
+BOUCLE DU MOUHOUN;MOUHOUN;DOUROULA;non;non;non;non;oui;oui;oui;non;oui;oui;oui;oui;oui;oui;non;oui;3348,800049;83,30000305;84,69999695;45;0;4;9;13;5,699999809;6;4;9,699999809;2;23;3;9;5;41,70000076;4
+CENTRE EST;KOULPELOGO;DOURTENGA;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;oui;225,1000061;91,90000153;78,90000153;99;0;3;6;2;7,599999905;5;16;10,60000038;3;23;3;6;2;39,59999847;3
+BOUCLE DU MOUHOUN;MOUHOUN;DÉDOUGOU;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;14048,2002;91,19999695;84,5;58,5;0;4;8;25;7,300000191;6;6;11,30000019;3;37;5;8;5;56,29999924;5
+EST;GOURMA;FADA N’GOURMA;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;oui;745,0999756;90,09999847;89,90000153;97,19999695;0;5;6;4;7;7;16;12;4;27;4;6;2;45;4
+SAHEL;SENO;FALANGOUNTOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;99,80000305;76,69999695;26,5;94,40000153;0;4;4;0;4,699999809;0;14;8,699999809;1;14;1;4;1;26,70000076;1
+EST;KOMANDJOARI;FOUTOURI;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;243,3999939;89,5;105,9000015;56;0;4;7;2;6,900000095;10;6;10,89999962;3;18;2;7;4;35,90000153;2
+HAUTS BASSINS;TUY;FOUZAN;non;non;non;non;oui;oui;non;non;oui;non;oui;oui;oui;oui;non;oui;4051,899902;94,09999847;110,5;71,59999847;0;3;8;15;8,199999809;10;9;11,19999981;3;34;5;8;5;53,20000076;5
+HAUTS BASSINS;HOUET;FÔ;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;non;oui;884,2999878;94,80000305;107,5;80;0;4;6;4;8,399999619;10;11;12,39999962;4;25;4;6;2;43,40000153;4
+CENTRE OUEST;ZIRO;GAO;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;391,5;98,80000305;95,80000305;40;0;4;6;2;9,600000381;9;4;13,60000038;5;15;1;6;2;34,59999847;2
+CENTRE SUD;BAZEGA;GAONGO;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;317,3999939;87;57,70000076;60;0;4;8;2;6,400000095;1;7;10,39999962;2;10;1;8;5;28,39999962;1
+SUD OUEST;PONI;GAOUA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;1554,699951;80,59999847;89;76,80000305;0;4;6;7;5,099999905;7;10;9,100000381;1;24;4;6;2;39,09999847;3
+CENTRE EST;BOULGOU;GARANGO;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;122,6999969;63,5;86,90000153;80;0;4;5;1;3,400000095;7;11;7,400000095;1;19;2;5;1;31,39999962;1
+BOUCLE DU MOUHOUN;NAYALA;GASSAN;non;non;non;non;non;non;non;non;non;non;non;non;non;oui;non;oui;93;0;25,70000076;88;0;0;5;0;0;0;12;0;1;12;1;5;1;17;1
+EST;KOMANDJOARI;GAYERI;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;non;oui;non;non;298,2999878;84,19999695;89,40000153;60;0;4;6;2;5,800000191;7;7;9,800000191;2;16;1;6;2;31,79999924;2
+SUD OUEST;PONI;GBOMBLORA;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;1269,5;93,30000305;63,29999924;51;0;4;7;6;8;2;5;12;4;13;1;7;4;32;2
+CENTRE OUEST;SANGUIE;GODYR;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;non;non;non;252,8000031;78,19999695;97,19999695;95;0;4;3;2;4,800000191;9;16;8,800000191;1;27;4;3;1;38,79999924;3
+CENTRE SUD;ZOUNDWEOGO;GOGO;non;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;oui;576,9000244;90,80000305;6,199999809;90;0;3;8;3;7,300000191;0;14;10,30000019;2;17;2;8;5;35,29999924;2
+BOUCLE DU MOUHOUN;SOUROU;GOMBORO;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;221,1999969;91,30000305;102,1999969;100;0;5;5;2;7,400000095;10;18;12,39999962;4;30;5;5;1;47,40000153;5
+CENTRE SUD;ZOUNDWEOGO;GOMBOUSSOUGOU;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1094,400024;87,69999695;57,29999924;80;2;4;7;5;6,5;1;11;12,5;4;17;2;7;4;36,5;3
+NORD;PASSORE;GOMPONSOM;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;95,30000305;78,69999695;80;90;0;5;7;0;4,900000095;6;14;9,899999619;2;20;2;7;4;36,90000153;3
+SAHEL;SENO;GORGADJI;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;1409,199951;90,40000153;95;96,09999847;0;3;5;7;7,099999905;8;16;10,10000038;2;31;5;5;1;46,09999847;5
+SAHEL;OUDALAN;GOROM-GOROM;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;oui;non;oui;non;non;506,7999878;82,40000153;17,79999924;95;4;5;6;3;5,5;0;16;14,5;5;19;2;6;2;39,5;3
+BOUCLE DU MOUHOUN;NAYALA;GOSSINA;oui;non;non;non;oui;non;non;non;oui;non;non;non;non;oui;non;non;370,7000122;100;112,5;95;2;1;5;2;10;10;16;13;5;28;5;5;1;46;5
+CENTRE EST;KOURITENGA;GOUNGHIN;oui;oui;oui;oui;oui;oui;oui;non;non;oui;non;non;oui;oui;non;non;434,5;98,69999695;93,90000153;77;10;4;6;3;9,600000381;8;10;23,60000038;5;21;3;6;2;50,59999847;5
+NORD;ZONDOMA;GOURCY;oui;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;3004,5;97,19999695;100,0999985;64;2;4;8;13;9,199999809;10;7;15,19999981;5;30;5;8;5;53,20000076;5
+SUD OUEST;IOBA;GUEGUERE;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;non;451,3999939;81,40000153;80;90;0;5;5;3;5,300000191;6;14;10,30000019;2;23;3;5;1;38,29999924;3
+CENTRE SUD;NAHOURI;GUIARO;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;3255,199951;87,59999847;59;94;0;4;4;13;6,5;1;14;10,5;3;28;5;4;1;42,5;4
+CENTRE SUD;ZOUNDWEOGO;GUIBA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;7268,100098;85;147,5;98,30000305;0;4;5;22;6;10;16;10;2;48;5;5;1;63;5
+CENTRE NORD;BAM;GUIBARÉ;oui;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;385,2999878;92,90000153;80,69999695;100;2;3;5;2;7,900000095;6;18;12,89999962;5;26;4;5;1;43,90000153;4
+HAUTS BASSINS;TUY;HOUNDE;non;non;non;non;oui;oui;oui;non;oui;non;non;non;oui;oui;non;oui;729,2000122;57,70000076;119,3000031;83;0;4;7;4;2,799999952;10;11;6,800000191;1;25;4;7;4;38,79999924;3
+CENTRE OUEST;BOULKIEMDE;IMASGO;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;353,7999878;97,40000153;124,5;90;0;3;5;2;9,199999809;10;14;12,19999981;4;26;4;5;1;43,20000076;4
+CENTRE SUD;BAZEGA;IPELCÉ;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;228,8999939;79,19999695;69,09999847;97;0;5;5;2;4,900000095;3;16;9,899999619;2;21;3;5;1;35,90000153;2
+NORD;YATENGA;KALSAGA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;non;3162;89,5;107,5;88;0;4;6;13;6,900000095;10;12;10,89999962;3;35;5;6;2;51,90000153;5
+SUD OUEST;PONI;KAMPTI;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;375,2000122;89,09999847;73,5;94;0;3;6;2;6,800000191;4;14;9,800000191;2;20;2;6;2;35,79999924;2
+CENTRE EST;KOURITENGA;KANDO;non;non;non;non;oui;oui;non;non;non;non;oui;oui;oui;oui;non;non;656,9000244;65,90000153;68,09999847;75;0;3;6;4;3,599999905;3;10;6,599999905;1;17;2;6;2;29,60000038;1
+HAUTS BASSINS;KENEDOUGOU;KANGALA;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;238,3000031;80,30000305;15,80000019;99;0;3;4;2;5,099999905;0;16;8,100000381;1;18;2;4;1;30,10000038;1
+CASCADES;LERABA;KANKALABA;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;178,8999939;0;11,60000038;30;0;5;5;1;0;0;2;5;1;3;1;5;1;13;1
+EST;TAPOA;KANTCHARI;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;538,0999756;79,30000305;34;90;2;5;5;3;4,900000095;0;14;11,89999962;4;17;2;5;1;33,90000153;2
+HAUTS BASSINS;HOUET;KARANGASSO-SAMBLA;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;7544,100098;96,90000153;63,40000153;100;0;5;7;25;9,100000381;2;18;14,10000038;5;45;5;7;4;66,09999847;5
+HAUTS BASSINS;HOUET;KARANGASSO-VIGUÉ;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;1528,199951;78,80000305;58,5;81;0;5;4;7;4,900000095;1;11;9,899999619;2;19;2;4;1;32,90000153;2
+BOUCLE DU MOUHOUN;SOUROU;KASSOUM;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;1013,700012;97,19999695;63,09999847;93;2;5;6;5;9,199999809;2;14;16,20000076;5;21;3;6;2;43,20000076;4
+CENTRE NORD;SANMATENGA;KAYA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;non;349,2000122;76,19999695;65,80000305;98;0;4;5;2;4,599999905;2;16;8,600000381;1;20;2;5;1;33,59999847;2
+HAUTS BASSINS;KENEDOUGOU;KAYAN;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;non;612,4000244;65,19999695;79,30000305;90;0;4;6;4;3,5;5;14;7,5;1;23;3;6;2;36,5;3
+CENTRE SUD;BAZEGA;KAYAO;non;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;non;3178,699951;90,5;103,8000031;100;0;3;7;13;7,199999809;10;18;10,19999981;2;41;5;7;4;58,20000076;5
+NORD;YATENGA;KAÏN;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;415,1000061;95,80000305;61,59999847;51;0;5;4;3;8,800000191;2;5;13,80000019;5;10;1;4;1;27,79999924;1
+SAHEL;SOUM;KELBO;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;233,5;90,80000305;76,40000153;89;0;3;5;2;7,199999809;5;12;10,19999981;2;19;2;5;1;34,20000076;2
+BOUCLE DU MOUHOUN;SOUROU;KIEMBARA;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;230,5;89,5;57,20000076;91,19999695;0;5;5;2;6,900000095;1;14;11,89999962;4;17;2;5;1;33,90000153;2
+CENTRE OUEST;BOULKIEMDE;KINDI;non;non;non;non;oui;oui;oui;non;oui;non;non;non;oui;oui;non;oui;234,5;87;18,29999924;2;0;4;7;2;6,400000095;0;0;10,39999962;2;2;1;7;4;19,39999962;1
+NORD;PASSORE;KIRSI;non;non;non;non;oui;oui;non;non;non;non;oui;oui;oui;oui;non;non;1282,400024;100;52,20000076;88;0;3;6;6;10;0;12;13;5;18;2;6;2;37;3
+PLATEAU CENTRAL;GANZOURGOU;KOGO;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;110,8000031;73,90000153;66,19999695;95;0;3;5;1;4,400000095;3;16;7,400000095;1;20;2;5;1;32,40000153;2
+CENTRE OUEST;BOULKIEMDE;KOKOLOGHO;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;11131,7998;95;106;90;0;4;8;25;8,5;10;14;12,5;4;49;5;8;5;69,5;5
+HAUTS BASSINS;KENEDOUGOU;KOLOKO;non;non;non;non;oui;oui;oui;oui;oui;non;oui;oui;oui;oui;non;non;216,8000031;89,40000153;119,0999985;86;0;5;7;2;6,900000095;10;12;11,89999962;4;24;4;7;4;42,90000153;4
+CENTRE SUD;BAZEGA;KOMBISSIRI;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;225,6999969;91,30000305;71,40000153;94,09999847;0;3;5;2;7,400000095;4;14;10,39999962;2;20;2;5;1;35,40000153;2
+BOUCLE DU MOUHOUN;KOSSI;KOMBORI;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;527,5;98,19999695;46,70000076;90;0;3;6;3;9,5;0;14;12,5;4;17;2;6;2;35,5;2
+CENTRE;KADIOGO;KOMKI-IPALA;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;non;oui;non;oui;945,0999756;95,80000305;110,6999969;83;0;5;6;4;8,800000191;10;11;13,80000019;5;25;4;6;2;44,79999924;4
+EST;KOMPIENGA;KOMPIENGA;non;non;non;non;oui;oui;oui;oui;non;oui;oui;oui;oui;oui;non;non;1727,699951;62,5;151,8000031;46,70000076;0;5;7;7;3,299999952;10;4;8,300000191;1;21;3;7;4;36,29999924;3
+CENTRE;KADIOGO;KOMSILGA;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;667,5;67,5;87,40000153;99;0;4;7;4;3,700000048;7;16;7,699999809;1;27;4;7;4;41,70000076;4
+CENTRE EST;BOULGOU;KOMTOEGA;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;2171,600098;92,5;107,4000015;63;0;5;6;9;7,800000191;10;7;12,80000019;4;26;4;6;2;44,79999924;4
+BOUCLE DU MOUHOUN;MOUHOUN;KONA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;610,7999878;64;67,09999847;95;0;4;6;4;3,400000095;3;16;7,400000095;1;23;3;6;2;36,40000153;3
+CENTRE NORD;BAM;KONGOUSSI;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;509;76,80000305;120,4000015;81;2;4;7;3;4,699999809;10;11;10,69999981;3;24;4;7;4;41,70000076;4
+SUD OUEST;IOBA;KOPER;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;2114,800049;95,40000153;78,59999847;80;0;4;7;9;8,600000381;5;11;12,60000038;4;25;4;7;4;44,59999847;4
+CENTRE OUEST;SANGUIE;KORDIÉ;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;157,8000031;87,5;92,09999847;58;0;5;5;1;6,5;8;6;11,5;3;15;1;5;1;31,5;1
+CENTRE NORD;SANMATENGA;KORSIMORO;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;oui;672;90,59999847;59;43;0;3;6;4;7,199999809;1;4;10,19999981;2;9;1;6;2;25,20000076;1
+NORD;YATENGA;KOSSOUKA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;538,9000244;84,80000305;79,30000305;62,5;2;4;4;3;6;5;7;12;4;15;1;4;1;31;1
+HAUTS BASSINS;TUY;KOTI;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;non;non;non;233,1999969;90,80000305;106,8000031;80;0;4;2;2;7,199999809;10;11;11,19999981;3;23;3;2;1;36,29999924;3
+CENTRE;KADIOGO;KOUBRI;non;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;non;237,3000031;80,90000153;107,6999969;42;0;4;5;2;5,199999809;10;4;9,199999809;2;16;1;5;1;30,20000076;1
+CENTRE OUEST;BOULKIEMDE;KOUDOUGOU;oui;non;non;non;oui;oui;oui;oui;non;oui;oui;oui;non;oui;non;oui;987,4000244;87,80000305;117,8000031;99,59999847;2;5;7;4;6,599999905;10;16;13,60000038;5;30;5;7;4;50,59999847;5
+BOUCLE DU MOUHOUN;NAYALA;KOUGNY;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;non;oui;1283,199951;87,59999847;120,9000015;85;0;4;6;6;6,5;10;12;10,5;3;28;5;6;2;44,5;4
+BOUCLE DU MOUHOUN;BANWA;KOUKA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1249,699951;95,80000305;76,40000153;55;0;4;7;6;8,699999809;5;6;12,69999981;4;17;2;7;4;36,79999924;3
+HAUTS BASSINS;TUY;KOUMBIA;non;non;non;non;oui;oui;oui;oui;oui;oui;non;non;non;oui;non;oui;1155;90,40000153;61,59999847;68;0;5;7;5;7,099999905;2;8;12,10000038;4;15;1;7;4;34,09999847;2
+NORD;YATENGA;KOUMBRI;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;282;86,09999847;38,70000076;65;0;3;4;2;6,199999809;0;8;9,199999809;2;10;1;4;1;23,20000076;1
+HAUTS BASSINS;HOUET;KOUNDOUGOU;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;176,6999969;88,90000153;8,100000381;100;2;4;6;1;6,800000191;0;18;12,80000019;4;19;2;6;2;37,79999924;3
+CENTRE EST;KOURITENGA;KOUPELA;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;oui;320,5;85;21,89999962;73;0;3;6;2;6;0;9;9;1;11;1;6;2;26;1
+HAUTS BASSINS;KENEDOUGOU;KOURIGNON;non;non;non;non;oui;oui;non;non;oui;oui;oui;oui;oui;oui;non;oui;827,4000244;88,5;95,59999847;78;0;3;9;4;6,699999809;9;10;9,699999809;2;23;3;9;5;41,70000076;4
+HAUTS BASSINS;KENEDOUGOU;KOUROUMA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;277,2999878;83,30000305;66,19999695;69;2;4;4;2;5,699999809;3;8;11,69999981;3;13;1;4;1;28,70000076;1
+SAHEL;SOUM;KOUTOUGOU;oui;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;533,5999756;74,09999847;75,59999847;85;2;5;7;3;4,400000095;5;12;11,39999962;3;20;2;7;4;38,40000153;3
+SUD OUEST;NOUMBIEL;KPUÉRÉ;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;282,3999939;92,80000305;14,19999981;42;0;4;7;2;7,800000191;0;4;11,80000019;4;6;1;7;4;24,79999924;1
+CENTRE OUEST;SANGUIE;KYON;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;646,7000122;95;89,09999847;94;0;3;5;4;8,5;7;14;11,5;3;25;4;5;1;41,5;4
+CENTRE EST;KOULPELOGO;LALGAYE;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;4717,799805;91,69999695;95,19999695;76,09999847;0;3;6;16;7,5;9;10;10,5;3;35;5;6;2;51,5;5
+BOUCLE DU MOUHOUN;SOUROU;LANFIÈRA;non;non;non;non;oui;oui;oui;non;oui;oui;oui;oui;non;oui;non;oui;1012;98,09999847;88,59999847;67;0;4;8;5;9,399999619;7;8;13,39999962;5;20;2;8;5;41,40000153;4
+BOUCLE DU MOUHOUN;SOUROU;LANKOUÉ;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;1165,300049;90,80000305;127,8000031;85;0;4;7;5;7,199999809;10;12;11,19999981;3;27;4;7;4;45,20000076;4
+PLATEAU CENTRAL;KOURWEOGO;LAYE;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;771,2000122;96,69999695;41,20000076;100;2;4;7;4;9;0;18;15;5;22;3;7;4;44;4
+SUD OUEST;NOUMBIEL;LEGMOIN;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;505;79,19999695;42,79999924;75;2;5;5;3;4,900000095;0;10;11,89999962;4;13;1;5;1;29,89999962;1
+CENTRE OUEST;SISSILI;LEO;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;3207,300049;90,80000305;95,80000305;87;0;4;8;13;7,199999809;9;12;11,19999981;3;34;5;8;5;53,20000076;5
+EST;GNAGNA;LIPTOUGOU;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;280,1000061;78,59999847;20,5;84;0;4;6;2;4,900000095;0;11;8,899999619;1;13;1;6;2;27,89999962;1
+EST;TAPOA;LOGOBOU;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;1065,099976;78,90000153;70,69999695;87,30000305;0;4;8;5;4,900000095;4;12;8,899999619;1;21;3;8;5;37,90000153;3
+SUD OUEST;PONI;LOROPENI;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1808,099976;92;86,59999847;85;2;4;7;8;7,599999905;7;12;13,60000038;5;27;4;7;4;47,59999847;5
+CASCADES;LERABA;LOUMANA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;648,9000244;84,69999695;86,59999847;50;0;4;7;4;5,900000095;7;5;9,899999619;2;16;1;7;4;32,90000153;2
+PLATEAU CENTRAL;OUBRITENGA;LOUMBILA;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;231,1000061;95,80000305;98,5;15,30000019;0;4;8;2;8,699999809;9;0;12,69999981;4;11;1;8;5;31,70000076;2
+NORD;PASSORE;LÂ-TODIN;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;4273,5;92;379;64;0;4;8;15;7,599999905;10;7;11,60000038;3;32;5;8;5;51,59999847;5
+NORD;ZONDOMA;LÉBA;non;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;481,7000122;92,59999847;102,4000015;75,09999847;0;4;8;3;7,800000191;10;10;11,80000019;3;23;3;8;5;42,79999924;4
+HAUTS BASSINS;HOUET;LÉNA;non;non;non;non;oui;non;non;non;non;non;oui;oui;oui;oui;non;non;502;86,80000305;84,5;39;0;1;6;3;6,400000095;6;3;7,400000095;1;12;1;6;2;25,39999962;1
+EST;KOMPIENGA;MADJOARI;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;598,5999756;100;87,09999847;78;2;4;7;3;10;7;10;16;5;20;2;7;4;43;4
+BOUCLE DU MOUHOUN;KOSSI;MADOUBA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;oui;857,9000244;93,59999847;108,6999969;97,40000153;2;4;6;4;8,100000381;10;16;14,10000038;5;30;5;6;2;50,09999847;5
+SUD OUEST;PONI;MALBA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;non;non;oui;731,2000122;87,19999695;55,70000076;90;0;4;5;4;6,400000095;1;14;10,39999962;2;19;2;5;1;34,40000153;2
+CENTRE SUD;ZOUNDWEOGO;MANGA;non;non;non;non;non;non;non;non;non;non;non;non;non;non;non;oui;375,3999939;0;77,19999695;92;0;0;3;2;0;5;14;0;1;21;3;3;1;24;1
+CASCADES;COMOE;MANGODARA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;585,0999756;100;15,89999962;95;0;4;5;3;10;0;16;14;5;19;2;5;1;38;3
+EST;GNAGNA;MANNI;oui;oui;oui;non;oui;oui;non;non;oui;non;non;non;non;oui;oui;oui;2764,699951;96;43,09999847;99;6;3;7;11;8,800000191;0;16;17,79999924;5;27;4;7;4;51,79999924;5
+SAHEL;YAGHA;MANSILA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;391;82,59999847;81,19999695;85;0;4;7;2;5,5;6;12;9,5;2;20;2;7;4;36,5;3
+CENTRE NORD;SANMATENGA;MANÉ;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;245,6000061;90,09999847;89,59999847;100;0;4;7;2;7;7;18;11;3;27;4;7;4;45;4
+SAHEL;OUDALAN;MARKOYE;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;151,1999969;89,09999847;64,5;98;0;3;4;1;6,800000191;2;16;9,800000191;2;19;2;4;1;32,79999924;2
+EST;GOURMA;MATIACOALI;oui;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;oui;16405,59961;98,40000153;1016,700012;74;2;3;8;25;9,5;10;9;14,5;5;44;5;8;5;66,5;5
+PLATEAU CENTRAL;GANZOURGOU;MEGUET;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;591,2999878;95,40000153;106,1999969;73,30000305;2;5;4;3;8,600000381;10;9;15,60000038;5;22;3;4;1;41,59999847;4
+SUD OUEST;NOUMBIEL;MIDÉBDO;oui;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;2628,600098;91,40000153;57,40000153;88,90000153;2;4;8;11;7,400000095;1;12;13,39999962;5;24;4;8;5;45,40000153;5
+PLATEAU CENTRAL;GANZOURGOU;MOGTÉDO;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;non;oui;non;oui;733,5;96,69999695;79,19999695;98;0;4;7;4;9;5;16;13;5;25;4;7;4;45;4
+HAUTS BASSINS;KENEDOUGOU;MORLABA;non;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;4680,200195;99,30000305;101,0999985;80;0;4;8;16;9,800000191;10;11;13,80000019;5;37;5;8;5;58,79999924;5
+CASCADES;COMOE;MOUSSODOUGOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;non;1257,199951;95,80000305;59;46;0;4;5;6;8,699999809;1;4;12,69999981;4;11;1;5;1;28,70000076;1
+CENTRE NORD;NAMENTENGA;NAGBINGOU;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;2611,800049;76,69999695;135,5;80;0;4;8;11;4,699999809;10;11;8,699999809;1;32;5;8;5;48,70000076;5
+PLATEAU CENTRAL;OUBRITENGA;NAGREONGO;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1790,400024;58,70000076;121,8000031;82;0;4;7;7;2,900000095;10;11;6,900000095;1;28;5;7;4;41,90000153;4
+SUD OUEST;PONI;NAKO;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;517;88,19999695;114,3000031;97;0;3;6;3;6,599999905;10;16;9,600000381;2;29;5;6;2;44,59999847;4
+CENTRE NORD;SANMATENGA;NAMISSIGUIMA;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;5280,899902;98,40000153;59,29999924;80;0;5;7;17;9,5;1;11;14,5;5;29;5;7;4;50,5;5
+NORD;YATENGA;NAMISSIGUIMA;oui;non;non;non;oui;oui;oui;oui;non;oui;non;non;non;oui;non;non;246,1999969;68,40000153;109,6999969;67;2;5;5;2;3,799999952;10;8;10,80000019;3;20;2;5;1;35,79999924;2
+EST;TAPOA;NAMOUNOU;oui;non;non;non;oui;oui;non;non;oui;oui;oui;oui;oui;oui;non;oui;4844,799805;89,19999695;78,40000153;46,59999847;2;3;9;16;6,800000191;5;4;11,80000019;4;25;4;9;5;45,79999924;5
+CENTRE OUEST;BOULKIEMDE;NANDIALA;oui;oui;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;150,6000061;66,5;13,39999962;67;4;5;4;1;3,700000048;0;8;12,69999981;4;9;1;4;1;25,70000076;1
+CENTRE OUEST;BOULKIEMDE;NANORO;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;oui;196,6999969;69,40000153;108,9000015;60;0;3;6;1;3,900000095;10;7;6,900000095;1;18;2;6;2;30,89999962;1
+CENTRE NORD;BAM;NASSERE;non;non;non;non;oui;oui;oui;oui;oui;non;non;non;oui;oui;non;oui;185,6000061;82,40000153;60,90000153;92;0;5;7;1;5,5;2;14;10,5;3;17;2;7;4;34,5;2
+SAHEL;SOUM;NASSOUMBOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;438,2999878;80,69999695;93,30000305;98;0;4;4;3;5,099999905;8;16;9,100000381;1;27;4;4;1;40,09999847;3
+CENTRE OUEST;SISSILI;NIABOURI;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;836,5999756;86,5;33;100;0;3;5;4;6,300000191;0;18;9,300000191;2;22;3;5;1;36,29999924;3
+CASCADES;COMOE;NIANGOLOKO;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;906,0999756;88,30000305;89,30000305;76;0;4;5;4;6,699999809;7;10;10,69999981;3;21;3;5;1;36,70000076;3
+CASCADES;LERABA;NIANKORODOUGOU;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;129,1999969;100;82,30000305;77;0;5;4;1;10;6;10;15;5;17;2;4;1;36;3
+CENTRE EST;BOULGOU;NIAOGHO;non;non;non;non;oui;oui;non;non;non;oui;non;non;oui;oui;non;oui;12333,09961;98,80000305;126,8000031;100;0;3;7;25;9,600000381;10;18;12,60000038;4;53;5;7;4;72,59999847;5
+SUD OUEST;BOUGOURIBA;NIORONIORO;non;non;non;non;oui;oui;non;non;non;non;non;non;non;non;non;non;311,3999939;93,19999695;100,0999985;100;0;3;2;2;8;10;18;11;3;30;5;2;1;43;4
+PLATEAU CENTRAL;KOURWEOGO;NIOU;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;oui;non;675,2000122;84,30000305;68,30000305;99;0;4;6;4;5,900000095;3;16;9,899999619;2;23;3;6;2;38,90000153;3
+SUD OUEST;IOBA;NIÉGO;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;oui;oui;1273,400024;86,40000153;93,80000305;71,40000153;0;3;7;6;6,300000191;8;9;9,300000191;2;23;3;7;4;39,29999924;3
+CENTRE SUD;ZOUNDWEOGO;NOBERE;non;non;non;non;oui;non;non;non;oui;oui;non;non;non;oui;non;oui;1253,400024;100;60,29999924;43,79999924;0;1;7;6;10;2;4;11;3;12;1;7;4;30;1
+BOUCLE DU MOUHOUN;KOSSI;NOUNA;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;oui;205,1000061;70,80000305;20;100;0;5;6;2;4,099999905;0;18;9,100000381;1;20;2;6;2;35,09999847;2
+CENTRE OUEST;SISSILI;NÉBIÉLIANAYOU ;oui;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;1640,199951;85;99,90000153;20,39999962;2;3;6;7;6;9;1;11;3;17;2;6;2;34;2
+HAUTS BASSINS;KENEDOUGOU;N’DOROLA;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;1345,900024;91,09999847;80,40000153;70;0;5;7;6;7,300000191;6;9;12,30000019;4;21;3;7;4;40,29999924;3
+HAUTS BASSINS;KENEDOUGOU;ORODARA;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;434,6000061;91,09999847;67,80000305;95;0;3;6;3;7,300000191;3;16;10,30000019;2;22;3;6;2;38,29999924;3
+SUD OUEST;IOBA;ORONKUA;oui;oui;oui;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;1306,699951;91,90000153;45,09999847;98;6;5;6;6;7,599999905;0;16;18,60000038;5;22;3;6;2;46,59999847;5
+CENTRE;KADIOGO;OUAGADOUGOU;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;non;178,3999939;90,59999847;42,09999847;100;0;4;5;1;7,199999809;0;18;11,19999981;3;19;2;5;1;35,20000076;2
+NORD;YATENGA;OUAHIGOUYA;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;non;140,1000061;65,19999695;18,89999962;70;0;3;5;1;3,5;0;9;6,5;1;10;1;5;1;21,5;1
+CENTRE EST;KOULPELOGO;OUARGAYE;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;589,7999878;92,59999847;128,3000031;72;0;5;6;3;7,800000191;10;9;12,80000019;4;22;3;6;2;40,79999924;3
+BOUCLE DU MOUHOUN;MOUHOUN;OUARKOYE;oui;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;348;83,90000153;61;81,30000305;2;5;7;2;5,800000191;2;11;12,80000019;5;15;1;7;4;34,79999924;2
+SUD OUEST;IOBA;OUESSA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;non;non;non;127,3000031;91,09999847;57,20000076;90;0;4;2;1;7,300000191;1;14;11,30000019;3;16;1;2;1;29,29999924;1
+NORD;LOROUM;OUINDIGUI;non;non;non;non;oui;oui;non;non;non;oui;non;non;non;non;non;non;102,5;99;72,90000153;85;0;3;3;1;9,699999809;4;12;12,69999981;4;17;2;3;1;32,70000076;2
+NORD;YATENGA;OULA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;oui;329,6000061;60,79999924;129,1999969;95;2;4;6;2;3,099999905;10;16;9,100000381;1;28;5;6;2;43,09999847;4
+CASCADES;COMOE;OUO;non;non;non;non;oui;oui;oui;non;oui;oui;oui;oui;oui;oui;non;oui;3348,800049;83,30000305;84,69999695;45;0;4;9;13;5,699999809;6;4;9,699999809;2;23;3;9;5;41,70000076;4
+PLATEAU CENTRAL;OUBRITENGA;OURGOU-MANEGA;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;oui;225,1000061;91,90000153;78,90000153;99;0;3;6;2;7,599999905;5;16;10,60000038;3;23;3;6;2;39,59999847;3
+SAHEL;OUDALAN;OURSI;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;14048,2002;91,19999695;84,5;58,5;0;4;8;25;7,300000191;6;6;11,30000019;3;37;5;8;5;56,29999924;5
+BOUCLE DU MOUHOUN;BALE;OURY;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;oui;745,0999756;90,09999847;89,90000153;97,19999695;0;5;6;4;7;7;16;12;4;27;4;6;2;45;4
+CASCADES;LERABA;OUÉLÉNI;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;99,80000305;76,69999695;26,5;94,40000153;0;4;4;0;4,699999809;0;14;8,699999809;1;14;1;4;1;26,70000076;1
+CENTRE;KADIOGO;PABRE;oui;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;11400,2002;91,90000153;151,8000031;90;2;3;5;25;7,599999905;10;14;12,60000038;4;49;5;5;1;66,59999847;5
+HAUTS BASSINS;HOUET;PADÉMA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;558,5;77,80000305;97,80000305;75;0;4;4;3;4,800000191;9;10;8,800000191;1;22;3;4;1;34,79999924;2
+EST;KOMPIENGA;PAMA;non;non;non;non;oui;oui;non;non;oui;non;oui;oui;non;oui;non;non;67,59999847;95;9,899999619;90;0;3;6;0;8,5;0;14;11,5;3;14;1;6;2;31,5;1
+EST;TAPOA;PARTIAGA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;243,3999939;89,5;105,9000015;56;0;4;7;2;6,900000095;10;6;10,89999962;3;18;2;7;4;35,90000153;2
+CENTRE OUEST;BOULKIEMDE;PELLA;non;non;non;non;oui;oui;non;non;oui;non;oui;oui;oui;oui;non;oui;4051,899902;94,09999847;110,5;71,59999847;0;3;8;15;8,199999809;10;9;11,19999981;3;34;5;8;5;53,20000076;5
+HAUTS BASSINS;HOUET;PENI;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;non;oui;884,2999878;94,80000305;107,5;80;0;4;6;4;8,399999619;10;11;12,39999962;4;25;4;6;2;43,40000153;4
+CENTRE NORD;SANMATENGA;PENSA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;391,5;98,80000305;95,80000305;40;0;4;6;2;9,600000381;9;4;13,60000038;5;15;1;6;2;34,59999847;2
+CENTRE NORD;SANMATENGA;PIBAORÉ;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;317,3999939;87;57,70000076;60;0;4;8;2;6,400000095;1;7;10,39999962;2;10;1;8;5;28,39999962;1
+EST;GNAGNA;PIELA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;1554,699951;80,59999847;89;76,80000305;0;4;6;7;5,099999905;7;10;9,100000381;1;24;4;6;2;39,09999847;3
+NORD;PASSORE;PILIMPIKOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;122,6999969;63,5;86,90000153;80;0;4;5;1;3,400000095;7;11;7,400000095;1;19;2;5;1;31,39999962;1
+CENTRE NORD;SANMATENGA;PISSILA;non;non;non;non;non;non;non;non;non;non;non;non;non;oui;non;oui;93;0;25,70000076;88;0;0;5;0;0;0;12;0;1;12;1;5;1;17;1
+CENTRE OUEST;BOULKIEMDE;POA;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;non;oui;non;non;298,2999878;84,19999695;89,40000153;60;0;4;6;2;5,800000191;7;7;9,800000191;2;16;1;6;2;31,79999924;2
+SAHEL;SOUM;POBÉ-MENGAO;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;1269,5;93,30000305;63,29999924;51;0;4;7;6;8;2;5;12;4;13;1;7;4;32;2
+BOUCLE DU MOUHOUN;BALE;POMPOÏ;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;non;non;non;252,8000031;78,19999695;97,19999695;95;0;4;3;2;4,800000191;9;16;8,800000191;1;27;4;3;1;38,79999924;3
+CENTRE OUEST;SANGUIE;POUNI;non;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;oui;576,9000244;90,80000305;6,199999809;90;0;3;8;3;7,300000191;0;14;10,30000019;2;17;2;8;5;35,29999924;2
+BOUCLE DU MOUHOUN;BALE;POURA;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;221,1999969;91,30000305;102,1999969;100;0;5;5;2;7,400000095;10;18;12,39999962;4;30;5;5;1;47,40000153;5
+CENTRE EST;KOURITENGA;POUYTENGA;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1094,400024;87,69999695;57,29999924;80;2;4;7;5;6,5;1;11;12,5;4;17;2;7;4;36,5;3
+BOUCLE DU MOUHOUN;BALE;PÂ;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;95,30000305;78,69999695;80;90;0;5;7;0;4,900000095;6;14;9,899999619;2;20;2;7;4;36,90000153;3
+SUD OUEST;PONI;PÉRIGBAN;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;1409,199951;90,40000153;95;96,09999847;0;3;5;7;7,099999905;8;16;10,10000038;2;31;5;5;1;46,09999847;5
+CENTRE SUD;NAHOURI;PÔ;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;oui;non;oui;non;non;506,7999878;82,40000153;17,79999924;95;4;5;6;3;5,5;0;16;14,5;5;19;2;6;2;39,5;3
+NORD;YATENGA;RAMBO;oui;non;non;non;oui;non;non;non;oui;non;non;non;non;oui;non;non;370,7000122;100;112,5;95;2;1;5;2;10;10;16;13;5;28;5;5;1;46;5
+CENTRE OUEST;BOULKIEMDE;RAMONGO;oui;oui;oui;oui;oui;oui;oui;non;non;oui;non;non;oui;oui;non;non;434,5;98,69999695;93,90000153;77;10;4;6;3;9,600000381;8;10;23,60000038;5;21;3;6;2;50,59999847;5
+CENTRE NORD;BAM;ROLLO;oui;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;3004,5;97,19999695;100,0999985;64;2;4;8;13;9,199999809;10;7;15,19999981;5;30;5;8;5;53,20000076;5
+CENTRE NORD;BAM;ROUKO;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;non;451,3999939;81,40000153;80;90;0;5;5;3;5,300000191;6;14;10,30000019;2;23;3;5;1;38,29999924;3
+CENTRE OUEST;SANGUIE;RÉO;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;3255,199951;87,59999847;59;94;0;4;4;13;6,5;1;14;10,5;3;28;5;4;1;42,5;4
+CENTRE;KADIOGO;SAABA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;7268,100098;85;147,5;98,30000305;0;4;5;22;6;10;16;10;2;48;5;5;1;63;5
+CENTRE NORD;BAM;SABCÉ;oui;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;385,2999878;92,90000153;80,69999695;100;2;3;5;2;7,900000095;6;18;12,89999962;5;26;4;5;1;43,90000153;4
+CENTRE OUEST;BOULKIEMDE;SABOU;non;non;non;non;oui;oui;oui;non;oui;non;non;non;oui;oui;non;oui;729,2000122;57,70000076;119,3000031;83;0;4;7;4;2,799999952;10;11;6,800000191;1;25;4;7;4;38,79999924;3
+BOUCLE DU MOUHOUN;MOUHOUN;SAFANÉ;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;353,7999878;97,40000153;124,5;90;0;3;5;2;9,199999809;10;14;12,19999981;4;26;4;5;1;43,20000076;4
+PLATEAU CENTRAL;GANZOURGOU;SALOGO;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;228,8999939;79,19999695;69,09999847;97;0;5;5;2;4,900000095;3;16;9,899999619;2;21;3;5;1;35,90000153;2
+NORD;PASSORE;SAMBA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;non;3162;89,5;107,5;88;0;4;6;13;6,900000095;10;12;10,89999962;3;35;5;6;2;51,90000153;5
+BOUCLE DU MOUHOUN;BANWA;SAMI;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;375,2000122;89,09999847;73,5;94;0;3;6;2;6,800000191;4;14;9,800000191;2;20;2;6;2;35,79999924;2
+HAUTS BASSINS;KENEDOUGOU;SAMOGOHIRI;non;non;non;non;oui;oui;non;non;non;non;oui;oui;oui;oui;non;non;656,9000244;65,90000153;68,09999847;75;0;3;6;4;3,599999905;3;10;6,599999905;1;17;2;6;2;29,60000038;1
+HAUTS BASSINS;KENEDOUGOU;SAMOROGOUAN;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;238,3000031;80,30000305;15,80000019;99;0;3;4;2;5,099999905;0;16;8,100000381;1;18;2;4;1;30,10000038;1
+SAHEL;SENO;SAMPELGA;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;178,8999939;0;11,60000038;30;0;5;5;1;0;0;2;5;1;3;1;5;1;13;1
+BOUCLE DU MOUHOUN;BANWA;SANABA;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;538,0999756;79,30000305;34;90;2;5;5;3;4,900000095;0;14;11,89999962;4;17;2;5;1;33,90000153;2
+CENTRE EST;KOULPELOGO;SANGHA;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;7544,100098;96,90000153;63,40000153;100;0;5;7;25;9,100000381;2;18;14,10000038;5;45;5;7;4;66,09999847;5
+CENTRE SUD;BAZEGA;SAPONÉ;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;1528,199951;78,80000305;58,5;81;0;5;4;7;4,900000095;1;11;9,899999619;2;19;2;4;1;32,90000153;2
+CENTRE OUEST;ZIRO;SAPOUY;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;1013,700012;97,19999695;63,09999847;93;2;5;6;5;9,199999809;2;14;16,20000076;5;21;3;6;2;43,20000076;4
+HAUTS BASSINS;HOUET;SATIRI;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;non;349,2000122;76,19999695;65,80000305;98;0;4;5;2;4,599999905;2;16;8,600000381;1;20;2;5;1;33,59999847;2
+SAHEL;YAGHA;SEBBA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;non;612,4000244;65,19999695;79,30000305;90;0;4;6;4;3,5;5;14;7,5;1;23;3;6;2;36,5;3
+SAHEL;SENO;SEYTENGA;non;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;non;3178,699951;90,5;103,8000031;100;0;3;7;13;7,199999809;10;18;10,19999981;2;41;5;7;4;58,20000076;5
+BOUCLE DU MOUHOUN;BALE;SIBY;non;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;415,1000061;95,80000305;61,59999847;51;0;5;4;3;8,800000191;2;5;13,80000019;5;10;1;4;1;27,79999924;1
+CASCADES;COMOE;SIDERADOUGOU;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;233,5;90,80000305;76,40000153;89;0;3;5;2;7,199999809;5;12;10,19999981;2;19;2;5;1;34,20000076;2
+CENTRE OUEST;BOULKIEMDE;SIGLE;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;230,5;89,5;57,20000076;91,19999695;0;5;5;2;6,900000095;1;14;11,89999962;4;17;2;5;1;33,90000153;2
+CENTRE OUEST;SISSILI;SILLY;non;non;non;non;oui;oui;oui;non;oui;non;non;non;oui;oui;non;oui;234,5;87;18,29999924;2;0;4;7;2;6,400000095;0;0;10,39999962;2;2;1;7;4;19,39999962;1
+HAUTS BASSINS;KENEDOUGOU;SINDO;non;non;non;non;oui;oui;non;non;non;non;oui;oui;oui;oui;non;non;1282,400024;100;52,20000076;88;0;3;6;6;10;0;12;13;5;18;2;6;2;37;3
+CASCADES;LERABA;SINDOU;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;110,8000031;73,90000153;66,19999695;95;0;3;5;1;4,400000095;3;16;7,400000095;1;20;2;5;1;32,40000153;2
+CENTRE OUEST;BOULKIEMDE;SOAW;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;11131,7998;95;106;90;0;4;8;25;8,5;10;14;12,5;4;49;5;8;5;69,5;5
+BOUCLE DU MOUHOUN;BANWA;SOLENZO;non;non;non;non;oui;oui;oui;oui;oui;non;oui;oui;oui;oui;non;non;216,8000031;89,40000153;119,0999985;86;0;5;7;2;6,900000095;10;12;11,89999962;4;24;4;7;4;42,90000153;4
+SAHEL;YAGHA;SOLHAN;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;225,6999969;91,30000305;71,40000153;94,09999847;0;3;5;2;7,400000095;4;14;10,39999962;2;20;2;5;1;35,40000153;2
+NORD;LOROUM;SOLLÉ;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;527,5;98,19999695;46,70000076;90;0;3;6;3;9,5;0;14;12,5;4;17;2;6;2;35,5;2
+BOUCLE DU MOUHOUN;KOSSI;SONO;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;non;oui;non;oui;945,0999756;95,80000305;110,6999969;83;0;5;6;4;8,800000191;10;11;13,80000019;5;25;4;6;2;44,79999924;4
+CASCADES;COMOE;SOUBAKANIÉDOUGOU;non;non;non;non;oui;oui;oui;oui;non;oui;oui;oui;oui;oui;non;non;1727,699951;62,5;151,8000031;46,70000076;0;5;7;7;3,299999952;10;4;8,300000191;1;21;3;7;4;36,29999924;3
+CENTRE EST;KOULPELOGO;SOUDOUGUI;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;667,5;67,5;87,40000153;99;0;4;7;4;3,700000048;7;16;7,699999809;1;27;4;7;4;41,70000076;4
+CENTRE OUEST;BOULKIEMDE;SOURGOU;non;non;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;2171,600098;92,5;107,4000015;63;0;5;6;9;7,800000191;10;7;12,80000019;4;26;4;6;2;44,79999924;4
+PLATEAU CENTRAL;KOURWEOGO;SOURGOUBILA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;610,7999878;64;67,09999847;95;0;4;6;4;3,400000095;3;16;7,400000095;1;23;3;6;2;36,40000153;3
+NORD;YATENGA;SÉGUÉNÉGA;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;509;76,80000305;120,4000015;81;2;4;7;3;4,699999809;10;11;10,69999981;3;24;4;7;4;41,70000076;4
+EST;TAPOA;TAMBAGA;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;2114,800049;95,40000153;78,59999847;80;0;4;7;9;8,600000381;5;11;12,60000038;4;25;4;7;4;44,59999847;4
+NORD;YATENGA;TANGAYE;non;non;non;non;oui;oui;oui;oui;non;non;oui;oui;non;oui;non;non;157,8000031;87,5;92,09999847;58;0;5;5;1;6,5;8;6;11,5;3;15;1;5;1;31,5;1
+CENTRE;KADIOGO;TANGHIN-DASSOURI;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;oui;672;90,59999847;59;43;0;3;6;4;7,199999809;1;4;10,19999981;2;9;1;6;2;25,20000076;1
+SAHEL;YAGHA;TANKOUGOUNADIE;oui;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;538,9000244;84,80000305;79,30000305;62,5;2;4;4;3;6;5;7;12;4;15;1;4;1;31;1
+EST;TAPOA;TANSARGA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;non;non;non;233,1999969;90,80000305;106,8000031;80;0;4;2;2;7,199999809;10;11;11,19999981;3;23;3;2;1;36,29999924;3
+BOUCLE DU MOUHOUN;BANWA;TANSILA;non;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;non;237,3000031;80,90000153;107,6999969;42;0;4;5;2;5,199999809;10;4;9,199999809;2;16;1;5;1;30,20000076;1
+BOUCLE DU MOUHOUN;MOUHOUN;TCHÉRIBA;oui;non;non;non;oui;oui;oui;oui;non;oui;oui;oui;non;oui;non;oui;987,4000244;87,80000305;117,8000031;99,59999847;2;5;7;4;6,599999905;10;16;13,60000038;5;30;5;7;4;50,59999847;5
+CENTRE OUEST;SANGUIE;TENADO;non;non;non;non;oui;oui;oui;non;non;oui;non;non;non;oui;non;oui;1283,199951;87,59999847;120,9000015;85;0;4;6;6;6,5;10;12;10,5;3;28;5;6;2;44,5;4
+CENTRE EST;BOULGOU;TENKODOGO;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1249,699951;95,80000305;76,40000153;55;0;4;7;6;8,699999809;5;6;12,69999981;4;17;2;7;4;36,79999924;3
+CENTRE EST;KOURITENGA;TENSOBENTENGA;non;non;non;non;oui;oui;oui;oui;oui;oui;non;non;non;oui;non;oui;1155;90,40000153;61,59999847;68;0;5;7;5;7,099999905;2;8;12,10000038;4;15;1;7;4;34,09999847;2
+EST;GNAGNA;THION;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;282;86,09999847;38,70000076;65;0;3;4;2;6,199999809;0;8;9,199999809;2;10;1;4;1;23,20000076;1
+NORD;YATENGA;THIOU;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;176,6999969;88,90000153;8,100000381;100;2;4;6;1;6,800000191;0;18;12,80000019;4;19;2;6;2;37,79999924;3
+CENTRE OUEST;BOULKIEMDE;THYOU;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;oui;320,5;85;21,89999962;73;0;3;6;2;6;0;9;9;1;11;1;6;2;26;1
+SUD OUEST;BOUGOURIBA;TIANKOURA;non;non;non;non;oui;oui;non;non;oui;oui;oui;oui;oui;oui;non;oui;827,4000244;88,5;95,59999847;78;0;3;9;4;6,699999809;9;10;9,699999809;2;23;3;9;5;41,70000076;4
+EST;GOURMA;TIBGA;oui;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;277,2999878;83,30000305;66,19999695;69;2;4;4;2;5,699999809;3;8;11,69999981;3;13;1;4;1;28,70000076;1
+CENTRE NORD;BAM;TIKARE;oui;non;non;non;oui;oui;oui;oui;non;non;oui;oui;oui;oui;non;oui;533,5999756;74,09999847;75,59999847;85;2;5;7;3;4,400000095;5;12;11,39999962;3;20;2;7;4;38,40000153;3
+SAHEL;OUDALAN;TIN-AKOF;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;282,3999939;92,80000305;14,19999981;42;0;4;7;2;7,800000191;0;4;11,80000019;4;6;1;7;4;24,79999924;1
+SAHEL;YAGHA;TITABÉ;non;non;non;non;oui;oui;non;non;non;non;oui;oui;non;oui;non;non;646,7000122;95;89,09999847;94;0;3;5;4;8,5;7;14;11,5;3;25;4;5;1;41,5;4
+NORD;LOROUM;TITAO;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;4717,799805;91,69999695;95,19999695;76,09999847;0;3;6;16;7,5;9;10;10,5;3;35;5;6;2;51,5;5
+CENTRE SUD;NAHOURI;TIÉBÉLÉ;non;non;non;non;oui;oui;oui;non;oui;oui;oui;oui;non;oui;non;oui;1012;98,09999847;88,59999847;67;0;4;8;5;9,399999619;7;8;13,39999962;5;20;2;8;5;41,40000153;4
+CASCADES;COMOE;TIÉFORA;non;non;non;non;oui;oui;oui;non;non;oui;non;non;oui;oui;non;oui;1165,300049;90,80000305;127,8000031;85;0;4;7;5;7,199999809;10;12;11,19999981;3;27;4;7;4;45,20000076;4
+CENTRE OUEST;SISSILI;TO;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;771,2000122;96,69999695;41,20000076;100;2;4;7;4;9;0;18;15;5;22;3;7;4;44;4
+PLATEAU CENTRAL;KOURWEOGO;TOEGHIN;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;oui;505;79,19999695;42,79999924;75;2;5;5;3;4,900000095;0;10;11,89999962;4;13;1;5;1;29,89999962;1
+BOUCLE DU MOUHOUN;NAYALA;TOMA;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;3207,300049;90,80000305;95,80000305;87;0;4;8;13;7,199999809;9;12;11,19999981;3;34;5;8;5;53,20000076;5
+SAHEL;SOUM;TONGOMAYEL;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;non;oui;non;oui;280,1000061;78,59999847;20,5;84;0;4;6;2;4,900000095;0;11;8,899999619;1;13;1;6;2;27,89999962;1
+BOUCLE DU MOUHOUN;SOUROU;TOUGAN;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;1065,099976;78,90000153;70,69999695;87,30000305;0;4;8;5;4,900000095;4;12;8,899999619;1;21;3;8;5;37,90000153;3
+NORD;ZONDOMA;TOUGO;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1808,099976;92;86,59999847;85;2;4;7;8;7,599999905;7;12;13,60000038;5;27;4;7;4;47,59999847;5
+CENTRE NORD;NAMENTENGA;TOUGOURI;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;648,9000244;84,69999695;86,59999847;50;0;4;7;4;5,900000095;7;5;9,899999619;2;16;1;7;4;32,90000153;2
+HAUTS BASSINS;HOUET;TOUSSIANA;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;231,1000061;95,80000305;98,5;15,30000019;0;4;8;2;8,699999809;9;0;12,69999981;4;11;1;8;5;31,70000076;2
+CENTRE SUD;BAZEGA;TOÉCÉ;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;4273,5;92;379;64;0;4;8;15;7,599999905;10;7;11,60000038;3;32;5;8;5;51,59999847;5
+BOUCLE DU MOUHOUN;SOUROU;TOÉNI;non;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;481,7000122;92,59999847;102,4000015;75,09999847;0;4;8;3;7,800000191;10;10;11,80000019;3;23;3;8;5;42,79999924;4
+CASCADES;LERABA;WOLONKOTO;non;non;non;non;oui;non;non;non;non;non;oui;oui;oui;oui;non;non;502;86,80000305;84,5;39;0;1;6;3;6,400000095;6;3;7,400000095;1;12;1;6;2;25,39999962;1
+BOUCLE DU MOUHOUN;NAYALA;YABA;oui;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;598,5999756;100;87,09999847;78;2;4;7;3;10;7;10;16;5;20;2;7;4;43;4
+BOUCLE DU MOUHOUN;BALE;YAHO;oui;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;oui;857,9000244;93,59999847;108,6999969;97,40000153;2;4;6;4;8,100000381;10;16;14,10000038;5;30;5;6;2;50,09999847;5
+NORD;PASSORE;YAKO;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;non;non;oui;731,2000122;87,19999695;55,70000076;90;0;4;5;4;6,400000095;1;14;10,39999962;2;19;2;5;1;34,40000153;2
+CENTRE NORD;NAMENTENGA;YALGO;non;non;non;non;non;non;non;non;non;non;non;non;non;non;non;oui;375,3999939;0;77,19999695;92;0;0;3;2;0;5;14;0;1;21;3;3;1;24;1
+EST;GOURMA;YAMBA;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;oui;585,0999756;100;15,89999962;95;0;4;5;3;10;0;16;14;5;19;2;5;1;38;3
+CENTRE EST;KOULPELOGO;YARGATENGA;oui;oui;oui;non;oui;oui;non;non;oui;non;non;non;non;oui;oui;oui;2764,699951;96;43,09999847;99;6;3;7;11;8,800000191;0;16;17,79999924;5;27;4;7;4;51,79999924;5
+CENTRE EST;KOURITENGA;YARGO;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;391;82,59999847;81,19999695;85;0;4;7;2;5,5;6;12;9,5;2;20;2;7;4;36,5;3
+CENTRE EST;KOULPELOGO;YONDÉ;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;245,6000061;90,09999847;89,59999847;100;0;4;7;2;7;7;18;11;3;27;4;7;4;45;4
+BOUCLE DU MOUHOUN;NAYALA;YÉ;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;non;151,1999969;89,09999847;64,5;98;0;3;4;1;6,800000191;2;16;9,800000191;2;19;2;4;1;32,79999924;2
+CENTRE EST;BOULGOU;ZABRÉ;oui;non;non;non;oui;oui;non;non;oui;oui;non;non;oui;oui;non;oui;16405,59961;98,40000153;1016,700012;74;2;3;8;25;9,5;10;9;14,5;5;44;5;8;5;66,5;5
+PLATEAU CENTRAL;GANZOURGOU;ZAM;oui;non;non;non;oui;oui;oui;oui;non;non;non;non;non;oui;non;non;591,2999878;95,40000153;106,1999969;73,30000305;2;5;4;3;8,600000381;10;9;15,60000038;5;22;3;4;1;41,59999847;4
+SUD OUEST;IOBA;ZAMBO;oui;non;non;non;oui;oui;oui;non;oui;oui;non;non;oui;oui;non;oui;2628,600098;91,40000153;57,40000153;88,90000153;2;4;8;11;7,400000095;1;12;13,39999962;5;24;4;8;5;45,40000153;5
+CENTRE OUEST;SANGUIE;ZAMO;non;non;non;non;oui;oui;oui;non;oui;oui;non;non;non;oui;non;oui;733,5;96,69999695;79,19999695;98;0;4;7;4;9;5;16;13;5;25;4;7;4;45;4
+CENTRE OUEST;SANGUIE;ZAWARA;non;non;non;non;oui;oui;oui;non;non;oui;oui;oui;oui;oui;non;oui;4680,200195;99,30000305;101,0999985;80;0;4;8;16;9,800000191;10;11;13,80000019;5;37;5;8;5;58,79999924;5
+CENTRE SUD;NAHOURI;ZECCO;non;non;non;non;oui;oui;oui;non;non;non;non;non;oui;oui;non;non;1257,199951;95,80000305;59;46;0;4;5;6;8,699999809;1;4;12,69999981;4;11;1;5;1;28,70000076;1
+CENTRE NORD;SANMATENGA;ZIGA;non;non;non;non;oui;oui;oui;non;oui;non;oui;oui;oui;oui;non;oui;2611,800049;76,69999695;135,5;80;0;4;8;11;4,699999809;10;11;8,699999809;1;32;5;8;5;48,70000076;5
+CENTRE NORD;BAM;ZIMTENGA;non;non;non;non;oui;oui;oui;non;non;non;oui;oui;oui;oui;non;oui;1790,400024;58,70000076;121,8000031;82;0;4;7;7;2,900000095;10;11;6,900000095;1;28;5;7;4;41,90000153;4
+PLATEAU CENTRAL;OUBRITENGA;ZINIARÉ;non;non;non;non;oui;oui;non;non;non;non;non;non;oui;oui;non;oui;517;88,19999695;114,3000031;97;0;3;6;3;6,599999905;10;16;9,600000381;2;29;5;6;2;44,59999847;4
+CENTRE SUD;NAHOURI;ZIOU;non;non;non;non;oui;oui;oui;oui;non;oui;non;non;oui;oui;non;oui;5280,899902;98,40000153;59,29999924;80;0;5;7;17;9,5;1;11;14,5;5;29;5;7;4;50,5;5
+PLATEAU CENTRAL;OUBRITENGA;ZITENGA;oui;non;non;non;oui;oui;oui;oui;non;oui;non;non;non;oui;non;non;246,1999969;68,40000153;109,6999969;67;2;5;5;2;3,799999952;10;8;10,80000019;3;20;2;5;1;35,79999924;2
+CENTRE EST;BOULGOU;ZOAGA;oui;non;non;non;oui;oui;non;non;oui;oui;oui;oui;oui;oui;non;oui;4844,799805;89,19999695;78,40000153;46,59999847;2;3;9;16;6,800000191;5;4;11,80000019;4;25;4;9;5;45,79999924;5
+NORD;YATENGA;ZOGORÉ;oui;oui;non;non;oui;oui;oui;oui;non;non;non;non;oui;oui;non;oui;150,6000061;66,5;13,39999962;67;4;5;4;1;3,700000048;0;8;12,69999981;4;9;1;4;1;25,70000076;1
+CENTRE EST;BOULGOU;ZONSÉ;non;non;non;non;oui;oui;non;non;oui;non;non;non;non;oui;non;oui;196,6999969;69,40000153;108,9000015;60;0;3;6;1;3,900000095;10;7;6,900000095;1;18;2;6;2;30,89999962;1
+PLATEAU CENTRAL;GANZOURGOU;ZORGHO;non;non;non;non;oui;oui;oui;oui;oui;non;non;non;oui;oui;non;oui;185,6000061;82,40000153;60,90000153;92;0;5;7;1;5,5;2;14;10,5;3;17;2;7;4;34,5;2
+PLATEAU CENTRAL;GANZOURGOU;ZOUNGOU;non;non;non;non;oui;oui;oui;non;non;non;non;non;non;oui;non;non;438,2999878;80,69999695;93,30000305;98;0;4;4;3;5,099999905;8;16;9,100000381;1;27;4;4;1;40,09999847;3
+CENTRE NORD;NAMENTENGA;ZÉGUÉDÉGUIN;non;non;non;non;oui;oui;non;non;non;non;non;non;non;oui;non;oui;836,5999756;86,5;33;100;0;3;5;4;6,300000191;0;18;9,300000191;2;22;3;5;1;36,29999924;3

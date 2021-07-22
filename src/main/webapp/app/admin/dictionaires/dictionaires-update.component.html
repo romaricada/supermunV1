@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dictionaires-heading">Create or edit a Dictionaires</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entite">Entite</label>
+                    <input type="text" class="form-control" name="entite" id="field_entite"
+                           formControlName="entite"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_definition">Definition</label>
+                    <input type="text" class="form-control" name="definition" id="field_definition"
+                           formControlName="definition"/>
+                    <div *ngIf="editForm.get('definition').invalid && (editForm.get('definition').dirty || editForm.get('definition').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('definition').errors.maxlength">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_regleCalcule">Regle Calcule</label>
+                    <input type="text" class="form-control" name="regleCalcule" id="field_regleCalcule"
+                           formControlName="regleCalcule"/>
+                    <div *ngIf="editForm.get('regleCalcule').invalid && (editForm.get('regleCalcule').dirty || editForm.get('regleCalcule').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('regleCalcule').errors.maxlength">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

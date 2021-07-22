@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity ValeurModalite.
+    -->
+    <changeSet id="20191117200529-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="exercice_id"
+                                 baseTableName="valeur_modalite"
+                                 constraintName="fk_valeur_modalite_exercice_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="exercice"/>
+
+        <addForeignKeyConstraint baseColumnNames="commune_id"
+                                 baseTableName="valeur_modalite"
+                                 constraintName="fk_valeur_modalite_commune_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="commune"/>
+
+        <addForeignKeyConstraint baseColumnNames="modalite_id"
+                                 baseTableName="valeur_modalite"
+                                 constraintName="fk_valeur_modalite_modalite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="modalite"/>
+
+    </changeSet>
+</databaseChangeLog>

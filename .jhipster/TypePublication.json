@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "publications",
+            "otherEntityName": "publication",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "typePublication"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "libelle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        }
+    ],
+    "changelogDate": "20191126193547",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "type_publication",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "enableEntityAudit": true
+}

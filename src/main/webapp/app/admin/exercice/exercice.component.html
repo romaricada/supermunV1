@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Gestion des Exercices </span>
+        </div>
+    </div>
+    <p-toolbar>
+        <div class="ui-toolbar-group-left search-border">
+            <i class="fa fa-search-plus ml-1"></i>
+            <input type="text" class="border-0" pInputText [style]="{'width':'100%'}" placeholder="Rechercher"
+                   aria-describedby="basic-addon1">
+        </div>
+        <div class="ui-toolbar-group-right">
+            <button *jhiHasAnyAuthority="'ROLE_ADD_EXERCICE'" id="jh-create-entity" class="btn btn-secondary font-weight-bold text-primary" (click)="add(null)" >
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span>Ajouter une année exercice</span>
+            </button>
+        </div>
+    </p-toolbar>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="annee"><span>Annee</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col" *jhiHasAnyAuthority="'ROLE_ADD_EXERCICE'" ></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let exercice of exercices ;trackBy: trackId">
+                <td>{{exercice.annee}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button *jhiHasAnyAuthority="'ROLE_EDIT_EXERCICE'" type="submit" (click)="add(exercice)" class="btn-modif" [disabled]="exercice.validated">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Modifier</span>
+                        </button>
+                        <button *jhiHasAnyAuthority="'ROLE_SUPP_EXERCICE'" type="button" (click)="deleteElement(exercice)"
+                                class="btn-delete" [disabled]="exercice.validated">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Supprimer</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="exercices?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+
+    <p-dialog header="Céation/Ajout d'un exercice" [(visible)]="display" [modal]="true" [responsive]="true" (onHide)="annuler()"
+              [style]="{width: '30%', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                <div class="form-group">
+                    <label class="form-control-label" for="field_annee">Annee</label>
+                    <input type="number" class="form-control" name="annee" id="field_annee" [(ngModel)]="exercice.annee" required pKeyFilter="int"/>
+                </div>
+            <div class="text-center">
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="annuler()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary btn-form-save">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregistrer</span>
+                </button>
+            </div>
+        </form>
+    </p-dialog>
+
+    <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" class="text-warning">
+        <p-footer>
+            <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-times" label="NON" (click)="cd.reject()"></button>
+            <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-check" label="OUI" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+
+    <p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>
+
+</div>

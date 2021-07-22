@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="indicateur">
+            <h2><span>Indicateur</span> {{indicateur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{indicateur.code}}</span>
+                </dd>
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{indicateur.libelle}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{indicateur.description}}</span>
+                </dd>
+                <dt><span>Image 1</span></dt>
+                <dd>
+                    <div *ngIf="indicateur.image1">
+                        <a (click)="openFile(indicateur.image1ContentType, indicateur.image1)">
+                            <img [src]="'data:' + indicateur.image1ContentType + ';base64,' + indicateur.image1" style="max-width: 100%;" alt="indicateur image"/>
+                        </a>
+                        {{indicateur.image1ContentType}}, {{byteSize(indicateur.image1)}}
+                    </div>
+                </dd>
+                <dt><span>Image 2</span></dt>
+                <dd>
+                    <div *ngIf="indicateur.image2">
+                        <a (click)="openFile(indicateur.image2ContentType, indicateur.image2)">
+                            <img [src]="'data:' + indicateur.image2ContentType + ';base64,' + indicateur.image2" style="max-width: 100%;" alt="indicateur image"/>
+                        </a>
+                        {{indicateur.image2ContentType}}, {{byteSize(indicateur.image2)}}
+                    </div>
+                </dd>
+                <dt><span>Total Point</span></dt>
+                <dd>
+                    <span>{{indicateur.totalPoint}}</span>
+                </dd>
+                <dt><span>Interval</span></dt>
+                <dd>
+                    <span>{{indicateur.interval}}</span>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{indicateur.deleted}}</span>
+                </dd>
+                <dt><span>Domaine</span></dt>
+                <dd>
+                    <div *ngIf="indicateur.domaineId">
+                        <a [routerLink]="['/domaine', indicateur.domaineId, 'view']">{{indicateur.domaineId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/indicateur', indicateur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="modalite">
+            <h2><span>Modalite</span> {{modalite.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{modalite.code}}</span>
+                </dd>
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{modalite.libelle}}</span>
+                </dd>
+                <dt><span>Borne Maximale</span></dt>
+                <dd>
+                    <span>{{modalite.borneMaximale}}</span>
+                </dd>
+                <dt><span>Borne Minimale</span></dt>
+                <dd>
+                    <span>{{modalite.borneMinimale}}</span>
+                </dd>
+                <dt><span>Valeur</span></dt>
+                <dd>
+                    <span>{{modalite.valeur}}</span>
+                </dd>
+                <dt><span>Deleted</span></dt>
+                <dd>
+                    <span>{{modalite.deleted}}</span>
+                </dd>
+                <dt><span>Indicateur</span></dt>
+                <dd>
+                    <div *ngIf="modalite.indicateurId">
+                        <a [routerLink]="['/indicateur', modalite.indicateurId, 'view']">{{modalite.indicateurId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/modalite', modalite.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-modalite-heading">Create or edit a Modalite</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                           formControlName="code"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libelle">Libelle</label>
+                    <input type="text" class="form-control" name="libelle" id="field_libelle"
+                           formControlName="libelle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_borneMaximale">Borne Maximale</label>
+                    <input type="number" class="form-control" name="borneMaximale" id="field_borneMaximale"
+                           formControlName="borneMaximale"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_borneMinimale">Borne Minimale</label>
+                    <input type="number" class="form-control" name="borneMinimale" id="field_borneMinimale"
+                           formControlName="borneMinimale"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valeur">Valeur</label>
+                    <input type="number" class="form-control" name="valeur" id="field_valeur"
+                           formControlName="valeur"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                           formControlName="deleted"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_indicateur">Indicateur</label>
+                    <select class="form-control" id="field_indicateur" name="indicateur" formControlName="indicateurId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="indicateurOption.id" *ngFor="let indicateurOption of indicateurs; trackBy: trackIndicateurById">{{indicateurOption.id}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_formule">Formule</label>
+                    <select class="form-control" id="field_formule" name="formule" formControlName="formule">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="'TAUXCSPS'">Formule de calcul du taux de csps</option>
+                        <option [ngValue]="'RETARDMOYEN'">Formule de calcul du retard moyen</option>
+                        <option [ngValue]="'TAUXPARTICIPATION'">Formule de calcul du taux de participation</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

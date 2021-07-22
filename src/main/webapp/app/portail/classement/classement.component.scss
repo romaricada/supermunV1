@@ -1,0 +1,48 @@
+.row.own-ui-dropdown .ui-dropdown {
+  width: 100% !important;
+}
+
+.row {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+  /* margin-right: -15px; */
+  /* margin-left: -15px; */
+}
+
+.own-alert {
+  position: relative;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: white !important;
+}
+
+.own-alert-success {
+  background: #4caf50 -webkit-gradient(linear, left top, left bottom, from(#67bb6a), to(#4caf50)) repeat-x;
+  background: #4caf50 linear-gradient(180deg, #67bb6a, #4caf50) repeat-x;
+  background: #c1c1c1 linear-gradient(180deg, #c1c1c1, #c1c1c1) repeat-x;
+  background: #17a458 linear-gradient(180deg, #18a156, #18a358) repeat-x;
+  background: #d6d6d6 linear-gradient(180deg, #d6d6d6, #d6d6d6) repeat-x;
+}
+label {
+  font-size: medium;
+  font-weight: 400;
+  color: black;
+}
+
+hr {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  border: 0;
+  border-top: 2px solid #47af4bbd;
+}
+
+@media screen and (max-width: 587px) {
+  .myChart {
+    display: none;
+  }
+}

@@ -1,0 +1,52 @@
+.supr_img {
+  // width: 59%;
+  width: 36%;
+}
+
+.pact_img {
+  // width: 30%;
+  width: 20%;
+}
+
+.banque_img {
+  // width: 56%;
+  width: 38%;
+}
+
+.anptic_img {
+  // width: 13%;
+  width: 7%;
+}
+
+.leftElment {
+  width: 30%;
+}
+.rightElment {
+  width: 30%;
+}
+.midleElement {
+  width: 40%;
+}
+
+@media (max-width: 600px) {
+  .logo-div {
+    display: none;
+  }
+  .leftElment {
+    width: 50%;
+  }
+  .rightElment {
+    width: 50%;
+  }
+  .midleElement {
+    display: none;
+  }
+}
+
+hr {
+  width: 60%;
+  margin-top: 0.4rem;
+  margin-bottom: 0rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

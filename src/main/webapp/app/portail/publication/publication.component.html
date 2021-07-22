@@ -1,0 +1,73 @@
+
+<div class="container-fluid">
+    <div class="col-sm-12 text-center mt-1">
+        <h4>
+            <strong style="color: green;font-family: sans-serif;">Publication</strong>
+            <span><hr></span>
+        </h4>
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="  own-alert own-alert-success col-sm-12">
+                <p-dropdown [options]="typepublications" [(ngModel)]="selectedTypePublication" [filter]="true" [style]="{'width':'100%'}"
+                            placeholder="Choisir fonction d'une catégorie" (onChange)="onTypePublicationChange()" optionLabel="libelle" [showClear]="true"></p-dropdown>
+            </div>
+            <div class="row" *ngIf="publications?.length > 0">
+                <div class="col-md-4" *ngFor="let publication of publications ;trackBy: trackId">
+                    <div class="card mb-4 shadow-sm">
+                        <button class="card-img-top text-center" (click)="displayDialog(publication)" style="background: none;" tooltipPosition="top" pTooltip="Cliquez pour plus d'informations">
+                            <img *ngIf="publication.imageContentType" [src]="'data:' + publication.imageContentType + ';base64,' + publication.image"
+                                 class="img-fluid img-thumbnail imgIndic" alt="Publication"/>
+                            <img *ngIf="!publication.imageContentType" src="../../../content/images/doc.jpg"
+                                 class="img-fluid img-thumbnail imgIndic" alt="Domain image"/>
+                        </button>
+                        <div class="card-body">
+                            <h5><span>
+                                {{(publication.libelle.length>40)? (publication.libelle | slice:0:40)+'...':(publication.libelle)}}
+                            </span></h5>
+                            <!--<p class="card-text">
+                                {{(publication.description.length>100)? (publication.description | slice:0:100)+'...':(publication.description)}}
+                            </p>-->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                            (click)="downloadFile(publication)">
+                                        <fa-icon [icon]="'download'"></fa-icon>
+                                        <span class="d-none d-md-inline">Telecharger</span>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                            (click)="VoirFile(publication)">
+                                        <fa-icon [icon]="'eye'"></fa-icon>
+                                        <span class="d-none d-md-inline">Voir</span>
+                                    </button>
+                                </div>
+                                <small class="text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="publications?.length == 0">
+                <div class="col-sm-12 text-center">
+                    <h5>Aucune publication !</h5>
+                </div>
+            </div>
+            <div [hidden]="publications?.length === 0">
+                <div class="row justify-content-center">
+                    <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                </div>
+                <div class="row justify-content-center">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-dialog [(visible)]="afficheDialog" [baseZIndex]="10000" [minY]="70"
+              [modal]="true" [responsive]="true" [style]="{width: '30%'}" header="Information">
+        <h5><span>Titre:&nbsp;<br><strong>{{publication.libelle}}</strong></span></h5>
+        <span><strong>Description:</strong></span>
+        <p>
+            {{publication.description}}
+        </p>
+    </p-dialog>
+</div>

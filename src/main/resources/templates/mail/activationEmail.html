@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+    <head>
+        <title th:text="#{email.activation.title}">JHipster activation</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p th:text="#{email.activation.greeting(${user.login})}">
+            Cher
+        </p>
+        <p th:text="#{email.activation.text1}">
+            Vous avez demandé la réinitialisation de votre mot de passe,  cliquer sur l'URL en dessous pour le changer :
+        </p>
+        <p>
+            <a th:with="url=(@{|${baseUrl}/admin/activate?key=${user.activationKey}|})" th:href="${url}"
+            th:text="${url}">Lien d'activation</a>
+        </p>
+        <p>
+            <span th:text="#{email.activation.text2}">Coordialement, </span>
+            <br/>
+            <em th:text="#{email.signature}">Supermun.</em>
+        </p>
+    </body>
+</html>

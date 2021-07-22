@@ -1,0 +1,140 @@
+<!--Entete  -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Gestion des Groupes de Domaines</span>
+        </div>
+    </div>
+    <!-- menu de la page -->
+    <p-toolbar name="toolbar">
+        <div class="ui-toolbar-group-left search-border">
+            <i class="fa fa-search-plus ml-1"></i>
+            <input type="text" class="border-0" [style]="{'width': '100%'}" pInputText placeholder="Rechercher"
+                   aria-describedby="basic-addon1" (search)="doSearch($event)"
+                   jhiTableGlobalSearch [values]="typeIndicateursTMP">
+        </div>
+        <div class="ui-toolbar-group-right">
+            <button *jhiHasAnyAuthority="'ROLE_ADD_GROUP_DOMAINE'" id="jh-create-entity" class="btn btn-secondary font-weight-bold text-primary mt-1" (click)="display = true">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span>Ajouter un groupe de Domaine</span>
+            </button>
+        </div>
+    </p-toolbar>
+
+    <br>
+    <!--  Affichage du tableau -->
+    <div class="table-responsive">
+        <p-table #tdf [value]="typeIndicateurs" [responsive]="true" [(selection)]="typeIndicateurSelects">
+            <ng-template pTemplate="header" let-columns>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th scope="col" jhiSortBy="libelle"><span>Groupe de Domaine</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th class="text-center" scope="col" style="width: 21%" *jhiHasAnyAuthority="['ROLE_EDIT_GROUP_DOMAINE', 'ROLE_SUPP_GROUP_DOMAINE']">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-typeIndicateur let-columns="columns">
+
+                <tr [pSelectableRow]="typeIndicateur">
+                    <td>{{typeIndicateur.libelle}}</td>
+
+                    <td class="text-right" style="width: 21%" *jhiHasAnyAuthority="['ROLE_EDIT_GROUP_DOMAINE', 'ROLE_SUPP_GROUP_DOMAINE']">
+                        <div class="btn-group">
+                            <button *jhiHasAnyAuthority="'ROLE_EDIT_GROUP_DOMAINE'" type="submit" (click)="updateForm(typeIndicateur)" class="btn-modif">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Modifier</span>
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_SUPP_GROUP_DOMAINE'" type="submit" (click)="delTypeIndicateur(typeIndicateur)"
+                                    replaceUrl="true" queryParamsHandling="merge" class="btn-delete">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Supprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div [hidden]="typeIndicateurs?.length === 0">
+        <div class="row justify-content-center mt-1">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+
+    <!--  Appel de la boite de dialogue pour l'enregistrement d'un types d'indicateur -->
+    <p-dialog header="Création/Ajout d'un Groupe de Domaine" [(visible)]="display" [modal]="true" [responsive]="true"
+              (onHide)="annulerSaisie()" [style]="{width: '40%', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+        <div class="col-sm-12">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                <div class="row">
+                    <p-toast key="myKey1" position="center"></p-toast>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_libelle">Groupe de Domaine(*)</label>
+                            <input type="text" class="form-control" name="libelle" id="field_libelle"
+                                   [pKeyFilter]="blockSpecial"  placeholder="libelle"
+                                   formControlName="libelle" (change)="isLibelleExist()"/>
+                            <div
+                                *ngIf="editForm.get('libelle').invalid && (editForm.get('libelle').dirty || editForm.get('libelle').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('libelle').errors.required">
+                                    Ce champs est réquis.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="button" id="cancel-save" class="btn btn-secondary btn-form-cancel"
+                            (click)="annulerSaisie()">
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                    </button>
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                            class="btn btn-primary btn-form-save">
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregister</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </p-dialog>
+
+    <p-dialog header="Supprimer Groupe de domaine" [(visible)]="displayDel" [modal]="true" [responsive]="true"
+              (onHide)="annulerSaisie()" [style]="{width: '40%', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+        <div class="col-sm-12">
+            <p-table #tdf [value]="typeIndicateurSelects">
+                <ng-template pTemplate="header" let-columns>
+                    <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                        <th scope="col" jhiSortBy="libelle"><span>Groupe de Domaine</span>
+                            <fa-icon [icon]="'sort'"></fa-icon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-typeIndicateur let-columns="columns">
+
+                    <tr>
+                        <td>{{typeIndicateur.libelle}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <br>
+        <div class="btn-group">
+            <button type="submit" (click)="annulerDel()" class="btn-modif">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                <span class="d-none d-md-inline">Annuler</span>
+            </button>
+            <button type="submit" (click)="supprimer()"
+                    replaceUrl="true" queryParamsHandling="merge" class="btn-delete">
+                <fa-icon [icon]="'times'"></fa-icon>
+                <span class="d-none d-md-inline">Supprimer</span>
+            </button>
+        </div>
+    </p-dialog>
+
+
+</div>

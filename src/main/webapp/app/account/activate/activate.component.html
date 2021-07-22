@@ -1,0 +1,17 @@
+<div>
+    <div class="container mt-2">
+        <p-fieldset>
+            <p-header>
+                <span class="text-primary font-weight-bold">Activation du compte d'utilisateur</span>
+            </p-header>
+            <div class="alert alert-success" *ngIf="success">
+                <span><strong>Votre compte utilisateur a été activé.</strong> SVP </span>
+                <a class="alert-link" (click)="login()">connectez-vous</a>.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="error">
+                <strong>Votre compte utililisateur ne peur pas être activé.</strong> SVP contactez votre Administrateur.
+            </div>
+        </p-fieldset>
+    </div>
+</div>

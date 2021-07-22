@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-etat-commune-heading">Create or edit a Etat Commune</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_validated">Validated</label>
+                    <input type="checkbox" class="form-control" name="validated" id="field_validated"
+                           formControlName="validated"/>
+                    <div *ngIf="editForm.get('validated').invalid && (editForm.get('validated').dirty || editForm.get('validated').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('validated').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_priseEnCompte">Prise En Compte</label>
+                    <input type="checkbox" class="form-control" name="priseEnCompte" id="field_priseEnCompte"
+                           formControlName="priseEnCompte"/>
+                    <div *ngIf="editForm.get('priseEnCompte').invalid && (editForm.get('priseEnCompte').dirty || editForm.get('priseEnCompte').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('priseEnCompte').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commune">Commune</label>
+                    <select class="form-control" id="field_commune" name="commune" formControlName="communeId">
+                        <option *ngIf="!editForm.get('communeId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="communeOption.id" *ngFor="let communeOption of communes; trackBy: trackCommuneById">{{communeOption.libelle}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('communeId').invalid && (editForm.get('communeId').dirty || editForm.get('communeId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('communeId').errors.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_exercice">Exercice</label>
+                    <select class="form-control" id="field_exercice" name="exercice" formControlName="exerciceId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="exerciceOption.id" *ngFor="let exerciceOption of exercices; trackBy: trackExerciceById">{{exerciceOption.y}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

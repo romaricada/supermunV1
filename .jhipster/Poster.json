@@ -1,0 +1,45 @@
+{
+    "name": "Poster",
+    "fields": [
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contenu",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "exercice",
+            "otherEntityRelationshipName": "poster",
+            "relationshipName": "exercice",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "commune",
+            "otherEntityRelationshipName": "poster",
+            "relationshipName": "commune",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117200531",
+    "entityTableName": "poster",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

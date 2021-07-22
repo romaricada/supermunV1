@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-poster-heading">Create or edit a Poster</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_url">Url</label>
+                    <input type="text" class="form-control" name="url" id="field_url"
+                           formControlName="url"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contenu">Contenu</label>
+                    <div>
+                        <div *ngIf="editForm.get('contenu').value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('contenuContentType').value, editForm.get('contenu').value)">open</a><br>
+                            <span class="pull-left">{{editForm.get('contenuContentType').value}}, {{byteSize(editForm.get('contenu').value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({contenu: null});editForm.patchValue({contenuContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_contenu" (change)="setFileData($event, 'contenu', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="contenu" id="field_contenu"
+                           formControlName="contenu"/>
+                    <input type="hidden" class="form-control" name="contenuContentType" id="field_contenuContentType"
+                           formControlName="contenuContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                           formControlName="deleted"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_exercice">Exercice</label>
+                    <select class="form-control" id="field_exercice" name="exercice" formControlName="exerciceId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="exerciceOption.id" *ngFor="let exerciceOption of exercices; trackBy: trackExerciceById">{{exerciceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commune">Commune</label>
+                    <select class="form-control" id="field_commune" name="commune" formControlName="communeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="communeOption.id" *ngFor="let communeOption of communes; trackBy: trackCommuneById">{{communeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

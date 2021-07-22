@@ -1,0 +1,319 @@
+<div class="container-fluid pt-2 pb-3 updiv_login">
+    <div [ngSwitch]="isAuthenticated()">
+        <section class="section-intro text-center" *ngSwitchCase="false">
+            <div class="container">
+                <div class="row  justify-content-center">
+                    <div class="col-xl-10 col-lg-12 col-md-9">
+                        <div class="card o-hidden border-0 shadow-lg my-5">
+                            <div class="card-body p-0">
+                                <!-- Nested Row within Card Body -->
+                                <div class="row row-bg">
+                                    <div class="col-sm-7">
+                                        <div class="logo d-flex mb-5">
+                                            <img src="../../content/images/pact.PNG" alt="pact">
+                                            <h2>
+                                                <span class="font-weight-bold">Burkina Faso</span><br/>
+                                                <span
+                                                    class="font-weight-bold">Programme d'Appui aux Collectivités Térritoriales</span>
+                                            </h2>
+                                        </div>
+                                        <h1 class="font-weight-bolder">Bienvenue sur <span>SUPERMUN</span></h1>
+                                        <h4>
+                                        <span><strong class="text-danger">Su</strong>ivi des <strong class="text-danger">Per</strong>formances
+                                            <strong class="text-danger">Mun</strong>icipales</span></h4>
+                                        <h3 class="font-weight-bolder">Système d'administration des indicateurs de
+                                            performance.</h3>
+                                        <h3 class="font-weight-bolder">Portail web de publication des performances
+                                            municipales.</h3>
+                                    </div>
+                                    <div class="col-sm-5 border-left">
+                                        <div class="login">
+                                            <img src="../../content/images/login.png">
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-sm-12">
+                                                <div class="alert alert-danger" *ngIf="authenticationError">
+                                                    <strong>Echec de la connexion!</strong> SVP verifiez vos
+                                                    informations de connexion et reessayez.
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <form class="form" role="form" (ngSubmit)="login()">
+                                                    <div class="form-group">
+                                                        <label class="username-label font-weight-bold float-left"
+                                                               for="username">
+                                                            <i class="fa fa-user fa-2x mr-2"></i>
+                                                            <span>Nom d'utilisateur</span>
+                                                        </label>
+                                                        <input type="text"
+                                                               class="form-control font-weight-bold bg-light inp"
+                                                               name="username" id="username"
+                                                               placeholder="Votre nom d'utilisateur"
+                                                               [(ngModel)]="username">
+                                                    </div>
+                                                    <div class="form-group mt-4 mb-4">
+                                                        <label for="password" class="font-weight-bold float-left">
+                                                            <i class="fa fa-key fa-2x mr-2"></i>
+                                                            <span>Mot de passe</span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <input [type]="passvisible? 'text':'password'"
+                                                                   class="form-control font-weight-bold bg-light inp"
+                                                                   name="password" id="password"
+                                                                   placeholder="Votre mot de passe"
+                                                                   [(ngModel)]="password">
+                                                            <button type="button" class="border-0"
+                                                                    (click)="handleVisibility()" [disabled]="!password"
+                                                                    style="max-height: 40px;border-bottom: solid .15em #880000 !important;">
+                                                                <i class="fa fa-eye" *ngIf="!passvisible"></i>
+                                                                <i class="fa fa-eye-slash" *ngIf="passvisible"></i>
+                                                            </button>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-check mb-4 float-left">
+                                                        <label class="form-check-label" for="rememberMe">
+                                                            <input class="form-check-input ui-chkbox-box"
+                                                                   type="checkbox" name="rememberMe"
+                                                                   id="rememberMe"
+                                                                   [(ngModel)]="rememberMe" checked>
+                                                            <span
+                                                                class="font-weight-bold">Garder ma session ouverte</span>
+                                                        </label>
+                                                    </div>
+                                                    <br/>
+                                                    <button pButton label="Se connecter" type="submit"
+                                                            class="ui-button-primary font-weight-bold border"
+                                                            icon="fa fa-unlock"></button>
+                                                </form>
+                                            </div>
+                                            <div class="font-weight-bold alert mt-2"
+                                                 style="font-size: medium; background-color: #ffe2b8">
+                                                <a class="text-primary" (click)="requestResetPassword()">
+                                                    Avez-vous oublié votrre mot de passe ?
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section *ngSwitchCase="true" class="mb-5 row pr-3" style="margin-top: 5%;">
+            <div class="col-sm-12">
+                <h1 class="text-primary text-uppercase container p-1 text-center" style="box-shadow: 0 2px 3px 1px;">Administration de la Plateforme de suivi des performances</h1>
+                <hr>
+            </div>
+            <div class="col-sm" id="dashbord">
+                <div class="row pr-3 pl-3">
+                    <div class="p-col-12 p-md-12 col-sm-6 sup-center"
+                         (mouseover)="getDecrption('Gestion des utilisateurs', 'user')" (mouseleave)="resetvalue()">
+                        <br>
+                        <p-card id="cardre1" header="Utilisateurs" subheader="Gestion des utilisateurs"
+                                styleClass="ui-card-shadow">
+                            <p-header>
+                                <div></div>
+                            </p-header>
+                            <div class="p-grid">
+                                <div class="p-col p-col-align-center">
+                                    <i class="fa fa-user fa-4x"></i>
+                                    <i class="fa fa-cogs fa-3x"></i>
+                                </div>
+                            </div>
+                            <p-footer>
+                                <a target="_blank">
+                                    <button pButton type="button" label="Visiter" icon="pi pi-check"
+                                            class="ui-button-secondary font-weight-bold"
+                                            style="margin-right: .25em" routerLink="user-management"></button>
+                                </a>
+                            </p-footer>
+                        </p-card>
+                    </div>
+                    <div class="p-col-12 p-md-12 col-sm-6 sup-center"
+                         (mouseover)="getDecrption('Gestion des indicateurs de performance', 'indic')">
+                        <br>
+                        <p-card id="cardre2" header="Indicateurs" subheader="Gestion des indicateurs de performance"
+                                styleClass="ui-card-shadow">
+                            <p-header>
+                                <div></div>
+                            </p-header>
+                            <div class="p-grid">
+                                <div class="p-col p-col-align-center">
+                                    <i class="fa fa-line-chart fa-4x"></i>
+                                    <i class="fa fa-cogs fa-3x"></i>
+                                </div>
+                            </div>
+                            <p-footer>
+                                <a target="_blank">
+                                    <button pButton type="button" label="Visiter" icon="pi pi-check"
+                                            class="ui-button-secondary font-weight-bold" routerLink="indicateur"
+                                            style="margin-right: .25em"></button>
+                                </a>
+                                <!--<button pButton type="button" label="Info" icon="pi pi-info"
+                                        class="ui-button-secondary"></button-->
+                            </p-footer>
+                        </p-card>
+                    </div>
+                </div>
+                <div class="row pr-3 pl-3">
+                    <div class="p-col-12 p-md-12 col-sm-6 sup-center"
+                         (mouseover)="getDecrption('Gestion des performances communales', 'perf')">
+                        <br>
+                        <p-card id="cardre3" header="Performance" subheader="Gestion des performances municipales"
+                                styleClass="ui-card-shadow">
+                            <p-header>
+                                <div></div>
+                            </p-header>
+                            <div class="p-grid">
+                                <div class="p-col p-col-align-center">
+                                    <i class="fa fa-bar-chart fa-4x"></i>
+                                    <i class="fa fa-cogs fa-3x"></i>
+                                </div>
+                            </div>
+                            <p-footer>
+                                <a target="_blank">
+                                    <button pButton type="button" label="Visiter" icon="pi pi-check"
+                                            class="ui-button-secondary font-weight-bold" routerLink="performance"
+                                            style="margin-right: .25em"></button>
+                                </a>
+                            </p-footer>
+                        </p-card>
+                    </div>
+                    <div class="p-col-12 p-md-12 col-sm-6 sup-center"
+                         (mouseover)="getDecrption('Aller au portail', 'port')">
+                        <br>
+                        <p-card id="cardre4" header="Portail" subheader="Aller au portail" styleClass="ui-card-shadow">
+                            <p-header>
+                                <div></div>
+                            </p-header>
+                            <div class="p-grid">
+                                <div class="p-col p-col-align-center">
+                                    <i class="fa fa-map fa-4x"></i>
+                                    <i class="fa fa-cogs fa-3x"></i>
+                                </div>
+                            </div>
+                            <p-footer>
+                                <a target="_blank">
+                                    <button pButton type="button" label="Visiter" icon="pi pi-check"
+                                            class="ui-button-secondary font-weight-bold" routerLink="/"
+                                            style="margin-right: .25em"></button>
+                                </a>
+                            </p-footer>
+                        </p-card>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 text-right r-panel" style="margin-top: 12% !important;">
+                <i class="fa fa-angle-double-right fa-3x"></i>
+            </div>
+            <div class="col-sm pt-1 pb-1 r-panel" style="border: outset;">
+                <div class="ui-card p-2"><h4 class="font-weight-bold text-primary text-center">Description du module
+                    <span *ngIf="descTitle.length > 0">: {{descTitle}}</span></h4></div>
+                <div class="border border-primary p-2 mt-2" *ngIf="descType === 'user'">
+                    <div class="justify-content-center myCardre">
+                        <h4 class="font-weight-bold">Ce module offre la possibilité à l'administreur de gérer les niveau d'accès
+                            au données de l'interface d'administration.</h4><br>
+                        <div class="font-weight-bold ml-3" style="font-size: medium">
+                            <h5>Cela consiste à :</h5>
+                            <ul>
+                                <li>Créer les profils utilisateurs</li>
+                                <li>Créer les comptes utilisateurs</li>
+                                <li>Associer à chaque compte un profil</li>
+                                <li>Activer/Désactiver un compte utilisateur</li>
+                                <li>Changer le profil d'un compte utilisateur</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <h4 class="font-weight-bold">Il permet également à l'utilisateur d'apporter certaines modifications à son compte.</h4><br>
+                        <div class="font-weight-bold ml-3" style="font-size: medium">
+                            <h5>Les actions possibles sont :</h5>
+                            <ul>
+                                <li>Demander une réinitilisation du mot de passe</li>
+                                <li>Se conecter à la plateforme</li>
+                                <li>Modifier ses informations personnelles</li>
+                                <li>Modifier son mot de passe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--DESCRIPTION POUR LE BUTTON GESTION DES PERFORMENCESS-->
+                <div class="border border-primary p-2 mt-2" *ngIf="descType === 'perf'">
+                    <div class="justify-content-center myCardre">
+                        <h4 class="font-weight-bold">Ce module offre la possibilité à l'utulisateur de gérer les performence.
+                            C'est à dir l'importation, la modification, la validation et la publication des données.</h4><br>
+                        <div class="font-weight-bold ml-3" style="font-size: medium">
+                            <h5>Cela consiste à :</h5>
+                            <ul>
+                                <li>Exporter un model de fichier</li>
+                                <li>Importer un fichier renseigné</li>
+                                <li>Modifier des données</li>
+                                <li>Valider et publier des données</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <h4 class="font-weight-bold">Il permet également à l'utilisateur exporter des données sous plusieurs format(XLS, CSV).</h4><br>
+                    </div>
+                </div>
+                <!--DESCRIPTION POUR LE BUTTON GESTION DES PERFORMENCESS-->
+                <div class="border border-primary p-2 mt-2" *ngIf="descType === 'indic'">
+                    <div class="justify-content-center myCardre">
+                        <h4 class="font-weight-bold">Ce module offre la possibilité à l'utulisateur de gérer les Indicateur.</h4><br>
+                        <div class="font-weight-bold ml-3" style="font-size: medium">
+                            <h5>Cela consiste à :</h5>
+                            <br>
+                            <h4 class="font-weight-bold">Gestion des groupes de domaines</h4>
+                            <ul>
+                                <li>Créer un nouveau groupe de domaine</li>
+                                <li>Modifier un groupe de domaine</li>
+                                <li>Supprimer un groupe de domaine</li>
+                            </ul>
+                            <h4 class="font-weight-bold">Gestion des domaines</h4>
+                            <ul>
+                                <li>Créer un nouveau domaine d'indicateur</li>
+                                <li>Modifier un domaine d'indicateur</li>
+                                <li>Supprimer un domaine d'indicateur</li>
+                            </ul>
+                            <h4 class="font-weight-bold">Gestion des indicateur</h4>
+                            <ul>
+                                <li>Créer un nouveau d'indicateur</li>
+                                <li>Modifier un indicateur</li>
+                                <li>Supprimer un indicateur</li>
+                                <li>gerer les valeurs modalités</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-primary p-2 mt-2" *ngIf="descType === 'port'">
+                    <div class="justify-content-center myCardre">
+                        <h4 class="font-weight-bold">Ce module offre la possibilité à l'administreur de repartir au portail</h4><br>
+                        <div class="font-weight-bold ml-3" style="font-size: medium">
+                            <h5 class="font-weight-bold">Le portail permet de :</h5>
+                            <ul>
+                                <li>Visualiser de la carte du Burkina Faso avec les communes</li>
+                                <li>Consulter de la performance d'une commune pour un indicateur donnée à partir de la carte</li>
+                                <li>Naviguer vers la page des données ou vers la page des posters</li>
+                                <li>Acceder au site du open data pour consulter les données : <a href="http://data.gov.bf/">OpenData</a></li>
+                            </ul>
+                        </div>
+                        <br>
+                        <h4 class="font-weight-bold">En plus le portail offre à un internaute d'énormes fonctionnalités</h4><br>
+                        <div class="font-weight-bold ml-3" style="font-size: medium">
+                            <h5 class="font-weight-bold">Les actions possibles sont :</h5>
+                            <ul>
+                                <li>Consulatation des données des performances municipales</li>
+                                <li>Téléchargement des données des performances municipales</li>
+                                <li>Consultation et téléchargement des posters</li>
+                                <li>Consultation des informations et des publication</li>
+                                <li>Utilisation des APIs pour récupérer des données publiées sur le portail</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

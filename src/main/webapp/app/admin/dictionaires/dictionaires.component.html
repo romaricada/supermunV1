@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Le Dictionnaire</span>
+        </div>
+    </div>
+    <p-toolbar name="toolbar">
+        <div class="ui-toolbar-group-left search-border">
+            <i class="fa fa-search-plus ml-1"></i>
+            <input type="text" class="border-0" pInputText [style]="{'width':'100%'}" placeholder="Réchercher"
+                   (input)="tdf.filterGlobal($event.target.value, 'contains')" >
+        </div>
+        <div class="ui-toolbar-group-right">
+            <button *jhiHasAnyAuthority="'ROLE_ADD_ENTITE'" (click)="creeEntite()" class="btn btn-secondary font-weight-bold text-primary" id="jh-create-entity">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span>Ajouter une entité</span>
+            </button>
+        </div>
+    </p-toolbar>
+    <br>
+    <p-table #tdf [value]="dictionaires" [responsive]="true"
+             [globalFilterFields]="['entite', 'entite', 'regleCalcule']" [paginator]="true" [rows]="15">
+        <ng-template pTemplate="header">
+            <tr>
+                <th><span>Entite</span></th>
+                <th><span>Definition</span></th>
+                <th><span>Regle Calcule</span></th>
+                <th class="text-center" width="230" *jhiHasAnyAuthority="['ROLE_ADD_ENTITE','ROLE_EDIT_ENTITE','ROLE_SUPP_ENTITE']"></th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-dictionair>
+            <tr>
+                <td>{{dictionair.entite}}</td>
+                <td>{{dictionair.definition}}</td>
+                <td>{{dictionair.regleCalcule}}</td>
+                <td class="text-right" width="230" *jhiHasAnyAuthority="'ROLE_EDIT_ENTITE'||'ROLE_SUPP_ENTITE'">
+                    <div class="btn-group">
+                        <button *jhiHasAnyAuthority="'ROLE_EDIT_ENTITE'" type="submit" (click)="updateEntite(dictionair)" class="btn-modif">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Modifier</span>
+                        </button>
+                        <button *jhiHasAnyAuthority="'ROLE_SUPP_ENTITE'" type="submit" (click)="deleteElement(dictionair)"
+                                class="btn-delete ml-1">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Supprimer</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog header="Enregistrement d'une entité" [(visible)]="display" [modal]="true" [responsive]="true"
+              (onHide)="iniElement()" [style]="{width: '60%', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
+        <div class="col-sm-12">
+            <form name="ngForm" #editForm="ngForm" role="form" novalidate (ngSubmit)="save()">
+                <p-toast key="myKey1" position="center"></p-toast>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="form-control-label" for="field_entite">Entite</label>
+                            <input type="text" class="form-control" name="entite" id="field_entite"
+                                   [(ngModel)]="dictionaire.entite" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="field_definition">Definition</label>
+                            <textarea pInputTextarea [rows]="5" [cols]="30" name="definition" id="field_definition"
+                                   [(ngModel)]="dictionaire.definition">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="field_regleCalcule">Regle Calcule</label>
+                            <textarea pInputTextarea name="regleCalcule" [rows]="5" [cols]="30" id="field_regleCalcule"
+                                   [(ngModel)]="dictionaire.regleCalcule">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="button" id="cancel-save" class="btn btn-secondary btn-form-cancel"
+                            (click)="creeEntite()">
+                        <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                    </button>
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid"
+                            class="btn btn-primary btn-form-save">
+                        <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregister</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </p-dialog>
+    <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" class="text-warning">
+        <p-footer>
+            <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-times" label="NON" (click)="cd.reject()"></button>
+            <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-check" label="OUI" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+
+    <p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>
+</div>

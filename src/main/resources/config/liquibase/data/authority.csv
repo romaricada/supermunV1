@@ -1,0 +1,37 @@
+name;desc;prefix
+ROLE_ADMIN;Administration système;x_01
+ROLE_USER;Consultation de données;x_01
+ROLE_EDIT_REGION;Modification de la région;x_01
+ROLE_SELECT_COMMUNE;Selection des communes pour un exercice;x_01
+ROLE_REMOVE_COMMUNE;Rétrait des communes pour un exercice;x_01
+ROLE_ADD_GROUP_DOMAINE;Ajout de groupe domaine;x_01
+ROLE_EDIT_GROUP_DOMAINE;Modification de groupe domaine;x_01
+ROLE_SUPP_GROUP_DOMAINE;Suppression de groupe domaine;x_01
+ROLE_ADD_DOMAINE;Ajout de domaine;x_01
+ROLE_EDIT_DOMAINE;Modification de domaine;x_01
+ROLE_SUPP_DOMAINE;Suppression de domaine;x_01
+ROLE_ADD_INDICATEUR;Ajout de indicateur;x_01
+ROLE_EDIT_INDICATEUR;Modification de indicateur;x_01
+ROLE_SUPP_INDICATEUR;Suppression de indicateur;x_01
+ROLE_ADD_EXERCICE;Ajout de exercice;x_01
+ROLE_EDIT_EXERCICE;Modification de exercice;x_01
+ROLE_SUPP_EXERCICE;Suppression de exercice;x_01
+ROLE_ADD_COULEUR;Ajout de couleures;x_01
+ROLE_EDIT_COULEUR;Ajout de couleures;x_01
+ROLE_SUPP_COULEUR;Suppression de couleures;x_01
+ROLE_EXPORT_MODEL;Exportation du model;x_01
+ROLE_IMPORT_DATA;Importation des données;x_01
+ROLE_EXPORT_DATA;Exportation des données;x_01
+ROLE_VIDER_DATA;Vider des données;x_01
+ROLE_VALIDER_DATA;Validation des données;x_01
+ROLE_ADD_INFO;Ajout d'information;x_01
+ROLE_ADD_TYPE_PUB;Ajout de type de publication;x_01
+ROLE_EDIT_TYPE_PUB;Modification de type de publication;x_01
+ROLE_SUPP_TYPE_PUB;Supression de type de publication;x_01
+ROLE_ADD_PUB;Ajout de publication;x_01
+ROLE_EDIT_PUB;Modification de publication;x_01
+ROLE_SUPP_PUB;Suppression de publication;x_01
+ROLE_PUBLIER_PUB;Publier une publication;x_01
+ROLE_ADD_ENTITE;Ajout d'entité;x_01
+ROLE_EDIT_ENTITE;Modification d'entité;x_01
+ROLE_SUPP_ENTITE;Suppression d'entité;x_01

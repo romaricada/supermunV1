@@ -1,0 +1,113 @@
+.accueil-entete {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 60%;
+  border-radius: 20px;
+  border: solid;
+  background-color: #eaeaea;
+  color: black;
+  font-weight: bold;
+  font-size: 1.8em;
+  align-content: center;
+  // display: inline !important;
+}
+
+.text-no-data {
+  align-content: center !important;
+}
+
+.btn-add {
+  background-color: floralwhite !important;
+  color: blue !important;
+  font-weight: bold !important;
+  margin-right: 2% !important;
+  margin-top: 0.8em !important;
+  // margin-bottom: 7% !important;
+  width: 7.5em !important;
+  height: 2.3em !important;
+  font-size: 1.2em !important;
+  border-radius: 5px !important;
+}
+.ui-fluid {
+  margin-top: 8px;
+  display: inline-flex !important;
+  // display: block;
+}
+.contour {
+  margin-top: 8px;
+  background-color: #5ab55d;
+  border-radius: 5px;
+  height: 5em !important;
+  // -webkit-text-stroke-width: medium;
+  display: block !important;
+  align-content: center !important;
+}
+
+.btn-detail {
+  background-color: floralwhite !important;
+  color: green !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-modif {
+  background-color: floralwhite !important;
+  color: #ffa700 !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-delete {
+  background-color: floralwhite !important;
+  color: red !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-form-save {
+  background-color: floralwhite !important;
+  color: blueviolet !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-form-cancel {
+  background-color: floralwhite !important;
+  color: red !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+.btn-del {
+  background-color: floralwhite !important;
+  color: red !important;
+  font-weight: bold;
+  // font-size: 100%;
+  margin-right: 20%;
+  margin-top: 0.8em;
+  //margin-bottom: 7%;
+  width: 7.5em;
+  height: 2.3em;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+.chanp-texte {
+  border-bottom: none !important;
+  border-radius: 20px;
+  margin-top: 0.3em;
+  margin-left: 0% !important;
+  display: inline !important;
+  width: 100% !important;
+  margin-left: 3em;
+  height: 3.5em !important;
+}
+
+.search-icon {
+  color: #ffffff;
+  margin-top: 0.5em;
+  // margin-left: 5% !important;
+}
+
+.champ-shearch {
+  width: 100% !important;
+  text-align: center !important;
+}

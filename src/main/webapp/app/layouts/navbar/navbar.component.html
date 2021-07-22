@@ -1,0 +1,374 @@
+<nav class="navbar navbar-light navbar-expand-md own-navbar own-navbar-portail"
+     [ngClass]="{'own-navbar-admin': ischeckIfEndpointChanged()}">
+    <div class="jh-logo-container float-left col-sm" style="padding-left: 0 !important;">
+        <a class="jh-navbar-toggler d-lg-none float-right mt-3 toogle" href="javascript:void(0);" data-toggle="collapse"
+           data-target="#navbarResponsive"
+           aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+           (click)="toggleNavbar()">
+            <i class="fa fa-bars fa-2x" style="color: white"></i>
+        </a>
+        <a class="navbar-brand logo font-weight-bold" routerLink="/" (click)="collapseNavbar()" *ngIf="!ischeckIfEndpointChanged()">
+            <img src="../../../content/images/supermunLogo.png" width="150" height="45" class="logo-img" alt="supermun">
+        </a>
+        <a class="navbar-brand logo font-weight-bold" routerLink="/admin" (click)="collapseNavbar()" *ngIf="ischeckIfEndpointChanged()">
+            <img src="../../../content/images/supermunLogo.png" width="150" height="45" class="logo-img" alt="supermun">
+        </a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed">
+        <ul class="navbar-nav ml-auto" *ngIf="!ischeckIfEndpointChanged()">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="/" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="home"></fa-icon>
+                        <span>Accueil</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/donnee" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="database"></fa-icon>
+                        <span>Données</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/poster" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="book"></fa-icon>
+                        <span>Posters</span>
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/classement" (click)="collapseNavbar()">
+                    <span>
+                        <!--<fa-icon icon="fa-sort-numeric"></fa-icon>-->
+                        <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+                        <span>Classement</span>
+                    </span>
+                </a>
+            </li>
+            <!--<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/publicationDoc" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="book"></fa-icon>
+                        <span>Publications</span>
+                    </span>
+                </a>
+            </li>-->
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/dictionnaire" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-search"></i>
+                        <span>Dictionnaire</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/contact" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-edit"></i>
+                        <span>Contact</span>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="portail/apropos" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="question"></fa-icon>
+                        <span>A propos</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto" *ngIf="isAuthenticated() && ischeckIfEndpointChanged()">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link font-weight-bold" routerLink="/" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-arrow-left"></i>
+                        <span>Aller au portail</span>
+                    </span>
+                </a>
+            </li>
+            <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle font-weight-bold" ngbDropdownToggle href="javascript:void(0);"
+                   id="entity-local">
+                    <span>
+                        <fa-icon icon="cog"></fa-icon>
+                        <span>
+                            Localités
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/region" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Région</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/commune" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Commune</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                </ul>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle font-weight-bold" ngbDropdownToggle href="javascript:void(0);"
+                   id="entity-indic">
+                    <span>
+                        <fa-icon icon="cog"></fa-icon>
+                        <span>
+                            Indicateurs
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/type-indicateur"
+                           routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Groupe de domaine</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/domaine" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Domaine</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/indicateur"
+                           routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Indicateur</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                </ul>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle font-weight-bold" ngbDropdownToggle href="javascript:void(0);"
+                   id="entity-perf">
+                    <span>
+                        <fa-icon icon="cog"></fa-icon>
+                        <span>
+                            Performances
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/exercice" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Année exercice</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/couleur" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Gestion des couleurs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/performance"
+                           routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Performance indicateur</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                </ul>
+            </li>
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle font-weight-bold" ngbDropdownToggle href="javascript:void(0);"
+                   id="entity-pub">
+                    <span>
+                        <fa-icon icon="cog"></fa-icon>
+                        <span>
+                            Informations
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/information"
+                           routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Informations</span>
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/type-publication"
+                           routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Catégorie publication</span>
+                        </a>
+                    </li>-->
+                    <!--<li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/publication"
+                           routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Publications</span>
+                        </a>
+                    </li>-->
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/dictionaires" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Dictionnaires</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+                </ul>
+            </li>
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle font-weight-bold" ngbDropdownToggle href="javascript:void(0);"
+                   id="admin-menu">
+                    <span>
+                        <fa-icon icon="user-plus"></fa-icon>
+                        <span>Administration</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="admin-menu">
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/user-management"
+                           routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="user" fixedWidth="true"></fa-icon>
+                            <span>Gestion des utilisateurs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/metrics" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="tachometer-alt" fixedWidth="true"></fa-icon>
+                            <span>Métriques systèmes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/health" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="heart" fixedWidth="true"></fa-icon>
+                            <span>Santé système</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/configuration"
+                           routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="list" fixedWidth="true"></fa-icon>
+                            <span>Configurations</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/audits" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="bell" fixedWidth="true"></fa-icon>
+                            <span>Audits</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/logs" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="tasks" fixedWidth="true"></fa-icon>
+                            <span>Logs</span>
+                        </a>
+                    </li>
+                    <li *ngIf="swaggerEnabled">
+                        <a class="dropdown-item font-weight-bold" routerLink="admin/docs" routerLinkActive="active"
+                           (click)="collapseNavbar()">
+                            <fa-icon icon="book" fixedWidth="true"></fa-icon>
+                            <span>API</span>
+                        </a>
+                    </li>
+                    <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-3 border p-1 rounded" *ngIf="isAuthenticated() && ischeckIfEndpointChanged()">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mr-2"
+                [pTooltip]="'Profil de '+account?.login" tooltipPosition="bottom">
+                <a routerLink="admin/settings">
+                    <i class="fa fa-fw fa-user fa-2x text-dark"></i>
+                    <span class="font-weight-bold text-dark" style="font-size: medium">{{account?.login}}</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mr-2"
+                pTooltip="Modifier votre mot de passe" tooltipPosition="left">
+                <a routerLink="admin/password">
+                    <i class="fa fa-fw fa-lock fa-2x text-dark"></i>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="mr-2"
+                pTooltip="Déconnectez-vous" tooltipPosition="left">
+                <a (click)="logout()" id="logout">
+                    <i class="fa fa-fw fa-sign-out fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-2 border rounded1" *ngIf="isAuthenticated() && ischeckIfEndpointChanged()">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                [pTooltip]="'Profil de '+account?.login" tooltipPosition="bottom">
+                <a routerLink="admin/settings">
+                    <i class="fa fa-fw fa-user fa-2x text-dark"></i>
+                    <span class="font-weight-bold text-dark login1" style="font-size: medium">{{account?.login}}</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                pTooltip="Modifier votre mot de passe" tooltipPosition="left">
+                <a routerLink="admin/password">
+                    <i class="fa fa-fw fa-lock fa-2x text-dark"></i>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                pTooltip="Déconnectez-vous" tooltipPosition="left">
+                <a (click)="logout()" id="logout1">
+                    <i class="fa fa-fw fa-sign-out fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--<div class="col-sm-1 myLlogItem" *ngIf="isAuthenticated() && ischeckIfEndpointChanged() && !isNavbarCollapsed">
+        <div class="row justify-content-center">
+            <div class="col-sm" [style]="{'width':'100%'}">
+                <a routerLink="admin/settings">
+                    <i class="fa fa-fw fa-user fa-2x text-dark"></i>
+                </a>
+            </div>
+            <div class="col-sm" [style]="{'width':'100%'}">
+                <a routerLink="admin/password">
+                    <i class="fa fa-fw fa-lock fa-2x text-dark"></i>
+                </a>
+            </div>
+            <div class="col-sm" [style]="{'width':'100%'}">
+                <a (click)="logout()" id="logout1">
+                    <i class="fa fa-fw fa-sign-out fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </div>-->
+</nav>

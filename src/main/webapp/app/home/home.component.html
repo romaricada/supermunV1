@@ -1,0 +1,168 @@
+<div class="jh-card carte-div">
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button class="ui-button-secondary text-info" (mouseenter)="op1.show($event)" (click)="op1.toggle($event)" pButton icon="fa fa-info-circle">
+            </button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <span class="counter">Nombre de visites<span class="ml-1 badge badge-pill badge-success">{{countes[0]?.nombreVisiteurs}}</span> </span>
+        </div>
+        <div class="col-sm-12 img-col">
+            <h1 class="text-success text-uppercase container p-1 text-center">suivi des performances municipales </h1>
+            <hr>
+        </div>
+        <div class="col-sm-4 card" style="background-color: #e7e7e7;">
+            <div class="row mt-1">
+                    <div class="own-alert own-alert-success col-sm">
+                        <p-spinner pKeyFilter="num" maxlength="4" [type]="'number'" id="mySpiner" placeholder="Choisir l'année" [style]="{'width':'100%'}" [(ngModel)]="year" (onChange)="onFilterChange()" [min]="minYear" [max]="maxYear">
+
+                        </p-spinner>
+                        <!--<p-dropdown [options]="years" [(ngModel)]="selectedYear" inputId='year' [filter]="true"
+                                    placeholder="Selectionnez l'année" optionLabel="annee" (onChange)=" onFilterChange()"
+                                    [showClear]="true" [style]="{'width':'100%'}">
+                        </p-dropdown>-->
+                    </div>
+                    <div class="own-alert own-alert-success col-sm">
+                        <p-dropdown [options]="communes" [(ngModel)]="selectedCommune" [filter]="true"
+                                    (onChange)="onCommuneChange(selectedCommune)" placeholder="Selectionnez la commune"
+                                    optionLabel="libelle" [showClear]="true" [style]="{'width':'100%'}">
+                        </p-dropdown>
+                    </div>
+                <div class="own-alert own-alert-success col-12">
+                    <p-dropdown [options]="typeIndicateurs" [(ngModel)]="typeIndic" [filter]="true"
+                                (onChange)="onTypeChange()" placeholder="Selectionnez un groupe domaine"
+                                optionLabel="libelle" [showClear]="true" [style]="{'width':'100%'}">
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="row myTableCol">
+                <div class="col-sm-12 justify-content-sm-center">
+                    <div class="text-center font-weight-bold"> LISTE DES INDICATEURS</div>
+                    <p-table id="myTable" [value]="indicateurs" selectionMode="single"
+                             [scrollable]="true" [rowHover]="true" [(selection)]="selectedIndicateur"
+                             (onRowSelect)="onTableRowSelected(selectedIndicateur); changeLayerColor()" scrollHeight="400px" >
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr [pSelectableRow]="rowData">
+                                <td class="text-center">
+                                    {{rowData.libelle}}
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="row carte-row">
+                <div class="  col-sm-12" *ngIf="selectedIndicateur && selectedIndicateur.libelle">
+                    <label class="own-alert own-alert-success">{{selectedIndicateur?.libelle+" "}} <span *ngIf="selectedYear">{{selectedYear.annee}}</span>
+                        &nbsp;<span *ngIf="chargerCouleur" class="mt-3">
+                                    <img style="margin-left: 5px; width: 25px; height: 25px" class="img" src="../../content/images/load.gif"/>
+                        </span>
+                    </label>
+                </div>
+                <div class="col-sm-12">
+                    <div id="bf_carte">
+                        <p-progressSpinner *ngIf="!carteData">
+                        </p-progressSpinner>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" row justify-content-center">
+        <div class="col-sm-12 mt-1" *ngIf="selectedIndicateur">
+            <h4 class="text-left"><span style="font-weight: 700;">Indicateur:</span><strong>{{" "+selectedIndicateur.libelle}}</strong></h4>
+            <p style="font-size: medium;">
+                <span>{{selectedIndicateur.description}}</span>
+                <button type="button" routerLink="/portail/dictionnaire" class="btn btn-link text-success">Voir plus</button>
+            </p>
+        </div>
+        <div class="col-sm text-center">
+                <div class="col-sm justify-content-center">
+                    <div class="row justify-content-center">
+                        <span *ngIf="isDowlodingAll" class="mt-3">
+                                    <span class="text-danger"><strong>Téléchargement en cours...</strong></span>
+                                    <img style="margin-left: 5px; width: 25px; height: 25px" class="img" src="../../content/images/ajax-loader.gif"/>&nbsp;
+                        </span>
+                        <span class="col-xs-12 mt-1 mr-1 mb-2">
+                            <p-splitButton id="mySplite" [style]="{'width':'100%'}" label="Toutes les données" icon="pi pi-download"
+                                           [model]="items" styleClass="ui-button-success">
+                            </p-splitButton>
+                        </span>
+                        <span class="col-xs-12 mr-1 mb-1 mt-1">
+                             <a [style]="{'width':'100%'}" role="button" tooltipPosition="left" pTooltip="Aller sur le site de Data gov" class="btn btn-success" target="_blank" href="http://www.data.gov.bf">Lien pour acceder aux données</a>
+                        </span>
+                        <span class="col-xs-12 mt-1 myButton">
+                            <button [style]="{'width':'100%'}" type="button" class="btn btn-success" icon="pi pi-file"
+                                    pTooltip="Voir le poster de l'année de la commune selectionnée" pButton label="Poster"
+                                    tooltipPosition="left" *ngIf="selectedCommune && selectedYear"
+                                    [routerLink]="['/portail/poster', {idY:selectedYear?.id,idC:selectedCommune?.id}]">
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--<div class="row mt-2">
+        <div class="col-sm-6 myChart">
+            <div class="row justify-center">
+                <div class="col-sm-12 text-center">
+                    <h6 class="badge-success">Top 5 nationnal des commune <span *ngIf="selectedYear.id !== undefined"> en {{selectedYear.annee}}</span></h6>
+                </div>
+                <div class="col-sm-12">
+                    <p-chart #chart type="bar" [data]="data" [options]="chartOptions"></p-chart>
+                    <button type="button" class="ui-button-success text-white" pButton
+                            pTooltip="Télécharger en png" (click)="printChart1(chart)" label="graph(png)"
+                            tooltipPosition="left" icon="fa fa-download">
+
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6 myChart">
+            <div class="row justify-center">
+                <div class="col-sm-12 text-center">
+                    <h6 class="badge-success" >Evolution de l'indicateur de la commune <span *ngIf="selectedCommune"> de {{selectedCommune.libelle}}</span></h6>
+                </div>
+                <div class="col-sm-12">
+                    <p-chart #chart1 type="line" [data]="data1" [options]="chartOptions"></p-chart>
+                    <button type="button" class="ui-button-success text-white" pButton
+                            pTooltip="Télécharger en png" (click)="printChart2(chart1)" label="graph(png)"
+                            tooltipPosition="left" icon="fa fa-download">
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div id="hidenDiv">
+    <input id="popupButton" type="button" (click)="sowPopu()" hidden>
+    <input *ngIf="selectedYear" id="yearId" type="number" [(ngModel)]="selectedYear.id" hidden>
+    <input *ngIf="selectedIndicateur" id="indicateurId" type="number" [(ngModel)]="selectedIndicateur.id" hidden>
+    <input id="communeId" type="number" hidden>
+</div>
+<p-overlayPanel #op1 [showCloseIcon]="true" [dismissable]="false">
+    <div>
+        <h5>Aide</h5>
+        <hr>
+        <p class="text-break">
+            La page offre un panneau qui permet de choisir le critère de recherche.  L’affichage d’un critère modifie instantanément l’affichage des informations sur la carte.
+            Pour avoir les informations d’une commune sur la carte il suffit de :
+        </p>
+        <ul>
+            <li>Choisir l’ <strong>année</strong> ;</li>
+            <li>Choisir la <strong>commune</strong> (Optionnelle) ;</li>
+            <li>Choisir le <strong>groupe d’indicateur</strong> ([optionnelle] services publiques et capacités institutionnelles) ;</li>
+            <li>Choisir l’<strong>indicateur</strong> en cliquant sur l’indicateur concerné à gauche ;</li>
+        </ul>
+        <p class="text-break">
+            Vous aurez un pop-up sur lequel on aura le nom de la commune, le nom de l’indicateur choisis, le rang au niveau national, le rang au niveau régional ainsi que la performance de cette commune pour l’année sélectionnée.
+            Il y’a un lien au niveau du pop-up pour aller directement visualiser les données au niveau du poster
+        </p>
+    </div>
+</p-overlayPanel>

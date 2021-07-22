@@ -1,0 +1,284 @@
+<div class="container">
+    <div class="row content-row ui-card jh-card" id="not_print">
+        <div class="col-sm-3 filter-row">
+            <div class="filter-input">
+                <label for="mySpiner">Choisir une Année</label>
+                <div>
+                    <p-spinner type="number" maxlength="4" id="mySpiner" placeholder="Choisir l'année" [style]="{'width':'100%'}" [(ngModel)]="year" (onChange)=" onAnneeChange(); loadPerformance()" [min]="minYear" [max]="maxYear"></p-spinner>
+                </div>
+                <!--<p-dropdown [options]="years" id="annee" [style]="{'width': '100%'}" [(ngModel)]="selectedYear"
+                            inputId='year' [filter]="true" placeholder="Sélectionner une année" optionLabel="annee"
+                            (onChange)="onAnneeChange(); loadPerformance()" [showClear]="true">
+                </p-dropdown>-->
+            </div>
+        </div>
+        <div class="col-sm-3 ">
+            <div class="filter-input ">
+                <label for="commune">Choisir une Commune</label>
+                <p-dropdown [options]="communes" id="commune" [style]="{'width': '100%'}" [(ngModel)]="selectedCommune"
+                            [filter]="true" (onChange)=" loadPerformance()" placeholder="Sélectionner une Commune"
+                            optionLabel="libelle"
+                            [showClear]="true">
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="filter-input ">
+                <label for="indicateur">Choisir un groupe de domaine</label>
+                <p-dropdown [options]="typeIndicateurs" id="indicateur" [style]="{'width': '100%'}"
+                            [(ngModel)]="selectedTypeIndicateur" [filter]="true" (onChange)=" loadPerformance()"
+                            placeholder="Choisir un Groupe de domaine" optionLabel="libelle"
+                            [showClear]="true"></p-dropdown>
+            </div>
+
+        </div>
+        <div class="col-sm-2 pt-4" *ngIf="performances">
+            <button type="button" class="btn btn-secondary text-primary btn-sm mt-2" (click)="print()">
+                <i class="fa fa-print"></i>
+                <span class="font-weight-bold">Imprimer le poster</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="content  poster1"
+         *ngIf="performances &&  selectedTypeIndicateur && selectedTypeIndicateur.libelle.toUpperCase().includes('INSTITUTIONNELLE')">
+        <div class="titre-mairie"><span>MUNICIPALITE DE <span
+            id="communeName1">{{selectedCommune?.libelle}}</span></span>
+        </div>
+        <div class="titre-service">
+            <div class="static-service-text1">
+                <span>PERFORMANCE MUNICPALITE</span><span id="year1">&nbsp;{{selectedYear?.annee}}</span>
+            </div>
+            <div class="logo">
+                <img class="pact-img" src="../../../content/images/pact.PNG">
+            </div>
+            <div class="static-service-text2">
+                <span>CAPACITE INSTITUTIONNELLE
+                </span>
+            </div>
+
+        </div>
+        <div>
+            <div class="poster-container">
+                <div *ngFor="let domaine of performances.domaines">
+                    <div class="domaine-div">
+                        <div class="circle-div"><img class="circle-content" style="width: 100px; height: 80px"
+                                                     [src]="'data:' + domaine.imageContentType + ';base64,' + domaine.image"/>
+                        </div>
+                        <div class='domaine'>{{domaine.libelle}} ---
+                            {{domaine.totalScore | number: '.2' }}<span>/</span>{{domaine.pointTotal}} points
+                        </div>
+                        <div class="monCase">
+                        </div>
+                        <div class='star'>
+                            <div class='own-rateyo' [id]="'rateyo_'+ domaine.id" style="width: 250px;">
+                                <p-rating [ngModel]="domaine.nbEtoile" [cancel]="false" readonly="true"></p-rating>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="domaine.indicateurs">
+                        <div class='indicateur-row' *ngFor="let performance of domaine.indicateurs">
+                            <div class='indicateur-div'><span> {{performance.libelle}}</span></div>
+                            <div class='indicateur-image' *ngIf="performance.image1">
+                                <img class='ind-img'
+                                     [src]="'data:' + performance.image1ContentType + ';base64,' + performance.image1">
+                            </div>
+                            <div *ngIf="performance.valeurmodalites?.length > 0"
+                                 [ngClass]="{'full-size': performance.image2ContentType === null,
+                                 'indicateur-col': performance.image2ContentType !== null,
+                                 'full-size1':performance.image1ContentType === null && performance.image2ContentType === null}">
+                                <div class="sous-indicateur">
+                                    <div class="type-item" *ngFor="let sousIndicateur of performance.valeurmodalites">
+                                        <div class="text-center">
+                                            <img
+                                                *ngIf="sousIndicateur.valeur.toUpperCase()==='NON' || sousIndicateur.valeur.toUpperCase()==='FALSE'"
+                                                class='type-img'
+                                                [src]="'data:' + performance.imageModaliteNOKContentType + ';base64,' + performance.imageModaliteNOK"/>
+                                            <img
+                                                *ngIf="sousIndicateur.valeur.toUpperCase()==='OUI' || sousIndicateur.valeur.toUpperCase()==='TRUE'"
+                                                class='type-img'
+                                                [src]="'data:' + performance.imageModaliteOKContentType + ';base64,' + performance.imageModaliteOK"/>
+                                        </div>
+                                        <div class="text-center">{{sousIndicateur.modalite?.libelle}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class='graduate-col' *ngIf="performance.valeurmodalites?.length === 0">
+                                <div class='tinkerslider'>
+                                    <div class="d-flex align-items-center p-2">
+                                        <div class="born-min">
+                                            <sup><span class="p-1">0pts</span></sup>
+                                            <br>
+                                            <br>
+                                            <sub><span class="p-1">{{performance.borneMin}} {{performance.uniteBorne}}</span></sub>
+                                        </div>
+                                        <div class="progress bar-wrapper w-100 ">
+                                            <div class="progress-bar skill-bar" role="progressbar"
+                                                 [ngStyle]="{'height':'36px', 'width': valeurEnPourcentage(performance.valeurIndicateur, performance.borneMax)+'%'}"
+                                                 aria-valuenow="76" aria-valuemin="0" aria-valuemax="100">
+                                                <div>
+                                                    <span class="p-2">
+                                                        {{performance.valeurIndicateur |number:'.2'}}
+                                                        {{performance.uniteBorne}}
+                                                        =>
+                                                        {{performance.sroreIndicateur |number:'.2'}}pts
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="born-max">
+                                            <sup><span class="p-1">{{performance.totalPoint}}pts</span></sup>
+                                            <br>
+                                            <br>
+                                            <sub><span class="p-1">{{performance.borneMax}} {{performance.uniteBorne}}</span></sub>
+                                        </div>
+                                    </div>
+                                    <!-- <ng5-slider [(value)]="value" [options]="options"></ng5-slider> -->
+                                </div>
+                            </div>
+                            <div class='indicateur-image'
+                                 *ngIf="performance.valeurmodalites?.length === 0">
+                                <img class='ind-img'
+                                     [src]="'data:' + performance.image2ContentType + ';base64,' + performance.image2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-points pl-2">
+            <span class="total-points-span">
+                <span>Points total en</span> &nbsp;<span *ngIf="selectedYear" id="bottom_year1">
+                <span>{{selectedYear?.annee}}</span></span>
+                <span id="commune_total_point1"> :{{performances?.scoreTypeIndicateur | number: '.2'}}<span>/</span>
+                    {{performances?.totalTypeDomaine}}</span> </span>&nbsp;<span id="commune-stars1">
+                <p-rating [ngModel]="performances?.nombreEtoile" [cancel]="false" readonly="true"></p-rating>
+            </span>
+        </div>
+    </div>
+
+    <div class="content poster2" id="poster2"
+         *ngIf="performances  &&  selectedTypeIndicateur && selectedTypeIndicateur.libelle.toUpperCase().includes('SERVICES PUBLICS')">
+        <div class="titre-mairie"><span>MUNICIPALITE DE <span
+            id="communeName">{{selectedCommune?.libelle}}</span></span>
+        </div>
+        <div class="titre-service">
+            <div class="static-service-text1">
+                <span>PERFORMANCE MUNICPALITE</span><span
+                id="year">&nbsp;{{selectedYear?.annee}}</span>
+            </div>
+            <div class="logo">
+                <img class="pact-img mb-2" src="../../../content/images/pact.PNG">
+            </div>
+            <div class="static-service-text2">
+                <span>SERVICES PUBLICS
+                </span>
+            </div>
+        </div>
+        <div>
+            <div class="poster-container">
+                <div *ngFor="let domaine of performances.domaines">
+                    <div class="domaine-div">
+                        <div class="circle-div">
+                            <img class="circle-content" style="width: 80px; height: 70px"
+                                 [src]="'data:' + domaine.imageContentType + ';base64,' + domaine.image">
+                        </div>
+                        <div class='domaine'>{{domaine.libelle}} ---
+                            {{domaine.totalScore | number: '.2' }}<span>/</span>{{domaine.pointTotal}} points
+                        </div>
+                        <div class="monCase">
+                        </div>
+                        <div class='star'>
+                            <div class='own-rateyo' [id]="'rateyo_'+ domaine.id" style="width: 250px;">
+                                <p-rating [ngModel]="domaine.nbEtoile" [cancel]="false" readonly="true"></p-rating>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="domaine.indicateurs">
+                        <div class='indicateur-row' *ngFor="let performance of domaine.indicateurs">
+                            <div class='indicateur-div'><span> {{performance.libelle}}</span></div>
+                            <div class='indicateur-image'>
+                                <img class='ind-img'
+                                     [src]="'data:' + performance.image1ContentType + ';base64,' + performance.image1"/>
+                            </div>
+                            <div class='graduate-col'>
+                                <div class='tinkerslider'>
+                                    <div class="d-flex align-items-center p-2">
+                                        <div class="born-min">
+                                            <sup><span class="p-1">0pts</span></sup>
+                                            <br>
+                                            <br>
+                                            <sub><span class="p-2">{{performance.borneMin}} {{performance.uniteBorne}}</span></sub>
+                                        </div>
+
+                                        <div class="progress bar-wrapper w-100 ">
+                                            <div *ngIf="performance.libelle.includes('approvisionnement')" class="progress-bar skill-bar" role="progressbar"
+                                                 [ngStyle]="{'height':'36px', 'width': valeurEnPourcentage(performance.sroreIndicateur,performance.totalPoint)+'%'}"
+                                                 aria-valuenow="76" aria-valuemin="0" aria-valuemax="100">
+                                                <div>
+                                                    <span class="p-2">
+                                                        {{performance.valeurIndicateur|number:'.2'}}
+                                                        {{performance.uniteBorne}}
+                                                        =>
+                                                        {{performance.sroreIndicateur|number:'.2'}}pts</span>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="!performance.libelle.toUpperCase().includes('APPROVISIONNEMENT')" class="progress-bar skill-bar" role="progressbar"
+                                                 [ngStyle]="{'height':'36px', 'width': valeurEnPourcentage(performance.valeurIndicateur,performance.borneMax)+'%'}"
+                                                 aria-valuenow="76" aria-valuemin="0" aria-valuemax="100">
+                                                <div>
+                                                    <span class="p-2">
+                                                        {{performance.valeurIndicateur|number:'.2'}}
+                                                        {{performance.uniteBorne}}
+                                                        =>
+                                                        {{performance.sroreIndicateur|number:'.2'}}pts</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="born-max">
+                                            <sup><span class="p-1">{{performance.totalPoint}}pts</span></sup>
+                                            <br>
+                                            <br>
+                                            <sub><span class="p-2">{{performance.borneMax}} {{performance.uniteBorne}} </span></sub>
+                                        </div>
+
+                                    </div>
+                                    <!-- <ng5-slider [(value)]="value" [options]="options"></ng5-slider> -->
+                                </div>
+                            </div>
+                            <div class='indicateur-image'>
+                                <img class='ind-img' [src]="'data:' + performance.image2ContentType + ';base64,' + performance.image2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="total-points">
+            <span class="total-points-span pl-2 pt-1">
+                <span>Points total en</span> &nbsp;<span *ngIf="selectedYear" id="bottom_year">
+                <span>{{selectedYear?.annee}}</span></span>
+                <span id="commune_total_point"> :{{performances?.scoreTypeIndicateur | number: '.2'}}<span>/</span>
+                    {{performances?.totalTypeDomaine}}</span> </span>&nbsp;<span id="commune-stars">
+                <p-rating [ngModel]="performances?.nombreEtoile" [cancel]="false" readonly="true"></p-rating>
+            </span>
+        </div>
+    </div>
+
+    <div class="content no-performance-div" *ngIf="!performances && !isCharging">
+        <span>
+            Sélectionnez une année, une commune et le type d'indicateur pour visualiser un poster de cette
+            commune.
+        </span>
+    </div>
+    <div *ngIf="isCharging" class="text-center" style="padding-top: 20%;">
+        <span>
+            <img class="img" src="/content/images/ajax-loader.gif"/>
+            <span style="color: #660000; font-weight: bolder; font-size: medium">Chargement du Poster...</span><br>
+            <span style="color: #0c4e66; font-weight: bolder">Ceci peut prendre quelques instants.</span>
+        </span>
+    </div>
+</div>

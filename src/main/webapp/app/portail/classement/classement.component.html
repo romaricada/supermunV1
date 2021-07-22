@@ -1,0 +1,248 @@
+<div class="container-fluid">
+    <div class="col-sm-12 text-center mt-1">
+        <h4>
+            <strong style="color: green;font-family: sans-serif;">Classement</strong>
+            <span><hr></span>
+        </h4>
+
+    </div>
+<div class="card jh-card">
+    <div class="row own-ui-dropdown">
+        <div class=" own-alert own-alert-success col-sm">
+            <label>Année</label>
+            <div>
+                <p-spinner pKeyFilter="num" maxlength="4" id="mySpiner" placeholder="Choisir l'année" [style]="{'width':'100%'}" [(ngModel)]="year" (onChange)="onYearChange()" [min]="minYear" [max]="maxYear"></p-spinner>
+            </div>
+            <!--<p-dropdown [options]="exercies" [(ngModel)]="seletedExercice" [filter]="true" placeholder="Selectionnez l'année"
+                        optionLabel="annee"  (onChange)="onYearChange()" [showClear]="true"></p-dropdown>-->
+        </div>
+        <div class=" own-alert own-alert-success col-sm">
+            <label>Groupe de domaine</label>
+            <p-dropdown [options]="typeIndicateurs" [(ngModel)]="selectedTypeIndicateur" [filter]="true" placeholder="Selectionnez un groupe de domaine"
+                        optionLabel="libelle" (onChange)=" onTypIndicateurChange()" [showClear]="true"></p-dropdown>
+        </div>
+        <div class=" own-alert own-alert-success col-sm">
+            <label>Domaine d'indicateur</label>
+            <p-dropdown [options]="domaines" [(ngModel)]="selectedDomaine" [filter]="true" placeholder="Selectionnez un Domaine d'indicateur"
+                        optionLabel="libelle" (onChange)=" onDomaineChange()" [showClear]="true"></p-dropdown>
+        </div>
+        <div class=" own-alert own-alert-success col-sm">
+            <label>Indicateur</label>
+            <p-dropdown [options]="indicateurs" [(ngModel)]="selectedIndicateur" [filter]="true" placeholder="Selectionnez un indicateur"
+                        optionLabel="libelle" (onChange)="onIndicateurChange()" [showClear]="true"></p-dropdown>
+        </div>
+    </div>
+</div>
+<div class="row pt-2">
+        <div class="col-sm-12 text-center">
+            <button pButton label="Classement" type="button" icon="fa fa-sort-amount-asc"
+                    (click)="changeToClassement()"
+                    [ngClass]="{
+                            'font-weight-bold ui-button-secondary text-success':onClassement === false,
+                             'font-weight-bold ui-button-success text-white':onClassement === true
+                            }">
+            </button>
+            <button pButton label="Comparaison" type="button" icon="fa fa-random"
+                    (click)="changeToCompare()"
+                    [ngClass]="{
+                            'font-weight-bold ui-button-secondary text-success':onCompare === false,
+                             'font-weight-bold ui-button-success text-white':onCompare === true }">
+            </button>
+        </div>
+    </div>
+<div class="row pt-1" *ngIf="onClassement">
+    <div class="col-sm-12 pb-1">
+        <div class="col-sm-12">
+            <p style="font-size: medium" class="text-center">
+                Classement des communes par ordre croissant selon les scores
+                <span *ngIf="isCharging">
+                        <img class="img" src="/content/images/ajax-loader.gif"/>
+                        <span style="color: #660000">Chargement...</span>
+                </span>
+            </p>
+        </div>
+        <p-table #dtf [value]="communes" [scrollable]="true"
+                 [globalFilterFields]="['libelle']">
+            <ng-template pTemplate="caption">
+                <div class="row">
+                    <div class="col-sm-5 mb-1 text-left">
+                        <input type="text" pInputText size="30%" placeholder="Rechercher une commune"
+                               (input)="dtf.filterGlobal($event.target.value, 'contains')"  style="width:auto">
+                    </div>
+                    <div class="col-sm-7 mb-1 text-right">
+                        <span *ngIf="!isCharging1">Télecharger</span>
+                        <span *ngIf="isCharging1">
+                            <span style="color: #660000">Téléchargement...</span>&nbsp;
+                            <img class="img" src="/content/images/ajax-loader.gif"/>
+
+                        </span>
+                        <button type="button" class="ui-button-success text-white" pButton
+                                pTooltip="Télécharger en format pdf" label="(pdf)" (click)="imprimerClassement(0)"
+                                tooltipPosition="left" icon="fa fa-download">
+
+                        </button>
+                        <button type="button" class="ui-button-success text-white" pButton
+                                pTooltip="Télécharger en format xls" label="(xls)" (click)="imprimerClassement(1)"
+                                tooltipPosition="left" icon="fa fa-download">
+
+                        </button>
+                        <button type="button" class="ui-button-success text-white" pButton
+                                pTooltip="Télécharger en format csv" label="(csv)" (click)="imprimerClassement(2)"
+                                tooltipPosition="left" icon="fa fa-download">
+
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th width="50">Rang</th>
+                    <th width="100">Région</th>
+                    <th width="80">Province</th>
+                    <th width="80"
+                        [pSortableColumn]="'libelle'">
+                        Commune</th>
+                    <th width="60" class="text-center">Score</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <div class="text-center" style="border: solid 1px #848484;background: aliceblue;">
+                    <span>{{communes.length+" "}} Communes trouvées</span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                <tr>
+                    <td width="50">{{rowData.rangNational}}</td>
+                    <td width="100">{{rowData.libelleRegion}}</td>
+                    <td width="80">{{rowData.libelleProvince}}</td>
+                    <td width="80">{{rowData.libelle}}</td>
+                    <td width="60" class="text-center">{{rowData.scoreCommune|number:'.0-2'}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<div class="row pt-1" *ngIf="onCompare">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <p style="font-size: medium" class="text-center">
+                    Comparaison de deux communes
+                </p>
+            </div>
+            <div class="col-sm-12">
+                <div class="row" style="border: inset 1px #17a2b8; border-radius: 5px">
+                    <div class="col-sm-6 mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="mj_commune" style="font-size: larger;" class="font-weight-bold">Prémière commune</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <p-dropdown id="mj_commune" [options]="communes1" [style]="{'width':'100%'}" [(ngModel)]="commune1" [showClear]="true"
+                                            optionLabel="libelle" name="mj_centre" [filter]="true" placeholder="Commune 1"
+                                            (onChange)="getIndicateurByInterval('COM1')" [resetFilterOnHide]='true'>
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="mj_commune1" style="font-size: larger;" class="font-weight-bold">Deuxième commune</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <p-dropdown id="mj_commune1" [options]="communes1" [style]="{'width':'100%'}" [(ngModel)]="commune2" [showClear]="true"
+                                            optionLabel="libelle" name="mj_centre" [filter]="true" placeholder="Commune 2"
+                                            (onChange)="getIndicateurByInterval('COM2')" [resetFilterOnHide]='true'>
+                                </p-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!-- <div class="col-sm-12">
+                    <button pButton label="Charger Graphe" type="button" icon="fa fa-sort-amount-asc"
+                            (click)="chowCahrt()">
+                    </button>
+                </div>-->
+            </div>
+            <div class="col-sm-6">
+                <p-table [value]="indicateurs1" [scrollable]="true">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th width="50">N°</th>
+                            <th width="180"
+                                [pSortableColumn]="'libelle'">
+                                Indicateurs </th>
+                            <th width="60" class="text-center">Score</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                        <tr>
+                            <td width="50">{{index+1}}</td>
+                            <td width="180">{{rowData.libelle}}</td>
+                            <td width="60" class="text-center">
+                                {{rowData.sroreIndicateur|number:'.0-2'}} {{'/'+rowData.totalPoint}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                        <div class="text-center" style="border: solid 1px #848484;background: aliceblue;">
+                            <strong><span>{{"TOTAL POINT: "}}  <span class="ml-2 badge badge-info">{{total1|number:'.2'}}</span></span></strong>
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div class="col-sm-6">
+                <p-table [value]="indicateurs2" [scrollable]="true">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th width="50">N°</th>
+                            <th width="180"
+                                [pSortableColumn]="'libelle'">
+                                Indicateurs </th>
+                            <th width="60" class="text-center">Score</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                        <tr>
+                            <td width="50">{{index+1}}</td>
+                            <td width="180">{{rowData.libelle}}</td>
+                            <td width="60" class="text-center">
+                                {{rowData.sroreIndicateur|number:'.0-2'}} {{'/'+rowData.totalPoint}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                        <div class="text-center" style="border: solid 1px #848484;background: aliceblue;">
+                            <strong><span>{{"TOTAL POINT: "}}<span class="ml-2 badge badge-info">{{total2|number:'.2'}}</span></span></strong>
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div class="col-sm-12 myChart mt-4" *ngIf="indicateurs1.length>0 && indicateurs2.length>0">
+                <div class="text-center">
+                    <h3 style=" font-weight: 500; text-decoration-line: underline;">
+                        Le Graphe de comparaison des communes <span class="stronger">{{commune1.libelle+' et '+commune2.libelle}}</span>
+                    </h3>
+                </div>
+                <div class="text-left">
+                   <span class="strong">Point(Pts)</span>
+                </div>
+                <div>
+                    <p-chart #chart type="bar" [data]="data" height="400" [options]="chartOptions"></p-chart>
+                    <div class="text-center">
+                        <span class="strong">Indicateur</span>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="ui-button-success text-white" pButton
+                                pTooltip="Télécharger en png" (click)="printChart(chart)" label="graph(png)"
+                                tooltipPosition="left" icon="fa fa-download">
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

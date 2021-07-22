@@ -1,0 +1,513 @@
+@import 'bootstrap-variables';
+@import '~bootstrap/scss/functions';
+@import '~bootswatch/dist/materia/variables';
+@import '~bootstrap/scss/variables';
+
+/* ==============================================================
+Bootstrap tweaks
+===============================================================*/
+
+body,
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+  -webkit-print-color-adjust: exact !important;
+}
+
+td {
+  font-weight: bolder !important;
+}
+
+a:hover {
+  /* make sure browsers use the pointer cursor for anchors, even with no href */
+  cursor: pointer;
+}
+
+.breadcrumb {
+  padding: 0 0 !important;
+}
+
+/* ==========================================================================
+Browser Upgrade Prompt
+========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+Generic styles
+========================================================================== */
+
+/* other generic styles */
+
+.jh-card {
+  padding: 1.5%;
+  border: none;
+}
+
+.error {
+  color: white;
+  background-color: red;
+}
+
+.pad {
+  padding: 10px;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.break {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.readonly {
+  background-color: #eee;
+  opacity: 1;
+}
+
+.footer {
+  position: fixed;
+  display: block;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+@media print {
+  .footer {
+    display: none;
+  }
+}
+
+.hand,
+[jhisortby] {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+Custom alerts for notification
+========================================================================== */
+.alerts {
+  .alert {
+    text-overflow: ellipsis;
+
+    pre {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      padding: 0;
+      margin: 0;
+    }
+
+    .popover pre {
+      font-size: 10px;
+    }
+  }
+
+  .jhi-toast {
+    position: fixed;
+    width: 100%;
+
+    &.left {
+      left: 5px;
+    }
+
+    &.right {
+      right: 5px;
+    }
+
+    &.top {
+      top: 55px;
+    }
+
+    &.bottom {
+      bottom: 55px;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .alerts .jhi-toast {
+    width: 50%;
+  }
+}
+
+.page-item.active .page-link {
+  z-index: auto;
+  font-weight: bold;
+  font-size: medium;
+}
+
+/* ==========================================================================
+entity detail page css
+========================================================================== */
+.row.jh-entity-details > {
+  dd {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .row.jh-entity-details > {
+    dt {
+      margin-bottom: 15px;
+    }
+
+    dd {
+      border-bottom: 1px solid #eee;
+      padding-left: 180px;
+      margin-left: 0;
+    }
+  }
+}
+
+/* ==========================================================================
+ui bootstrap tweaks
+========================================================================== */
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
+
+.thread-dump-modal-lock {
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* jhipster-needle-scss-add-main JHipster will add new css style */
+body.ui-listbox {
+  width: 95% !important;
+}
+
+body .ui-listbox {
+  padding: 0;
+  min-width: 12em;
+  background: #ffffff;
+  border: 1px solid #a6a6a6;
+  width: 95%;
+}
+
+body .own-ui-dropdown .ui-dropdown {
+  background: #ffffff;
+  border: 1px solid #a6a6a6;
+  -moz-transition: border-color 0.2s;
+  -o-transition: border-color 0.2s;
+  -webkit-transition: border-color 0.2s;
+  transition: border-color 0.2s;
+  width: 100% !important;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  text-align: left;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.legend {
+  line-height: 18px;
+  color: #555;
+  text-align: left;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+// Gestion du style des fieldset
+body .ui-fieldset,
+.ui-fieldset .ui-fieldset-legend {
+  padding: 0.1em 1em !important;
+  border: solid 1px #3e8acc !important;
+  padding-bottom: 0.5em !important;
+}
+
+body .ui-fieldset-legend {
+  text-align: center !important;
+}
+
+.ui-confirmdialog,
+.ui-toast {
+  width: 30em !important;
+}
+
+.ui-toast .ui-toast-summary {
+  font-size: 1.2em;
+}
+
+.ui-toast p-toastItem {
+  text-align: center !important;
+  font-weight: bold;
+}
+
+.ui-confirmdialog {
+  width: 45em !important;
+}
+
+body p-confirmDialog .ui-dialog {
+  top: 30% !important;
+}
+
+body p-confirmDialog .ui-dialog .ui-dialog-content {
+  background-color: #ffffff;
+  color: orangered;
+  border: 1px solid #c8c8c8;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.form-control {
+  font-weight: bold !important;
+  height: calc(1em + 1.5rem + 0rem) !important;
+  padding: 0 1em 0 1em !important;
+}
+
+.leaflet-touch .leaflet-control-attribution {
+  display: none !important;
+}
+
+input {
+  border-bottom: solid 0.1em !important;
+  border-color: #880000 !important;
+  background-color: #eeeeee !important;
+}
+
+input.form-control {
+  padding-left: 1em !important;
+}
+
+select {
+  border-bottom: solid 0.1em !important;
+  border-color: #880000 !important;
+  background-color: #eeeeee !important;
+}
+
+/*label {
+  font-weight: bold !important;
+  font-size: 1.5em !important;
+}*/
+
+body .ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active a {
+  background-color: #4caf50 !important;
+}
+
+// **************POSTER************************
+.poster2 {
+  .ui-rating a .ui-rating-icon {
+    font-size: 3em !important;
+    color: #d5583a !important;
+  }
+}
+
+.poster1 {
+  .ui-rating a .ui-rating-icon {
+    font-size: 3em !important;
+    color: #5eaea4 !important;
+  }
+}
+
+#commune-stars1 .ui-rating a .ui-rating-icon {
+  color: #fec95e !important;
+}
+
+#commune-stars .ui-rating a .ui-rating-icon {
+  color: rgb(67, 138, 201) !important;
+}
+
+#cardre1 .ui-card {
+  background: #dddddd;
+}
+#cardre2 .ui-card {
+  background: #dddddd;
+}
+#cardre3 .ui-card {
+  background: #dddddd;
+}
+#cardre4 .ui-card {
+  background: #dddddd;
+}
+
+.ui-rating {
+  font-size: 1.25em;
+  display: inline-flex;
+}
+
+.ui-rating a .ui-rating-icon #starOnDonnee0,
+#starOnDonnee1,
+#starOnDonnee2,
+#starOnDonnee3 {
+  font-size: 20px !important;
+}
+
+.ui-card-subtitle {
+  opacity: 10;
+}
+textarea {
+  width: 100%;
+}
+
+.select-item .ng-pristine .ng-valid .ng-touched {
+  float: right !important;
+}
+
+body .ui-menubar {
+  border: none !important;
+  font-weight: bold !important;
+}
+
+body .ui-menubar .ui-menubar-root-list > .ui-menuitem > .ui-menuitem-link {
+  font-weight: bold !important;
+  border: solid 1px lightgray !important;
+  border-radius: 5px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .ui-menubar .ui-menuitem-link {
+    font-weight: bold !important;
+    width: 250px !important;
+  }
+}
+
+.menubar {
+  pointer-events: none;
+}
+
+.ui-menu .ui-menuitem-link {
+  text-align: left !important;
+}
+
+jhi-item-count {
+  display: none;
+}
+
+.myTableCol {
+  .ui-table-tbody > tr.ui-state-highlight {
+    background-color: #4caf50 !important;
+  }
+}
+
+body .ui-table .ui-sortable-column.ui-state-highlight {
+  background-color: #c5c5c5;
+  color: #333333;
+}
+
+.search-border {
+  border: solid 1px blue;
+  border-radius: 5px;
+}
+
+body #dashbord .ui-card:hover {
+  background-color: #1ebea5;
+}
+
+#myDialog {
+  .ui-dialog-titlebar-close {
+    display: none;
+  }
+}
+
+#mySplite .ui-splitbutton {
+  width: 100% !important;
+  height: 37px !important;
+}
+
+#mySplite .ui-button {
+  // width:100% !important;
+  height: 44px !important;
+}
+
+@media (max-width: 70em) {
+  .t1 {
+    display: none;
+  }
+  #communeTable .ui-widget-header {
+    th {
+      font-size: 9px;
+    }
+  }
+
+  body .ui-table .ui-table-tbody > tr > td {
+    word-break: break-word;
+    font-size: 9px;
+  }
+  #performMenuBar .ui-menuitem-link {
+    width: 300px;
+    text-align: center;
+  }
+
+  .accueil-entete {
+    font-size: 10px !important;
+  }
+}
+
+body .ui-spinner .ui-spinner-input {
+  border-bottom: solid 0.1em !important;
+  border-color: #dadada !important;
+  background-color: #ffffff !important;
+  width: 100%;
+}
+
+#mySpiner[type='number'] {
+  -moz-appearance: textfield;
+}
+
+body .ui-spinner {
+  width: 100%;
+}
+
+body #mySpiner .ui-button {
+  color: #ffffff !important;
+  background-color: #4caf50 !important;
+  border: 1px solid #4caf50 !important;
+}
+body #mySpiner1 .ui-button {
+  color: #ffffff !important;
+  background-color: #4caf50 !important;
+  border: 1px solid #4caf50 !important;
+}
+body #mySpiner2 .ui-button {
+  color: #ffffff !important;
+  background-color: #4caf50 !important;
+  border: 1px solid #4caf50 !important;
+}
+
+body .ui-overlaypanel {
+  left: 50%;
+  width: 43%;
+}
+
+body .ui-overlaypanel-content {
+  max-height: 25em;
+  overflow-y: auto;
+}

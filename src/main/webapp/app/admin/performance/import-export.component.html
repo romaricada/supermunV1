@@ -1,0 +1,56 @@
+<p-menubar id="performMenuBar" *jhiHasAnyAuthority="['ROLE_IMPORT_DATA','ROLE_EXPORT_MODEL']" [model]="items"></p-menubar>
+
+<p-dialog [(visible)]="display" [style]="{width: '500px'}" [modal]="true" [closable]="false">
+    <p-header>
+        <h3 class="font-weight-bold text-primary text-center">{{action === 'export' ? 'Exportation du modèle' : 'Importation des données'}}
+            {{ext === 'XLSX' ? ' en Excel' : ' en CSV' }} </h3>
+    </p-header>
+    <form name="editForm" role="form" novalidate #editForm="ngForm" (ngSubmit)="doRequest()">
+        <div class="ui-dialog-content" style="height: 300px">
+            <div class="form-group">
+                <label class="form-control-label font-weight-bold">Année</label>
+                <p-dropdown [options]="exercices" [style]="{'width':'100%'}"
+                            [(ngModel)]="exercice" placeholder="Année" name="annee" optionLabel="annee"
+                            filter="filter" required
+                            [showClear]="true" (onChange)="onChange()"></p-dropdown>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label font-weight-bold">Groupe de domaine</label>
+                <p-dropdown [options]="typeIndicateurs" [style]="{'width':'100%'}" [(ngModel)]="typeIndicateur"
+                            placeholder="Type indicateur" name="typIndicateur" optionLabel="libelle"
+                            [showClear]="true" required (onChange)="onChange()"></p-dropdown>
+            </div>
+            <div class="form-group" *ngIf="action === 'import'">
+                <label class="form-control-label font-weight-bold">Fichier</label>
+                <input type="file" id="file" name="file" [accept]="'.' + ext|lowercase" (change)="setFileData($event)"
+                       required/>
+            </div>
+            <div class="p-2 alert-warning mt-5 text-center" type="button" disabled *ngIf="request">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="font-weight-bold">Importation des données en cours .........</span><br>
+                <span class="font-weight-bold text-danger">Cette opération peut prendre au moins 4 minutes !</span>
+            </div>
+        </div>
+        <p-footer>
+            <div class="float-right mt-3">
+                <button class="ui-button-danger font-weight-bold" (click)="displayDialog()" pButton type="button"
+                        title="Quitter" [disabled]="request"
+                        name="pv" label="Annuler" icon="fa fa-ban">
+                </button>
+                <button class="ui-button-info font-weight-bold" *ngIf="action !== 'export-data'"
+                        pButton type="submit" title="importation"
+                        [disabled]="editForm.form.invalid || (action === 'import' && fichier === undefined)"
+                        name="data" [label]="action === 'export' ? 'Exporter les données' : 'Importer les données'"
+                        icon="fa fa-download">
+                </button>
+                <button class="ui-button-info font-weight-bold" *ngIf="action === 'export-data'"
+                        pButton type="submit" title="importation"
+                        [disabled]="editForm.form.invalid"
+                        name="data" label="Exporter les données"
+                        icon="fa fa-download">
+                </button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog>
+<p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>

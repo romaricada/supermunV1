@@ -1,0 +1,17 @@
+id;code;libelle;description;sous_indicateur;image_1;image_1_content_type;image_2;image_2_content_type;image_modalite_ok;image_modalite_ok_content_type;image_modalite_nok;image_modalite_nok_content_type;total_point;interval;deleted;domaine_id;borne_min;borne_max;unite_borne;created_by;created_date;last_modified_by;last_modified_date
+1252;value_passing_exam;Ecart entre le taux d’admission au CEP dans la commune et au niveau national;;false;;;;;;;;;20;true;false;1201;-40;35;Pts;admin;2019-11-23 16:45:36.57;admin;2019-11-23 16:45:36.57
+1253;value_school_supplies;Retard moyen d’approvisionnement en fournitures scolaires;;false;;;;;;;;;10;true;false;1201;50;0;Jours;admin;2019-11-23 16:45:36.58;admin;2019-11-23 16:45:36.58
+1254;value_school_wells;Taux d’écoles avec un forage fonctionnel;;false;;;;;;;;;25;true;false;1201;0;100;%;admin;2019-11-23 16:45:36.59;admin;2019-11-23 16:45:36.59
+1255;value_school_latrines;Taux d’écoles ayant un nombre suffisant de latrines fonctionnelles;;false;;;;;;;;;15;true;false;1201;25;100;%;admin;2019-11-23 16:45:36.60;admin;2019-11-23 16:45:36.60
+1256;value_assisted_births;Taux d'accouchements assistés;;false;;;;;;;;;15;true;false;1202;35;100;%;admin;2019-11-23 16:45:36.61;admin;2019-11-23 16:45:36.61
+1257;value_vaccines;Taux de nourrissons 0 à 11 mois ayant reçu les vaccins recommand;;false;;;;;;;;;15;true;false;1202;55;100;%;admin;2019-11-23 16:45:36.62;admin;2019-11-23 16:45:36.62
+1258;value_ceps;Taux de CSPS ayant reçu un stock de gaz suffisant;;false;;;;;;;;;10;true;false;1202;0;100;%;admin;2019-11-23 16:45:36.63;admin;2019-11-23 16:45:36.63
+1259;value_water_access;Taux de la population ayant accès à une source d’eau potable fonctionnelle;;false;;;;;;;;;18;true;false;1203;15;100;%;admin;2019-11-23 16:45:36.64;admin;2019-11-23 16:45:36.64
+1260;value_birth_certificates;Taux d’actes de naissance délivrés;;false;;;;;;;;;12;true;false;1204;10;100;%;admin;2019-11-23 16:45:36.65;admin;2019-11-23 16:45:36.65
+1261;value_personnel;Personnel de la municipalité remplissant l’organigramme type;;true;;;;;;;;;10;false;false;1205;1;8;Image;admin;2019-11-23 16:45:36.66;admin;2019-11-23 16:45:36.66
+1262;value_meetings1;Nombre de sessions ordinaires du Conseil municipal tenues;;true;;;;;;;;;5;false;false;1206;1;4;Image;admin;2019-11-23 16:45:36.67;admin;2019-11-23 16:45:36.67
+1263;value_meetings2;Nombre de cadres de concertations organisés par la Mairie;;true;;;;;;;;;8;false;false;1206;1;4;Image;admin;2019-11-23 16:45:36.68;admin;2019-11-23 16:45:36.68
+1264;value_attendance;Taux de participation aux sessions ordinaires du conseil municipal;;false;;;;;;;;;10;true;false;1206;20;100;%;admin;2019-11-23 16:45:36.69;admin;2019-11-23 16:45:36.69
+1265;value_taxes_raised;Recettes fiscales collectées par habitant;;false;;;;;;;;;25;true;false;1207;293;7500;FCFA;admin;2019-11-23 16:45:36.70;admin;2019-11-23 16:45:36.70
+1266;value_taxes_forecast;Taux de recouvrement de taxes en fonction des prévisions;;false;;;;;;;;;10;true;false;1207;50;100;%;admin;2019-11-23 16:45:36.71;admin;2019-11-23 16:45:36.71
+1267;value_procurement;Taux d’exécution du plan de passation des marchés;;false;;;;;;;;;18;true;false;1207;0;100;%;admin;2019-11-23 16:45:36.72;admin;2019-11-23 16:45:36.72

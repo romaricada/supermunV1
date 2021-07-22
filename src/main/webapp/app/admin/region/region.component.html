@@ -1,0 +1,110 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Liste des régions du BURKINA FASO</span>
+        </div>
+    </div>
+    <!-- jhi-breadcrumb [breadCrumb]="'/admin/region'" [title]="'Région'"></jhi-breadcrumb -->
+    <p-toolbar name="toolbar">
+        <div class="ui-toolbar-group-left search-border">
+            <i class="fa fa-search-plus ml-1"></i>
+            <input type="text" class="border-0" pInputText [style]="{'width':'100%'}" placeholder="Rechercher" aria-label="Username"
+                   aria-describedby="basic-addon1" (search)="doSearch($event)"
+                   jhiTableGlobalSearch [values]="regionsTMP" />
+        </div>
+    </p-toolbar>
+    <br/>
+    <!-- Affichage du tableau des régions  -->
+    <div class="table-responsive">
+        <p-table #tdf [value]="regions">
+            <ng-template pTemplate="header" let-columns>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th scope="col" jhiSortBy="code"><span>Code</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="libelle"><span>Region</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="color"><span>Couleur</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th class="text-center" scope="col" *jhiHasAnyAuthority="'ROLE_EDIT_REGION'"></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-region let-columns="columns">
+                <tr [pSelectableRow]="region">
+                    <td>{{region.code}}</td>
+                    <td>{{region.libelle}}</td>
+                    <td>
+                        <input [(ngModel)]="region.couleur" class="form-control" name="color" required
+                               type="color" readonly="true" style="width: 100% !important;"/>
+                    </td>
+                    <td class="text-right" *jhiHasAnyAuthority="'ROLE_EDIT_REGION'">
+                        <div class="btn-group">
+                            <button type="submit" (click)="add(region)"
+                                    class="btn-modif">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Modifier</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div [hidden]="regions?.length === 0">
+        <div class="row justify-content-center mt-1">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
+    <p-dialog (onHide)="annulerSaisie()" [(visible)]="display" [baseZIndex]="10000" [minY]="70"
+              [modal]="true" [responsive]="true" [style]="{width: '30%', minWidth: '200px'}"
+              header="Création/Ajout d'un type-indicateur">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <div class="row">
+                <p-toast key="myKey1" position="center"></p-toast>
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_code">Code(*)</label>
+                        <input [(ngModel)]="region.code" class="form-control" id="field_code" name="code" required
+                               pKeyFilter="alphanum" type="text"/>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_libelle">Libellé(*)</label>
+                        <input [(ngModel)]="region.libelle" class="form-control" id="field_libelle" name="libelle"
+                              readonly
+                               type="text"/>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_color">Libellé(*)</label>
+                        <input [(ngModel)]="region.couleur" class="form-control" id="field_color" name="color" required
+                               type="color"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button (click)="annulerSaisie()" class="btn btn-secondary btn-form-cancel" id="cancel-save"
+                        type="button">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                </button>
+
+                <button [disabled]="editForm.invalid || isSaving" class="btn btn-primary btn-form-save" id="save-entity"
+                        type="submit">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregister</span>
+                </button>
+            </div>
+
+        </form>
+    </p-dialog>

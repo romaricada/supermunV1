@@ -1,0 +1,157 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Gestion des Performances </span>
+        </div>
+    </div>
+    <form novalidate>
+        <p-toolbar name="toolbar">
+            <div class="ui-toolbar-group-right">
+                <jhi-import-export></jhi-import-export>
+            </div>
+        </p-toolbar>
+    </form>
+    <div class="row filter-item">
+        <div class="col-sm">
+            <label class="form-control-label">Année</label>
+            <p-dropdown [options]="exercices" [style]="{'width':'100%'}" [(ngModel)]="exercice" placeholder="Année"
+                        optionLabel="annee" [showClear]="true"
+                        (onChange)="findAllDataOfCommune(exercice?.id, typeIndicateur?.id)"></p-dropdown>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="form-control-label">Groupe de domaine</label>
+                <p-dropdown [options]="typeIndicateurs" [style]="{'width':'100%'}" [(ngModel)]="typeIndicateur"
+                            name="indic" placeholder="Groupe de domaine"
+                            optionLabel="libelle" [showClear]="true" required="true"
+                            (onChange)="findAllDataOfCommune(exercice?.id, typeIndicateur?.id)">
+                </p-dropdown>
+            </div>
+        </div>
+        <!--div class="col-sm-2">
+            <div class="form-group">
+                <label class="form-control-label">Région</label>
+                <p-dropdown [options]="regions" [style]="{'width':'100%'}" [(ngModel)]="region"
+                            name="region" placeholder="Région"
+                            optionLabel="libelle" [showClear]="true"
+                            (onChange)="findAllDataOfCommune(exercice?.id, typeIndicateur?.id)">
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label class="form-control-label">Province</label>
+                <p-dropdown [options]="provinces" [style]="{'width':'100%'}" [(ngModel)]="province"
+                            name="province" placeholder="Province"
+                            optionLabel="libelle" [showClear]="true"
+                            (onChange)="findAllDataOfCommune(exercice?.id, typeIndicateur?.id)">
+                </p-dropdown>
+            </div>
+        </div-->
+        <!--<div class="col-sm-2 marge"
+             *jhiHasAnyAuthority="'ROLE_EXPORT_DATA'">
+            <p-menubar [model]="items" [ngClass]="{'menubar': !typeIndicateur && !exercice}"></p-menubar>
+        </div>-->
+        <div class="col-sm" style="padding-top: 37px;margin-bottom: 11px;" *ngIf="!checkIfValidated && perfers?.length > 0">
+            <button *jhiHasAnyAuthority="'ROLE_VIDER_DATA'" type="button" pButton (click)="deleteElement(exercice.id, typeIndicateur)"
+                    label="Vider les données pour le type selectionné"
+                    class="btn btn-primary">
+
+            </button>
+        </div>
+        <div class="col-sm mt-4" style="padding-top: 10px;" *ngIf="checkIfValidated && perfers?.length > 0">
+            <button *jhiHasAnyAuthority="'ROLE_VALIDER_DATA'" type="button" pButton (click)="deValiderDonnee(exercice.id, typeIndicateur)"
+                    label="Depublier les données"
+                    class="btn btn-primary" style="width: 201px;height: 43px;">
+
+            </button>
+        </div>
+    </div>
+    <div class="alert alert-warning font-weight-bold mt-1" *ngIf="!checkIfValidated && perfers?.length > 0">Les données ne sont pas publiées, merci de tout valider avant la publication!</div>
+    <div class="alert alert-success font-weight-bold mt-1" *ngIf="checkIfValidated && perfers?.length > 0">Les données sont publiées !</div>
+    <br/>
+    <div class="table-responsive" *ngIf="perfers?.length > 0">
+        <table class="table table-striped table-sm table-bordered table-hover table-responsive-sm"
+               style="overflow-x: auto !important;">
+            <thead>
+            <tr>
+                <th style="min-width: 250px !important;">Commune</th>
+                <th *ngFor="let entete of entetes">
+                    <span>{{entete}}</span>
+                </th>
+                <th class="text-center" *ngIf="perfers?.length > 0">
+                    <button *jhiHasAnyAuthority="'ROLE_VALIDER_DATA'" pButton type="button" icon="pi pi-check" class="font-weight-bold" label="Tout valider"
+                            (click)="saveAllCommuneData()" [disabled]="checkIfValidated"></button>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let perf of perfers; let i = index">
+                <td>
+                    <span class="fa fa-check text-success border p-1" *ngIf="perf.validated"></span>
+                    <span class="fa fa-times text-danger border p-1" *ngIf="!perf.validated"></span>
+                    <span class="font-weight-bold ml-2">{{perf.libelle}}</span>
+                </td>
+                <td *ngFor="let col of perf.cols; let j = index" class="text-center">
+                    <span *ngIf="!col.isModalite && col.typeObjet === 'valeurModalite'">
+                        <input class="border-0 text-center font-weight-bold" type="number" [(ngModel)]="col.value"
+                               [name]="'perf_value' + j + i "
+                               pInputText *ngIf="!perf.validated"/>
+                        <span *ngIf="perf.validated" class="font-weight-bold">{{col.value| number: '.2'}}</span>
+                    </span>
+                    <span *ngIf="col.isModalite === true && col.typeObjet === 'valeurModalite'">
+                        <span class="font-weight-bold">{{col.value}}</span>
+                        <select [(ngModel)]="col.value" [name]="'perf_value' + j + i "
+                                class="select-item font-weight-bold" *ngIf="!perf.validated">
+                            <option value="oui">oui</option>
+                            <option value="non">non</option>
+                        </select>
+                    </span>
+                    <span *ngIf="col.typeObjet === 'performance'">
+                        <input class="border-0 text-center font-weight-bold" type="number" [(ngModel)]="col.value"
+                               [name]="'perf_value' + j + i " pInputText *ngIf="!perf.validated"/>
+                        <span *ngIf="perf.validated"
+                              class="font-weight-bold text-center">{{col.value| number: '.2'}}</span>
+                    </span>
+                </td>
+                <td class="text-center">
+                    <button *jhiHasAnyAuthority="'ROLE_VALIDER_DATA'" pButton type="button" icon="pi pi-check" class="font-weight-bold" label="Valider"
+                            [disabled]="perf.validated" (click)="saveCommuneData(perf)"></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="indicateurs?.length === 0" *ngIf="perfers?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+
+    <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" class="text-warning">
+        <p-footer>
+            <button type="button" class="ui-button-secondary text-info" pButton icon="pi pi-times" label="NON" (click)="cd.reject()"></button>
+            <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-check" label="OUI" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+    <p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>
+
+    <div *ngIf="isCharging" class="p-2 alert-warning mt-5 text-center container" type="button">
+        <span>
+            <img class="img" src="/content/images/ajax-loader.gif"/>
+            <span class="text-warning font-weight-bold">Veuillez patienter, chargement des données en cours...</span><br>
+            <span class="font-weight-bold text-danger">Cette opération peut prendre un certain temps !</span>
+        </span>
+    </div>
+
+    <p-dialog id="myDialog" header='Operation en cours...' [(visible)]='deleting' [responsive]='true' [modal]='true'
+              [style]="{'width' : '300px'}" [closable]='false'>
+        <div class="text-center">
+            <img class="img" style="width: 50px" src="../../../content/images/ajax-loader.gif"/>
+        </div>
+    </p-dialog>
+</div>

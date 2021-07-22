@@ -1,0 +1,237 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Gestion des Couleurs des Indicateurs</span>
+        </div>
+    </div>
+    <p-toolbar>
+        <div class="ui-toolbar-group-right">
+            <button *jhiHasAnyAuthority="'ROLE_ADD_COULEUR'" (click)="ajout()" class="btn btn-secondary font-weight-bold text-primary" id="jh-create-entity">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span>Ajouter une couleur</span>
+            </button>
+        </div>
+    </p-toolbar>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+
+    <div *ngIf="isLoading" class="mt-3">
+        <img style="margin-left: 5px; width: 45px; height: 45px" class="img" src="../../../content/images/ajax-loader.gif"/>&nbsp;
+    </div>
+    <div *ngIf="!isLoading">
+        <div *ngIf="couleurs?.length > 0" class="table-responsive">
+            <table class="table table-striped table-sm table-bordered table-hover" aria-describedby="page-heading">
+                <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th scope="col" jhiSortBy="indicateurId"><span>Indicateur</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="idPerformance"><span>Intervalle</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="couleur"><span>Couleur</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th scope="col" *jhiHasAnyAuthority="['ROLE_EDIT_COULEUR', 'ROLE_SUPP_COULEUR']"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let couleur of couleurs ;trackBy: trackId; let i = index">
+                    <td>
+                        <div *ngIf="couleur.indicateurId"><a
+                            [routerLink]="['/admin/indicateur', couleur.indicateurId , 'view' ]">{{couleur.libelleIndicateur}}</a>
+                        </div>
+                    </td>
+                    <td>[{{couleur.minVal}} - {{couleur.maxVal}}]</td>
+                    <td><input type="color" [name]="'couleur' + i" [(ngModel)]="couleur.couleur" style="width: 90%"></td>
+                    <td class="text-right" *jhiHasAnyAuthority="['ROLE_EDIT_COULEUR', 'ROLE_SUPP_COULEUR']">
+                        <div class="btn-group">
+                            <button *jhiHasAnyAuthority="'ROLE_EDIT_COULEUR'" type="submit" (click)="update(couleur)" [disabled]="colorSellecteds.length > 1"
+                                    class="btn-modif">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Modifier</span>
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_SUPP_COULEUR'" type="submit" (click)="delOne(couleur)" replaceUrl="true"
+                                    queryParamsHandling="merge" class="btn-delete">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Supprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div [hidden]="couleurs?.length === 0">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                                [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p-dialog header="Céation/Ajout de couleurs" [(visible)]="display" [modal]="true" [responsive]="true"
+                  (onHide)="annuler()"
+                  [style]="{width: '70%', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+            <div class="col-sm-12">
+                <form name="editForm" role="form" novalidate #editForm="ngForm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_commune">Domaine</label>
+                                <select class="form-control" id="field_commune" name="commune" [(ngModel)]="domaine"
+                                        (change)="domaineChange()" required>
+                                    <option [ngValue]="null"></option>
+                                    <option [ngValue]="domaine"
+                                            *ngFor="let domaine of domaines">{{domaine.libelle}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_idPerformance">Indicateur</label>
+                                <select class="form-control" id="field_idPerformance" name="idPerformance"
+                                        [(ngModel)]="couleur.indicateurId" (change)="domaineChange()" required>
+                                    <option [ngValue]="null"></option>
+                                    <option [ngValue]="indicateur.id"
+                                            *ngFor="let indicateur of indicateurs">{{indicateur.libelle}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_minVal">Valeur Minimale</label>
+                                <input type="number" (keyup)="checValue()" class="form-control" name="minVal"
+                                       id="field_minVal" [(ngModel)]="couleur.minVal" required pKeyFilter="int"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_maxVal">Valeur Maximale</label>
+                                <input type="number" (keyup)="checValue()" class="form-control" name="maxVal"
+                                       id="field_maxVal" [(ngModel)]="couleur.maxVal" required pKeyFilter="int"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_couleur">Couleur</label>
+                                <input type="color" name="couleur" id="field_couleur" [(ngModel)]="couleur.couleur"
+                                       required style="width: 100%"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="couleur.id === undefined" class="content-center">
+                        <button type="button" id="cancel-save" (click)="annuler()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                        </button>
+                        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                                (click)="add()">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Ajouter Couleur</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <br>
+            <div *ngIf="couleurTab?.length > 0" style="overflow-x: visible !important; height: 200px !important;">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th><span>Indicateur</span>
+                            <fa-icon [icon]="'sort'"></fa-icon>
+                        </th>
+                        <th><span>Intervalle</span>
+                            <fa-icon [icon]="'sort'"></fa-icon>
+                        </th>
+                        <th><span>Couleur</span>
+                            <fa-icon [icon]="'sort'"></fa-icon>
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let couleur of couleurTab ;trackBy: trackId; let i = index">
+                        <td>{{couleur.libelleIndicateur}}</td>
+                        <td>[{{couleur.minVal}} - {{couleur.maxVal}}]</td>
+                        <td><input type="color" [name]="'couleur' + i" [(ngModel)]="couleur.couleur"
+                                   style="width: 100%"></td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="submit" (click)="update(couleur)" class="btn-modif">
+                                    <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                    <span class="d-none d-md-inline">Modifier</span>
+                                </button>
+                                <button type="submit" (click)="del(couleur)" replaceUrl="true"
+                                        queryParamsHandling="merge"
+                                        class="btn-del">
+                                    <fa-icon [icon]="'times'"></fa-icon>
+                                    <span class="d-none d-md-inline">Delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+            <div *ngIf="couleurTab?.length > 0 || couleur.id !== undefined" class="content-center">
+                <button type="button" id="cancel-save-colors">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler Couleurs</span>
+                </button>
+                <button type="submit" id="save-entity-colors"
+                        [disabled]="couleurTab?.length <= 0 && couleur.id === undefined" (click)="addColors()">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregistrer Couleurs</span>
+                </button>
+            </div>
+        </p-dialog>
+    </div>
+
+    <p-dialog header="Suppression" [(visible)]="displayDel" [modal]="true" [responsive]="true" (onHide)="annulerDel()"
+              [style]="{width: '60%', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+        <div style="text-align: center; font-weight: bold; font-size: 1.3em; margin-bottom: 13px">
+            Êtes-vous sûre de vouloir supprimer {{colorSellecteds?.length}} couleur(s) de l'indicateur :
+            <span style="color: green">{{colorSellecteds[0]?.libelleIndicateur}} ?</span>
+        </div>
+        <table class="table table-striped" aria-describedby="page-heading" style="overflow-y: auto; height: 300px">
+            <thead>
+            <tr>
+                <th><span>Indicateur</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th><span>Intervalle</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th><span>Couleur</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let couleur of colorSellecteds ;trackBy: trackId; let i = index">
+                <td>
+                    {{couleur.libelleIndicateur}}
+                </td>
+                <td>[{{couleur.minVal}} - {{couleur.maxVal}}]</td>
+                <td><input type="color" [name]="'couleur' + i" [(ngModel)]="couleur.couleur" style="width: 100%"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <div class="content-center">
+            <button type="button" id="cancel-save_" (click)="annulerDel()">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+            </button>
+            <button type="submit" id="save-entity_" (click)="supprimer()">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Supprimer</span>
+            </button>
+        </div>
+    </p-dialog>
+</div>
+<p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>

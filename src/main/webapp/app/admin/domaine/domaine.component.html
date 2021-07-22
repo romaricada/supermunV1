@@ -1,0 +1,237 @@
+<!--Entete  -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center accueil-entete">
+            <span>Gestion des Domaines </span>
+        </div>
+    </div>
+    <p-toolbar name="toolbar">
+        <div class="ui-toolbar-group-left search-border">
+            <i class="fa fa-search-plus ml-1"></i>
+            <input type="text" class="border-0" [style]="{'width':'100%'}" pInputText placeholder="Rechercher"
+                   aria-describedby="basic-addon1" (search)="doSearch($event)"
+                   jhiTableGlobalSearch [values]="domainesTMP">
+        </div>
+        <div class="ui-toolbar-group-right">
+            <button *jhiHasAnyAuthority="'ROLE_ADD_DOMAINE'" (click)="display = true" class="btn btn-secondary font-weight-bold text-primary" id="jh-create-entity">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span>Ajouter un domaine</span>
+            </button>
+        </div>
+    </p-toolbar>
+    <br>
+    <!-- affichage du tableau de domaine-->
+    <div *ngIf="isLoading" class="mt-3 text-center">
+        <img style="margin-left: 5px; width: 45px; height: 45px" class="img" src="../../../content/images/ajax-loader.gif"/>&nbsp;
+    </div>
+    <div class="table-responsive" *ngIf="!isLoading">
+        <p-table #tdf [value]="domaines" [(selection)]="domaineSelects" [responsive]="true">
+            <ng-template let-columns pTemplate="header">
+                <tr [(ascending)]="reverse" [(predicate)]="predicate" [callback]="transition.bind(this)" jhiSort>
+                    <th jhiSortBy="code" scope="col"><span>Code</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="libelle" scope="col"><span>Domaine</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="description" scope="col"><span>Description</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="totalPoint" scope="col"><span>Total point</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="typeIndicateurId" scope="col"><span>Groupe de Domaine</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th width="90"><span>Image</span></th>
+                    <th class="text-center" scope="col" style="width: 19%" *jhiHasAnyAuthority="['ROLE_EDIT_DOMAINE', 'ROLE_SUPP_DOMAINE']">Actions</th>
+                </tr>
+            </ng-template>
+
+
+            <ng-template let-columns="columns" let-domaine pTemplate="body">
+                <tr [pSelectableRow]="domaine">
+                    <td>{{domaine.code}}</td>
+                    <td>{{domaine.libelle}}</td>
+                    <td>{{domaine.description}}</td>
+                    <td>{{domaine.pointTotal}}</td>
+                    <td>  {{domaine.typeIndicateur.libelle}} </td>
+                    <td width="90">
+                        <button (click)="viewImg(domaine)" class="btn-modif" type="submit" [disabled]="!domaine.image">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Image</span>
+                        </button>
+                    </td>
+                    <td class="text-right" style="width: 19%" *jhiHasAnyAuthority="['ROLE_EDIT_DOMAINE', 'ROLE_SUPP_DOMAINE']">
+                        <div class="btn-group">
+                            <button *jhiHasAnyAuthority="'ROLE_EDIT_DOMAINE'" (click)="updateForm(domaine)" class="btn-modif" type="submit">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline">Modifier</span>
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_SUPP_DOMAINE'" class="btn-delete" (click)="delete(domaine)" type="submit">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline">Supprimer</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div [hidden]="domaines?.length === 0">
+        <div class="row justify-content-center mt-1">
+            <jhi-item-count [itemsPerPage]="itemsPerPage" [page]="page" [total]="totalItems"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination (pageChange)="loadPage(page)" [(page)]="page" [boundaryLinks]="true" [collectionSize]="totalItems"
+                            [maxSize]="5" [pageSize]="itemsPerPage" [rotate]="true"></ngb-pagination>
+
+        </div>
+    </div>
+
+    <!--  Appel de la boite de dialogue pour l'enregistrement d'un domaine  (fonction pour annuler la saisie et reinitialiser le formulaire (onHide)="annulerSaisie()") -->
+    <p-dialog (onHide)="annulerSaisie()" [(visible)]="display" [baseZIndex]="10000" [minY]="70"
+              [modal]="true" [responsive]="true" [style]="{width: '60%', minWidth: '200px'}" header="Création/Ajout d'un Domaine">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+                <p-toast key="myKey1" position="center"></p-toast>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_typeIndicateur">Groupe de Domaine(*)</label>
+                        <select formControlName="typeIndicateurId" class="form-control" id="field_typeIndicateur"
+                                name="type-indicateur" required>
+                            <option [ngValue]="null">...</option>
+                            <option *ngFor="let typeIndicateur of typeIndicateurs"
+                                    [ngValue]="typeIndicateur.id">{{ typeIndicateur.libelle }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_code">Code(*)</label>
+                        <input formControlName="code" class="form-control" id="field_code" name="code" required
+                               pKeyFilter="alphanum" type="text"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_libelle">Domaine(*)</label>
+                                <input formControlName="libelle" class="form-control" id="field_libelle" name="libelle" required
+                                       [pKeyFilter]="blockSpecial" type="text"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_libelle">Total point(*)</label>
+                                <input formControlName="pointTotal" class="form-control" id="field_total" name="pointTotal" required
+                                       pKeyFilter="pnum" type="number"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_desc">Description</label>
+                        <textarea class="form-control" formControlName="description" rows="10" cols="30"
+                                  id="field_desc" pInputTextarea [pKeyFilter]="blockSpecial">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_image">Image</label>
+                        <div>
+                            <img [src]="'data:' + editForm.get('imageContentType').value + ';base64,' + editForm.get('image').value" style="max-height: 100px;" *ngIf="editForm.get('image').value" alt="domaine image"/>
+                            <div *ngIf="editForm.get('image').value" class="form-text text-danger clearfix">
+                                <span class="pull-left">{{editForm.get('imageContentType').value}}, {{byteSize(editForm.get('image').value)}}</span>
+                            </div>
+                            <input type="file" id="file_image" (change)="setFileData($event, 'image', true)" accept="image/*"/>
+                        </div>
+                        <input type="hidden" class="form-control" name="image" id="field_image"
+                               formControlName="image"/>
+                        <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                               formControlName="imageContentType" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button (click)="annulerSaisie()" class="btn btn-secondary btn-form-cancel" id="cancel-save"
+                        type="button">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+                </button>
+
+                <button [disabled]="editForm.invalid || isSaving" class="btn btn-primary btn-form-save" id="save-entity"
+                        type="submit">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Enregister</span>
+                </button>
+            </div>
+
+        </form>
+    </p-dialog>
+
+    <p-dialog [(visible)]="displayImg" [baseZIndex]="10000" [minY]="70"
+              [modal]="true" [responsive]="true" [style]="{width: '30%', minWidth: '200px'}" header="Image">
+        <span class="img-detail font-weight-bold">
+            <span *ngIf="domaine.imageContentType"> Type :  {{domaine?.imageContentType}}</span>
+            <br>
+            <span *ngIf="domaine?.image">Taille : {{byteSize(domaine?.image)}}</span>
+        </span>
+        &nbsp;
+        <img class="image-indicateur" [src]= "'data:' + domaine?.imageContentType + ';base64,' + domaine?.image">
+    </p-dialog>
+
+
+    <p-dialog [(visible)]="displayDel" [baseZIndex]="10000" [minY]="70" (onHide)="annulerDel()"
+              [modal]="true" [responsive]="true" [style]="{width: '30%', minWidth: '200px'}" header="Image">
+        <span>Êtes vous certain de vouloir supprimer {{domaineSelects?.length}} domaines ?</span><br>
+        <p-table [value]="domaineSelects">
+            <ng-template let-columns pTemplate="header">
+                <tr [(ascending)]="reverse" [(predicate)]="predicate" [callback]="transition.bind(this)" jhiSort>
+                    <th jhiSortBy="code" scope="col"><span>Code</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="libelle" scope="col"><span>Domaine</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="totalPoint" scope="col"><span>Total point</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="typeIndicateurId" scope="col"><span>Groupe de Domaine</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                </tr>
+            </ng-template>
+
+
+            <ng-template let-columns="columns" let-domaine pTemplate="body">
+                <tr>
+                    <td>{{domaine.code}}</td>
+                    <td>{{domaine.libelle}}</td>
+                    <td>{{domaine.pointTotal}}</td>
+                    <td>  {{domaine.typeIndicateur.libelle}} </td>
+                </tr>
+
+
+            </ng-template>
+        </p-table>
+
+        <div class="text-center">
+            <button (click)="annulerDel()" class="btn btn-secondary btn-form-cancel" id="cancel"
+                    type="button">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Annuler</span>
+            </button>
+
+            <button class="btn btn-primary btn-form-save" type="button" (click)="validerDel()">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Supprimer</span>
+            </button>
+        </div>
+    </p-dialog>
+
+    <p-toast [style]="{marginTop: '80px'}" position="top-center" key="tc"></p-toast>
+</div>

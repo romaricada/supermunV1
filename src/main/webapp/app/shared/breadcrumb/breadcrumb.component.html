@@ -1,0 +1,15 @@
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <ul class="breadcrumb font-weight-bold bg-light">
+                    <li class="breadcrumb-item" routerLinkActive="router-link-active" *ngIf="!isAuthenticated()"><a [routerLink]="['/']">SUPERMUN</a></li>
+                    <li class="breadcrumb-item" routerLinkActive="router-link-active" *ngIf="isAuthenticated()"><a [routerLink]="['/admin']">SUPERMUN</a></li>
+                    <li class="breadcrumb-item" *ngIf="breadCrumb">
+                        <a [routerLink]="[breadCrumb]">{{title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

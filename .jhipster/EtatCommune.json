@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "commune",
+            "otherEntityName": "commune",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipName": "exercice",
+            "otherEntityName": "exercice",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "y"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "validated",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "priseEnCompte",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20191204112845",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "etat_commune",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "enableEntityAudit": true
+}

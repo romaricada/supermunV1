@@ -1,0 +1,21 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nombreVisiteurs",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20200505230921",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "counte",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "enableEntityAudit": true
+}

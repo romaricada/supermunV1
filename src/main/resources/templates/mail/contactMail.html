@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}">
+<head>
+    <title th:text="#{email.contact.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <div class="form-group">
+        <label>Email : </label>
+        <label th:text="${contact.email}"></label>
+    </div>
+    <div class="form-group">
+        <label>Nom : </label>
+        <label th:text="${contact.nom}"></label>
+    </div>
+    <div class="form-group">
+        <label>Prénom : </label>
+        <label th:text="${contact.prenom}"></label>
+    </div>
+    <div class="form-group">
+        <label>Téléphone : </label>
+        <label th:text="${contact?.telephone}"></label>
+    </div>
+    <div class="form-group">
+        <p th:text="${contact.message}"></p>
+    </div>
+    <p>
+        <span th:text="#{email.activation.text2}">Coordialement, </span>
+        <br/>
+        <em th:text="#{email.contact.signature}">Supermun.</em>
+    </p>
+</body>
+</html>

@@ -1,0 +1,410 @@
+@media all {
+  .container {
+    .no-performance-div {
+      background-color: #f5f519 !important;
+      font-weight: bold !important;
+      padding: 8px !important;
+    }
+
+    .content {
+      background-color: #ffffff;
+      color: #333333;
+      -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+      -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+      // padding: 1.5%;
+      margin-top: 20px;
+      border: none;
+    }
+
+    .w-100 {
+      width: 85% !important;
+      height: 35px;
+      background-color: #9e9e9e !important;
+    }
+
+    // POSTER 1
+    .poster1 {
+      .content {
+        padding: 15px !important;
+      }
+
+      .titre-mairie {
+        color: #6fc8c0;
+        font-size: 2em;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .titre-service {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        /* margin-bottom: 2.5em; */
+        display: flex;
+
+        .static-service-text1 {
+          width: 40%;
+          text-align: center;
+          // line-height: 70px;
+        }
+
+        .logo {
+          width: 15%;
+        }
+
+        .pact-img {
+          height: 70px;
+        }
+
+        .static-service-text2 {
+          width: 35%;
+          text-align: left;
+        }
+      }
+
+      .domaine-div {
+        display: flex;
+        margin-top: 7px;
+        margin-bottom: 11px;
+        padding: 1px 1px 1px 3px;
+
+        .circle-div {
+          height: 10em;
+          width: 150px;
+          background-color: white;
+          border-radius: 50%;
+          border: 0.5em solid #5eaea4;
+          margin-top: -37px;
+          margin-right: -38px;
+          z-index: 1;
+          text-align: center;
+
+          .circle-content {
+            top: 15%;
+            position: relative;
+          }
+        }
+
+        .domaine {
+          width: 64%;
+          height: 50px;
+          background-color: #6fc8c0;
+          justify-content: center !important;
+          text-align: center;
+          color: white;
+          font-size: 2em;
+          border-width: 0.4em 0 0 0;
+          border-style: solid;
+          border-top-color: #5eaea4;
+          padding: 1px 10px 10px 20px;
+          font-weight: bold;
+        }
+
+        .star {
+          width: 22%;
+          height: 86px;
+          background-color: white;
+          transform: skewY(20deg);
+          -webkit-transform: skew(179deg);
+          margin-left: -24px;
+        }
+
+        .monCase {
+          width: 5%;
+          height: 86px;
+          background-color: white;
+          transform: skewY(20deg);
+          -webkit-transform: skew(151deg);
+          margin-left: -24px;
+        }
+      }
+
+      .indicateur-row {
+        .graduate-and-image-col {
+          width: 50%;
+          display: inline-flex;
+        }
+
+        width: 100%;
+        display: inline-flex;
+        margin-bottom: 10px;
+
+        .indicateur-col {
+          width: 50%;
+
+          .sous-indicateur {
+            display: flex;
+
+            .type-item {
+              margin-top: 0;
+              width: 15%;
+              padding: 5px;
+
+              img.type-img {
+                width: 35px;
+                height: 45px;
+              }
+            }
+          }
+        }
+
+        .full-size {
+          width: 65%;
+
+          .sous-indicateur {
+            display: flex;
+
+            .type-item {
+              margin-top: 0;
+              width: 15%;
+              padding: 3px;
+              margin-left: 16px !important;
+
+              img.type-img {
+                width: 35px;
+                height: 45px;
+              }
+            }
+          }
+        }
+
+        .full-size1 {
+          width: 78%;
+
+          .sous-indicateur {
+            display: flex;
+
+            .type-item {
+              margin-top: 0;
+              width: 15%;
+              padding: 5px;
+              /* width: 50px; */
+              img.type-img {
+                width: 35px;
+                height: 45px;
+              }
+            }
+          }
+        }
+
+        .indicateur-div {
+          width: 20%;
+          padding: 1px 5px 6px 8px;
+          margin-right: 1px;
+          font-weight: bold;
+        }
+
+        .indicateur-image {
+          width: 12%;
+
+          .ind-img {
+            width: 130px;
+            height: 125px;
+          }
+        }
+
+        .graduate-col {
+          width: 56%;
+          padding-right: 2px;
+        }
+      }
+
+      .total-points {
+        color: #6fc8c0;
+        //font-size: 4em;
+        text-align: center;
+        border-top: 5px solid;
+        display: inline-flex;
+        width: 100%;
+
+        .total-points-span {
+          font-size: 2em;
+          font-weight: bold;
+        }
+      }
+
+      .progress-bar {
+        color: #fff;
+        white-space: nowrap !important;
+        background-color: #6fc8c0 !important;
+        font-size: 16px !important;
+      }
+
+      .p-2 {
+        padding: 0.2rem !important;
+        margin-top: 50px;
+        font-weight: bold;
+        margin-left: 16px !important;
+      }
+    }
+
+    // fin poster 1
+
+    // POSTER 2
+
+    .poster2 {
+      .content {
+        padding: 15px !important;
+      }
+
+      .titre-mairie {
+        color: #d5583a;
+        font-size: 2em;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .titre-service {
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        display: flex;
+
+        .static-service-text1 {
+          width: 40%;
+          text-align: center;
+        }
+
+        .logo {
+          width: 15%;
+        }
+
+        .pact-img {
+          height: 70px;
+        }
+
+        .static-service-text2 {
+          width: 35%;
+          text-align: center;
+        }
+      }
+
+      .domaine-div {
+        display: flex;
+        padding: 1px 1px 1px 3px;
+
+        .circle-div {
+          height: 8em;
+          width: 130px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          border: 0.5em solid #d5583a;
+          margin-top: -37px;
+          margin-right: -38px;
+          z-index: 1;
+          text-align: center;
+
+          .circle-content {
+            top: 12%;
+            position: relative;
+          }
+        }
+
+        .domaine {
+          width: 60%;
+          height: 40px;
+          background: #dc7759 !important;
+          justify-content: center !important;
+          text-align: center;
+          color: #ffffff !important;
+          font-size: 1.5em;
+          border-width: 0.4em 0 0 0;
+          border-style: solid;
+          border-top-color: #d5583a;
+          padding: 1px 10px 10px 20px;
+          font-weight: bold;
+        }
+
+        .star {
+          width: 22%;
+          height: 86px;
+          background-color: white;
+          transform: skewY(20deg);
+          -webkit-transform: skew(179deg);
+          margin-left: -24px;
+        }
+
+        .monCase {
+          width: 5%;
+          height: 86px;
+          background-color: white;
+          transform: skewY(20deg);
+          -webkit-transform: skew(151deg);
+          margin-left: -24px;
+        }
+      }
+
+      .indicateur-row {
+        width: 100%;
+        display: inline-flex;
+        margin-bottom: 5px;
+
+        .indicateur-div {
+          width: 20%;
+          padding: 1px 5px 6px 8px;
+          margin-right: 1px;
+          font-weight: bold;
+        }
+
+        .indicateur-image {
+          width: 14%;
+          height: 90px;
+          margin-right: 5px;
+
+          .ind-img {
+            width: 140px;
+            height: 90px;
+          }
+        }
+
+        .graduate-col {
+          width: 53%;
+          padding-right: 2px;
+          margin-left: 3px;
+        }
+      }
+
+      .total-points {
+        color: #d5583a;
+        text-align: center;
+        border-top: 5px solid;
+        display: inline-flex;
+        width: 100%;
+        font-weight: bold;
+
+        .total-points-span {
+          font-size: 2em;
+        }
+      }
+
+      .progress-bar {
+        color: #fff;
+        white-space: nowrap !important;
+        background-color: #d5583a !important;
+        font-size: 16px !important;
+      }
+
+      .p-2 {
+        padding: 0.2rem !important;
+        margin-top: 30px;
+        font-weight: bold;
+      }
+    }
+
+    // fin POSTER 2
+  }
+}
+
+#commune-stars {
+  margin-left: 22%;
+}
+#commune-stars1 {
+  margin-left: 22%;
+}
+
+@media print {
+  #not_print {
+    display: none;
+  }
+}

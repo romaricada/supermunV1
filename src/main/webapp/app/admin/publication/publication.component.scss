@@ -1,0 +1,97 @@
+.accueil-entete {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 60%;
+  border-radius: 20px;
+  border: solid;
+  background-color: #eaeaea;
+  color: black;
+  font-weight: bold;
+  font-size: 2.2em;
+  align-content: center;
+}
+
+.text-no-data {
+  align-content: center !important;
+}
+
+.btn-add {
+  background-color: floralwhite !important;
+  color: blue !important;
+  font-weight: bold;
+  margin-right: 15%;
+  margin-top: 8px;
+  width: 25%;
+  height: 70%;
+  font-size: 1.1em;
+  border-radius: 5px;
+}
+.ui-fluid {
+  margin-top: 8px;
+  display: block;
+}
+.contour {
+  margin-top: 8px;
+  background-color: #5ab55d;
+  border-radius: 5px;
+}
+.chanp-texte {
+  border-radius: 15px;
+  margin-bottom: 7px !important;
+}
+.btn-detail {
+  background-color: floralwhite !important;
+  color: green !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-modif {
+  background-color: floralwhite !important;
+  color: blueviolet !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-delete {
+  background-color: floralwhite !important;
+  color: red !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-form-save {
+  background-color: floralwhite !important;
+  color: blueviolet !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.btn-form-cancel {
+  background-color: floralwhite !important;
+  color: red !important;
+  font-weight: bold;
+  font-size: 100%;
+}
+.filter-item {
+  margin-top: 10px;
+  // border: solid !important;
+}
+.annee-filter {
+  margin-top: 15px !important;
+  font-size: 1.5em !important;
+  font-weight: bold;
+  text-align: center !important;
+}
+.form-control-label {
+  font-size: 1.5em !important;
+  font-weight: bold;
+}
+.tooltip-filter {
+  // border: solid !important;
+  height: 35% !important;
+  width: 15%;
+  font-size: 2em !important;
+  font-weight: bold;
+  /* display: inline */
+}

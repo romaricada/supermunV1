@@ -1,0 +1,86 @@
+<div>
+    <div class="container mt-2">
+        <p-fieldset>
+            <p-header>
+                <span *ngIf="settingsForm.get('login').value" class="text-primary font-weight-bold">Information du compte de l'utilisateur [<b>{{settingsForm.get('login').value}}</b>]</span>
+            </p-header>
+            <div class="alert alert-success font-weight-bold" *ngIf="success">
+                <strong>Information mises à jour !</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm"
+                  *ngIf="settingsForm.get('login').value" novalidate>
+
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="firstName">Nom<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName"
+                           placeholder="Votre nom"
+                           formControlName="firstName">
+                    <div
+                        *ngIf="settingsForm.get('firstName').invalid && (settingsForm.get('firstName').dirty || settingsForm.get('firstName').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="settingsForm.get('firstName').errors.required">
+                            Votre nom est requis.
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="settingsForm.get('firstName').errors.minlength">
+                            Votre nom doit avoir une taille d'au moins 1 caractère.
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="settingsForm.get('firstName').errors.maxlength">
+                            Votre nom ne doit pas avoir une taille supérieure à 50 caractères
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="lastName">Prénom<sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Votre prénom"
+                           formControlName="lastName">
+                    <div
+                        *ngIf="settingsForm.get('lastName').invalid && (settingsForm.get('lastName').dirty || settingsForm.get('lastName').touched)">
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="settingsForm.get('lastName').errors.required">
+                            Votre prénom est requis.
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="settingsForm.get('lastName').errors.minlength">
+                            Votre prénom doit avoir une taille d'au moins 1 caractère.
+                        </small>
+                        <small class="form-text text-danger font-weight-bold"
+                               *ngIf="settingsForm.get('lastName').errors.maxlength">
+                            Votre prénom ne doit pas avoir une taille supérieure à 50 caractères.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label font-weight-bold" for="email">Email<sup class="text-danger">*</sup></label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Votre email"
+                           formControlName="email">
+                    <div
+                        *ngIf="settingsForm.get('email').invalid && (settingsForm.get('email').dirty || settingsForm.get('email').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="settingsForm.get('email').errors.required">
+                            Votre email est requis.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="settingsForm.get('email').errors.email">
+                            Votre email n'est pas valide.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="settingsForm.get('email').errors.minlength">
+                            Votre email doit avoir une taille d'au moins 5 caractère.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="settingsForm.get('email').errors.maxlength">
+                            Votre prénom ne doit pas avoir une taille supérieure à 100 caractères.
+                        </small>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary">Quitter</button>
+                <button type="submit" [disabled]="settingsForm.invalid" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </p-fieldset>
+    </div>
+</div>

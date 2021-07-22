@@ -1,0 +1,153 @@
+<div>
+    <!--Entete  -->
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 text-center accueil-entete">
+                <span>Liste des Communes du BURKINA FASO </span>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 5px !important;">
+            <div class="col-sm-3 form-group font-weight-bold">
+                <label>Année</label>
+                <p-dropdown [options]="exercices" [(ngModel)]="selectedExercice" (onChange)="loadCommuneNoteSelected();loadEtaCommune()" placeholder="Année" optionLabel="annee" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+            <div class="col-sm-3 form-group font-weight-bold">
+                <label>Région</label>
+                <p-dropdown [options]="regions" [(ngModel)]="region" (onChange)="regionChange()" placeholder="Région" optionLabel="libelle" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+            <div class="col-sm-3 form-group font-weight-bold">
+                <label>Province</label>
+                <p-dropdown [options]="provinces" (onChange)="provinceChange()" [(ngModel)]="province" placeholder="Province" optionLabel="libelle" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+            </div>
+        </div>
+        <br>
+        <div class="table-responsive">
+            <p-table id="communeTable" #dtf [value]="etatCommunes" [(selection)]="selectedCommunesToRemove" selectionMode="multiple" [metaKeySelection]="true"
+                     [globalFilterFields]="['commune.code','commune.libelleRegion','commune.libelleProvince','communeLibelle']" [scrollable]="true" [style]="{width:'100%'}">
+                <ng-template pTemplate="caption">
+                    <div class="ui-grid">
+                        <div class="ui-g-12 text-left">
+                            <button *jhiHasAnyAuthority="'ROLE_SELECT_COMMUNE'" type="button" pButton [disabled]="communesNotSelected.length < 1" class="ui-button-success text-white"
+                                    label="Selectionner des communes" (click)="displayDialog()">
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_REMOVE_COMMUNE'" type="button" [disabled]="selectedCommunesToRemove.length < 1" pButton class="ui-button-warning text-white mt-1"
+                                    label="Retirer de communes sélectionées" (click)="removeCommuneFromYear('selected')">
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_REMOVE_COMMUNE'" type="button" [disabled]="etatCommunes.length < 1" pButton class="ui-button-warning text-white mt-1"
+                                    label="Retirer tout" (click)="removeCommuneFromYear('all')">
+                            </button>
+                            <span class="ml-3 myText"><span></span> Pour sélectionner plusieurs communes, enfoncer sur les touches
+                                <strong style="background-color: #dadada">COMMANDE<img style="width: 15px" src= "/content/images/cmd.png"></strong> ou
+                                <strong style="background-color: #dadada">Ctrl<img style="width: 32px" src= "/content/images/ctrl.png"></strong> puis cliquer sur les commues de votre choix</span>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th class="t1" *jhiHasAnyAuthority="'ROLE_REMOVE_COMMUNE'"></th>
+                        <th [pSortableColumn]="'commune.code'"><span>Code</span><p-sortIcon [field]="'commune.code'"></p-sortIcon></th>
+                        <th [pSortableColumn]="'commune.libelleRegion'">Région <p-sortIcon [field]="'commune.libelleRegion'"></p-sortIcon></th>
+                        <th [pSortableColumn]="'commune.libelleProvince'">Province <p-sortIcon [field]="'commune.libelleProvince'"></p-sortIcon></th>
+                        <th [pSortableColumn]="'communeLibelle'"><span>Commune</span> <p-sortIcon [field]="'communeLibelle'"></p-sortIcon></th>
+                        <th class="t1"><span>Latitude</span></th>
+                        <th class="t1"><span>Longitude</span></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-etaCommune let-columns="columns">
+                    <tr [pSelectableRow]="etaCommune">
+                        <td class="t1" *jhiHasAnyAuthority="'ROLE_REMOVE_COMMUNE'">
+                            <p-tableCheckbox [value]="etaCommune"></p-tableCheckbox>
+                        </td>
+                        <td>{{etaCommune.commune.code}}</td>
+                        <td>{{etaCommune.commune.libelleRegion}}</td>
+                        <td>{{etaCommune.commune.libelleProvince}}</td>
+                        <td>{{etaCommune.communeLibelle}}</td>
+                        <td class="t1">{{etaCommune.commune.positionLabelLat}}</td>
+                        <td class="t1">{{etaCommune.commune.positionLabelLon}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="container-fluid row pt-3">
+            <div class="col-sm-4 float-left">
+                <label class="font-weight-bold text-primary" style="font-size: medium"><span class="badge badge-warning">{{selectedCommunesToRemove.length}}</span> communes sélectionnées</label>
+            </div>
+            <div [hidden]="etatCommunes?.length === 0" class="col-sm-8 float-right">
+                <div class="row justify-content-center">
+                    <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                </div>
+                <div class="row justify-content-center font-weight-bold" style="justify-content: flex-end !important;">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                                    [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p-dialog header="Selection des communes pour l'anner en cours" [(visible)]="displaySelect"
+              [style]="{'width':'800px'}" class="myDialog" [responsive]="true" showEffect="fade" [modal]="true"
+              [closable]="false" [draggable]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid">
+            <div class="ui-g ui-g-12 ui-g-nopad mt-1">
+                <p-table #dtf [value]="communesNotSelected" selectionMode="multiple" class="table-responsive" [(selection)]="selectedCommunes" [metaKeySelection]="true"
+                         dataKey="id" [scrollable]="true" scrollHeight="300px" [globalFilterFields]="['code','libelleRegion','libelleProvince', 'libelle']">
+                        <ng-template pTemplate="caption">
+                            <div class="row text-left">
+                                <div class="col-sm-6 form-group font-weight-bold">
+                                    <label>Région</label>
+                                    <p-dropdown [options]="regions" [(ngModel)]="region1" (onChange)="regionChange1()" placeholder="Région" optionLabel="libelle" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+                                </div>
+                                <div class="col-sm-6 form-group font-weight-bold">
+                                    <label>Province</label>
+                                    <p-dropdown [options]="provinces" (onChange)="provinceChange1()" [(ngModel)]="province1" placeholder="Province" optionLabel="libelle" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+                                </div>
+                            </div>
+
+                            <input type="text" size="30" pInputText placeholder="Rechercher par région, province et commune"
+                                   (input)="dtf.filterGlobal($event.target.value, 'contains')" >
+                        </ng-template>
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th width="50" class="text-center">
+                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                </th>
+                                <th width="100">Code</th>
+                                <th width="200">Région</th>
+                                <th width="150">Province</th>
+                                <th width="150">Commune</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-dataRow let-columns="columns">
+                            <tr [pSelectableRow]="dataRow">
+                                <td width="50" class="text-center">
+                                    <p-tableCheckbox [value]="dataRow"></p-tableCheckbox>
+                                </td>
+                                <td width="100" >{{dataRow.code}}</td>
+                                <td width="200">{{dataRow.libelleRegion}}</td>
+                                <td width="150">{{dataRow.libelleProvince}}</td>
+                                <td width="150">{{dataRow.libelle}}</td>
+                            </tr>
+                        </ng-template>
+                    <ng-template pTemplate="footer">
+                        <span>{{selectedCommunes.length+" commune(s) selectionnée"}}</span>
+                    </ng-template>
+                    </p-table>
+                </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa fa-close" label="fermer"
+                        (click)="displayDialog()" class="ui-button-secondary text-danger"></button>
+                <button type="button" pButton icon="fa fa-check" [disabled]="selectedCommunes.length === 0"
+                        label="Valider" (click)="addCommunesToCurrentYear()" class="ui-button-success text-white"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" class="text-warning">
+    <p-footer>
+        <button type="button" class="ui-button-secondary text-info" pButton icon="pi pi-times" label="NON" (click)="cd.reject()"></button>
+        <button type="button" class="ui-button-secondary text-danger" pButton icon="pi pi-check" label="OUI" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
+<p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>
